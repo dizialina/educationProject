@@ -21,14 +21,8 @@
         [urlRequest setHTTPMethod:@"GET"];
         [urlRequest setHTTPMethod:@"appliction/json"];
         
-        NSArray *myArray = @[@1,@2,@4,@8,@5,@[@1,@2,@5,@6,@7,@[@1,@1,@34,@56,@7]]];
-        
-        NSArray *newArray = [[myArray objectAtIndex:5] objectAtIndex:5];
-        NSLog(@"%@",newArray);
-        
         NSURLSession *urlSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
         [[urlSession dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-            NSLog(@"%@", response);
             
             assert(data);
             if (!error) {
