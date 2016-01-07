@@ -13,6 +13,7 @@
 		9514F1B01C3AD57B00F27D2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9514F1AE1C3AD57B00F27D2D /* Main.storyboard */; };
 		9514F1B21C3AD57B00F27D2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9514F1B11C3AD57B00F27D2D /* Assets.xcassets */; };
 		9514F1B51C3AD57B00F27D2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9514F1B31C3AD57B00F27D2D /* LaunchScreen.storyboard */; };
+		9514F1BE1C3ADDC500F27D2D /* RequestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9514F1BD1C3ADDC500F27D2D /* RequestClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		9514F1B11C3AD57B00F27D2D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9514F1B41C3AD57B00F27D2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9514F1B61C3AD57B00F27D2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9514F1BC1C3ADDC500F27D2D /* RequestClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestClient.h; sourceTree = "<group>"; };
+		9514F1BD1C3ADDC500F27D2D /* RequestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestClient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,8 @@
 				9514F1B31C3AD57B00F27D2D /* LaunchScreen.storyboard */,
 				9514F1B61C3AD57B00F27D2D /* Info.plist */,
 				9514F1A51C3AD57B00F27D2D /* Supporting Files */,
+				9514F1BC1C3ADDC500F27D2D /* RequestClient.h */,
+				9514F1BD1C3ADDC500F27D2D /* RequestClient.m */,
 			);
 			path = CheTamUHohlov;
 			sourceTree = "<group>";
@@ -151,6 +156,7 @@
 			files = (
 				9514F1AD1C3AD57B00F27D2D /* ViewController.m in Sources */,
 				9514F1AA1C3AD57B00F27D2D /* AppDelegate.m in Sources */,
+				9514F1BE1C3ADDC500F27D2D /* RequestClient.m in Sources */,
 				9514F1A71C3AD57B00F27D2D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
