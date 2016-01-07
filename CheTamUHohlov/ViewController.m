@@ -8,7 +8,8 @@
 
 #import "ViewController.h"
 #import "RequestClient.h"
-#define LinkToData @"https://query.yahooapis.com/v1/public/yql?q=select+*+from+yahoo.finance.xchange+where+pair+=+%22USDRUB,EURRUB%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback="
+#import "Constants.h"
+
 @interface ViewController ()
 
 @end

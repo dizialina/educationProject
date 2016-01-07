@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ObjClient.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    ObjClient *client = [ObjClient new];
+    [client copyDBFileToPath];
+    
     return YES;
 }
 
