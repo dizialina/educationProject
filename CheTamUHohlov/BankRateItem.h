@@ -14,4 +14,6 @@
 @property (nonatomic, assign) double rate;
 @property (nonatomic, strong) NSString *fullName;
 
+@property (nonatomic, strong) NSString* testProperty;
+
 @end

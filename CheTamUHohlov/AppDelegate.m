@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ObjClient.h"
+#import "TestClassForHomework.h"
 
 @interface AppDelegate ()
 
@@ -20,6 +21,10 @@
     // Override point for customization after application launch.
     ObjClient *client = [ObjClient new];
     [client copyDBFileToPath];
+    
+    TestClassForHomework* testObject = [TestClassForHomework new];
+    [testObject testMethodCreateDBInTemp];
+    [testObject testMethodCleanTempFolder];
     
     return YES;
 }

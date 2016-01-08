@@ -11,6 +11,6 @@
 
 @interface ObjClient : NSObject
 
-- (NSString *) copyDBFileToPath;
+- (NSString *)copyDBFileToPath;
 
 @end

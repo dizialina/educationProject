@@ -18,23 +18,40 @@
 - (NSString *)copyDBFileToPath {
     
     NSArray *pathsToFolders = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *urlDocumentsFolder = [pathsToFolders lastObject];
-    NSLog(@"%@", urlDocumentsFolder);
-    NSString *stringDBPath = [NSString stringWithFormat:@"%@/%@", urlDocumentsFolder, DBName];
+    NSString *pathDocumentsFolder = [pathsToFolders lastObject];
+    NSLog(@"%@", pathDocumentsFolder);
+    NSString *stringDBPath = [NSString stringWithFormat:@"%@/%@", pathDocumentsFolder, DBName];
     
     NSFileManager *manager = [NSFileManager defaultManager];
     BOOL succes = [manager fileExistsAtPath:stringDBPath];
     if (!succes) {
-        NSString *urlDBInBundle = [NSString stringWithFormat:@"%@/%@", [NSBundle mainBundle].resourcePath, DBName];
-        [manager copyItemAtPath:urlDBInBundle toPath:urlDocumentsFolder error:nil];
-        NSLog(@"succes of copying DB file");
+        NSString *pathDBInBundle = [NSString stringWithFormat:@"%@/%@", [NSBundle mainBundle].resourcePath, DBName];
+        
+        /* так работает
+        BOOL success = [manager copyItemAtPath:pathDBInBundle toPath:stringDBPath error:nil];
+        if (!success) {
+            NSLog(@"Error copy file to Documents");
+        }
+        */
+        
+        
+        //так не работает
+        [manager copyItemAtPath:pathDBInBundle toPath:pathDocumentsFolder error:nil];
+        NSLog(@"Success of copying DB file");
+        
     } else {
         NSLog(@"fail copying DB file");
     }
+    
+    //проверка количества файлов в папке Documents (в старом варианте равна 0)
+    NSArray* listFilesInTemp = [manager contentsOfDirectoryAtPath:pathDocumentsFolder error:nil];
+    NSLog(@"%@", listFilesInTemp);
+    
     return stringDBPath;
 }
 
 - (BOOL)writeRequestIntoDB:(NSString *)request {
+    
     BOOL returnBool = NO;
     NSString *stringDBPath = [self copyDBFileToPath];
     if (sqlite3_open([stringDBPath UTF8String], &database) == SQLITE_OK ) {
@@ -65,7 +82,7 @@
         const char *receivedRequest = [request UTF8String];
         sqlite3_stmt *readStatement = nil;
         if(sqlite3_prepare_v2(database, receivedRequest, -1, &readStatement, NULL) != SQLITE_OK) {
-            NSAssert1(0, @"Error while creating update statement. '%s'", sqlite3_errmsg(database));
+            NSAssert1(0, @"Error while reading statement. '%s'", sqlite3_errmsg(database));
         }
         while (sqlite3_step(readStatement) == SQLITE_ROW) {
             BankRateItem *bankItem = [BankRateItem new];
