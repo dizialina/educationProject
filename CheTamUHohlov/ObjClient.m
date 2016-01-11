@@ -19,15 +19,17 @@
     
     NSArray *pathsToFolders = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *pathDocumentsFolder = [pathsToFolders lastObject];
+
     //NSLog(@"%@", pathDocumentsFolder);
+
     NSString *stringDBPath = [NSString stringWithFormat:@"%@/%@", pathDocumentsFolder, DBName];
     
     NSFileManager *manager = [NSFileManager defaultManager];
     BOOL succes = [manager fileExistsAtPath:stringDBPath];
     if (!succes) {
         NSString *pathDBInBundle = [NSString stringWithFormat:@"%@/%@", [NSBundle mainBundle].resourcePath, DBName];
-        //Так работает
-        BOOL success = [manager copyItemAtPath:pathDBInBundle toPath:stringDBPath error:nil];
+
+     	BOOL success = [manager copyItemAtPath:pathDBInBundle toPath:stringDBPath error:nil];
         if (!success) {
             NSLog(@"Error copy file to Documents");
         }
@@ -37,12 +39,12 @@
     
     //проверка количества файлов в папке Documents (в старом варианте равна 0)
     //NSArray* listFilesInTemp = [manager contentsOfDirectoryAtPath:pathDocumentsFolder error:nil];
-    //NSLog(@"%@", listFilesInTemp);
-    
+    //NSLog(@"%@", listFilesInTemp);    
     return stringDBPath;
 }
 
 - (BOOL)writeRequestIntoDB:(NSString *)request {
+
     //NSLog(@"Request to be executed:%@",request);
     BOOL returnBool = NO;
     NSString *stringDBPath = [self copyDBFileToPath];

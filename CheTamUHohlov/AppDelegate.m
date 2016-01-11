@@ -12,6 +12,7 @@
 #import "RequestClient.h"
 #import "Constants.h"
 
+
 @interface AppDelegate ()
 
 @end
@@ -29,6 +30,7 @@
 //    TestClassForHomework* testObject = [TestClassForHomework new];
 //    [testObject testMethodCreateDBInTemp];
 //    [testObject testMethodCleanTempFolder];
+
     
     return YES;
 }

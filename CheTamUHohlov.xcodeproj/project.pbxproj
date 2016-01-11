@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		84E9049B1C3FE74F0025587B /* TestClassForHomework.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E9049A1C3FE74F0025587B /* TestClassForHomework.m */; };
+
+		
+
+		84E9049B1C3FE74F0025587B /* TestClassForHomework.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E9049A1C3FE74F0025587B /* TestClassForHomework.m */; settings = {ASSET_TAGS = (); }; };
+
 		9514F1A71C3AD57B00F27D2D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9514F1A61C3AD57B00F27D2D /* main.m */; };
 		9514F1AA1C3AD57B00F27D2D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9514F1A91C3AD57B00F27D2D /* AppDelegate.m */; };
 		9514F1AD1C3AD57B00F27D2D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9514F1AC1C3AD57B00F27D2D /* ViewController.m */; };
@@ -78,16 +82,26 @@
 			children = (
 				9514F1A81C3AD57B00F27D2D /* AppDelegate.h */,
 				9514F1A91C3AD57B00F27D2D /* AppDelegate.m */,
+
 				9514F1AE1C3AD57B00F27D2D /* Main.storyboard */,
 				955172D31C429C930025D0FF /* View Controllers */,
 				955172D41C429CA60025D0FF /* Models */,
 				955172D51C429CBA0025D0FF /* Classes */,
+				9514F1AB1C3AD57B00F27D2D /* ViewController.h */,
+				9514F1AC1C3AD57B00F27D2D /* ViewController.m */,
 				9514F1B11C3AD57B00F27D2D /* Assets.xcassets */,
 				9514F1B31C3AD57B00F27D2D /* LaunchScreen.storyboard */,
 				9514F1B61C3AD57B00F27D2D /* Info.plist */,
 				9514F1A51C3AD57B00F27D2D /* Supporting Files */,
 				84E904991C3FE74F0025587B /* TestClassForHomework.h */,
 				84E9049A1C3FE74F0025587B /* TestClassForHomework.m */,
+				9514F1BC1C3ADDC500F27D2D /* RequestClient.h */,
+				9514F1BD1C3ADDC500F27D2D /* RequestClient.m */,
+				9514F1BF1C3EACD100F27D2D /* ObjClient.h */,
+				9514F1C01C3EACD100F27D2D /* ObjClient.m */,
+				955682ED1C3EE98D00CC68B4 /* BankRateItem.h */,
+				955682EE1C3EE98D00CC68B4 /* BankRateItem.m */,
+				9514F1C41C3EBBEE00F27D2D /* DiziDB.sqlite */,
 			);
 			path = CheTamUHohlov;
 			sourceTree = "<group>";
@@ -96,6 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				9514F1C41C3EBBEE00F27D2D /* DiziDB.sqlite */,
+				84E904991C3FE74F0025587B /* TestClassForHomework.h */,
+				84E9049A1C3FE74F0025587B /* TestClassForHomework.m */,
 				955682E71C3ED8D300CC68B4 /* Librarys */,
 				9514F1C61C3EBF9400F27D2D /* Constants.h */,
 				9514F1A61C3AD57B00F27D2D /* main.m */,
@@ -103,6 +119,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+
 		955172D31C429C930025D0FF /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +149,7 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
+
 		955682E71C3ED8D300CC68B4 /* Librarys */ = {
 			isa = PBXGroup;
 			children = (

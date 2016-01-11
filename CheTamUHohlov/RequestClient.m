@@ -9,6 +9,7 @@
 #import "RequestClient.h"
 #import "ObjClient.h"
 
+
 @implementation RequestClient
 
 + (void)requestDataFromServer:(NSString *) urlString {
@@ -21,13 +22,11 @@
         [urlRequest setURL:url];
         [urlRequest setHTTPMethod:@"GET"];
         
-        
         NSURLSession *urlSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
         [[urlSession dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
             
             assert(data);
-            if (!error) {
-            
+            if (!error) {            
                 NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                 if ([responseArray count] != 0) {
                     [responseArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -47,7 +46,6 @@
                 } else {
                     NSLog(@"Array is empty");
                 }
-                
             } else {
                 NSLog(@"%@",error.localizedDescription);
             }

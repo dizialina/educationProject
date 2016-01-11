@@ -10,6 +10,7 @@
 #import "ObjClient.h"
 #import "BankRateItem.h"
 
+
 @interface ViewController ()
 
 @end
@@ -30,7 +31,6 @@
         
     }
     
-   
 }
 
 - (void)didReceiveMemoryWarning {

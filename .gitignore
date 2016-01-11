@@ -1,6 +1,7 @@
 *~
 .DS_Store
 
+
 # old skool
 .svn
 
@@ -28,7 +29,9 @@ build/*
 *.xcuserdata
 *.xcodeproj/ !*.xcodeproj/project.pbxproj
 *.xcuserstate
+<<<<<<< HEAD
 xcuserdata/
+
 
 
   

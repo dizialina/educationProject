@@ -11,8 +11,8 @@
 @implementation BankRateItem
 @synthesize testProperty = _testProperty;
 
+
 - (void)setTestProperty:(NSString *)testProperty {
-    
     @synchronized(self) {
         _testProperty = testProperty;
     }
