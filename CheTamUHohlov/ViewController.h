@@ -10,6 +10,8 @@
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *currencyNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *rateLabel;
 
 @end
 

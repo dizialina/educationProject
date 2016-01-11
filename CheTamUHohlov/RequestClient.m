@@ -7,6 +7,7 @@
 //
 
 #import "RequestClient.h"
+#import "ObjClient.h"
 
 @implementation RequestClient
 
@@ -19,15 +20,34 @@
         NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
         [urlRequest setURL:url];
         [urlRequest setHTTPMethod:@"GET"];
-        [urlRequest setHTTPMethod:@"appliction/json"];
+        
         
         NSURLSession *urlSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
         [[urlSession dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
             
             assert(data);
             if (!error) {
-                NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-                NSLog(@"%@", responseDict);
+            
+                NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                if ([responseArray count] != 0) {
+                    [responseArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                        NSDictionary *dict = obj;
+                        //NSLog(@"%@", dict);
+                        NSString *shortCurName = [dict objectForKey:@"cc"];
+                        double rate = [[dict objectForKey:@"rate"] doubleValue];
+                        NSString *fullName = @"";//[dict objectForKey:@"txt"];
+//                        NSString *newFullName = [fullName stringByReplacingOccurrencesOfString:@"(" withString:@""];
+//                        NSString *newFullName2 = [newFullName stringByReplacingOccurrencesOfString:@")" withString:@""];
+                        
+                        NSString *insertQueue = [NSString stringWithFormat:@"INSERT OR REPLACE INTO CurrencyRate VALUES (\'%@\', %f, \'%@\')",shortCurName, rate, fullName];
+                        ObjClient *objClient = [ObjClient new];
+                        [objClient writeRequestIntoDB:insertQueue];
+                        
+                    }];
+                } else {
+                    NSLog(@"Array is empty");
+                }
+                
             } else {
                 NSLog(@"%@",error.localizedDescription);
             }

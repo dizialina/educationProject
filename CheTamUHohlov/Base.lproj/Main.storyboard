@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UEp-VY-fq3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -16,11 +16,67 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Курс" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJA-uK-w5p">
+                                <rect key="frame" x="267" y="242" width="67" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="9VM-Ek-Qpv"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="250" constant="134" id="Ykb-bL-Sdy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Валюта" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCO-VV-v5v">
+                                <rect key="frame" x="267" y="304" width="67" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="Yob-PM-Yps"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DCO-VV-v5v" firstAttribute="centerX" secondItem="FJA-uK-w5p" secondAttribute="centerX" id="2iE-g7-qvF"/>
+                            <constraint firstItem="FJA-uK-w5p" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-31" id="A5K-9F-ZLj"/>
+                            <constraint firstItem="DCO-VV-v5v" firstAttribute="baseline" secondItem="FJA-uK-w5p" secondAttribute="baseline" id="MZd-vq-K7x"/>
+                            <constraint firstItem="DCO-VV-v5v" firstAttribute="width" secondItem="FJA-uK-w5p" secondAttribute="width" id="OOl-R4-unW"/>
+                            <constraint firstItem="FJA-uK-w5p" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PQ5-jA-VNV"/>
+                            <constraint firstItem="DCO-VV-v5v" firstAttribute="top" secondItem="FJA-uK-w5p" secondAttribute="bottom" constant="8" id="ihz-eZ-aaG"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="MZd-vq-K7x"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="Kxh-PB-sHF"/>
+                    <connections>
+                        <outlet property="currencyNameLabel" destination="DCO-VV-v5v" id="kZF-qn-PIm"/>
+                        <outlet property="rateLabel" destination="FJA-uK-w5p" id="8Yq-hg-EK2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="575" y="261"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5EN-US-RJI">
+            <objects>
+                <navigationController id="UEp-VY-fq3" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jLW-mA-Xx5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="p0o-te-jdf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zjh-gj-PwI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-131" y="261"/>
         </scene>
     </scenes>
 </document>

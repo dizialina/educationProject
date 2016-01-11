@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "ObjClient.h"
 #import "TestClassForHomework.h"
+#import "RequestClient.h"
+#import "Constants.h"
 
 @interface AppDelegate ()
 
@@ -22,9 +24,11 @@
     ObjClient *client = [ObjClient new];
     [client copyDBFileToPath];
     
-    TestClassForHomework* testObject = [TestClassForHomework new];
-    [testObject testMethodCreateDBInTemp];
-    [testObject testMethodCleanTempFolder];
+    [RequestClient requestDataFromServer:LinkToData];
+    
+//    TestClassForHomework* testObject = [TestClassForHomework new];
+//    [testObject testMethodCreateDBInTemp];
+//    [testObject testMethodCleanTempFolder];
     
     return YES;
 }

@@ -12,5 +12,7 @@
 @interface ObjClient : NSObject
 
 - (NSString *)copyDBFileToPath;
+- (BOOL)writeRequestIntoDB:(NSString *)request;
+- (NSArray *)returnCurrencyRateObjectArray:(NSString *)request;
 
 @end

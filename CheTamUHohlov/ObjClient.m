@@ -19,39 +19,31 @@
     
     NSArray *pathsToFolders = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *pathDocumentsFolder = [pathsToFolders lastObject];
-    NSLog(@"%@", pathDocumentsFolder);
+    //NSLog(@"%@", pathDocumentsFolder);
     NSString *stringDBPath = [NSString stringWithFormat:@"%@/%@", pathDocumentsFolder, DBName];
     
     NSFileManager *manager = [NSFileManager defaultManager];
     BOOL succes = [manager fileExistsAtPath:stringDBPath];
     if (!succes) {
         NSString *pathDBInBundle = [NSString stringWithFormat:@"%@/%@", [NSBundle mainBundle].resourcePath, DBName];
-        
-        /* так работает
+        //Так работает
         BOOL success = [manager copyItemAtPath:pathDBInBundle toPath:stringDBPath error:nil];
         if (!success) {
             NSLog(@"Error copy file to Documents");
         }
-        */
-        
-        
-        //так не работает
-        [manager copyItemAtPath:pathDBInBundle toPath:pathDocumentsFolder error:nil];
-        NSLog(@"Success of copying DB file");
-        
     } else {
-        NSLog(@"fail copying DB file");
+        //NSLog(@"File exist in Documents folder");
     }
     
     //проверка количества файлов в папке Documents (в старом варианте равна 0)
-    NSArray* listFilesInTemp = [manager contentsOfDirectoryAtPath:pathDocumentsFolder error:nil];
-    NSLog(@"%@", listFilesInTemp);
+    //NSArray* listFilesInTemp = [manager contentsOfDirectoryAtPath:pathDocumentsFolder error:nil];
+    //NSLog(@"%@", listFilesInTemp);
     
     return stringDBPath;
 }
 
 - (BOOL)writeRequestIntoDB:(NSString *)request {
-    
+    //NSLog(@"Request to be executed:%@",request);
     BOOL returnBool = NO;
     NSString *stringDBPath = [self copyDBFileToPath];
     if (sqlite3_open([stringDBPath UTF8String], &database) == SQLITE_OK ) {
@@ -86,9 +78,12 @@
         }
         while (sqlite3_step(readStatement) == SQLITE_ROW) {
             BankRateItem *bankItem = [BankRateItem new];
-            bankItem.shortCurName = [NSString stringWithUTF8String:sqlite3_column_name(readStatement, 0)];
+            //NSLog(@"%s",sqlite3_column_text(readStatement, 0));
+            char * shortName = (char *)sqlite3_column_text(readStatement, 0);
+            bankItem.shortCurName = [NSString stringWithUTF8String:shortName];
             bankItem.rate = sqlite3_column_double(readStatement, 1);
-            bankItem.fullName = [NSString stringWithUTF8String:sqlite3_column_name(readStatement, 2)];
+            char * fullName = (char *)sqlite3_column_text(readStatement, 2);
+            bankItem.fullName = [NSString stringWithUTF8String:fullName];
             [currencyRateArray addObject:bankItem];
         }
         sqlite3_reset(readStatement);
