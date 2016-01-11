@@ -28,7 +28,7 @@ build/*
 *.xcuserdata
 *.xcodeproj/ !*.xcodeproj/project.pbxproj
 *.xcuserstate
-*.xcuserdata/*
+xcuserdata/
 
 
   
