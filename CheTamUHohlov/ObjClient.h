@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@class BankRateItem;
 
 @interface ObjClient : NSObject
 
@@ -16,5 +16,9 @@
 - (BOOL)writeRequestIntoDB:(NSString *)request;
 - (NSArray *)returnCurrencyRateObjectArray:(NSString *)request;
 
+- (NSArray *)testReturnCurrencyRateObjectArray:(NSString *)request; //тестовый(удалить)
+- (BOOL)testWriteRequestIntoDB:(NSArray *)arrayItem; //тестовый(удалить)
+- (BOOL)openDB;
+- (void)closeDB;
 
 @end

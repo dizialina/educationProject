@@ -7,11 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-
-		
-
-		84E9049B1C3FE74F0025587B /* TestClassForHomework.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E9049A1C3FE74F0025587B /* TestClassForHomework.m */; settings = {ASSET_TAGS = (); }; };
-
+		84E5CC841C47D372002A59A3 /* TestCurRateObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E5CC831C47D372002A59A3 /* TestCurRateObj.m */; };
+		84E9049B1C3FE74F0025587B /* TestClassForHomework.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E9049A1C3FE74F0025587B /* TestClassForHomework.m */; };
 		9514F1A71C3AD57B00F27D2D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9514F1A61C3AD57B00F27D2D /* main.m */; };
 		9514F1AA1C3AD57B00F27D2D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9514F1A91C3AD57B00F27D2D /* AppDelegate.m */; };
 		9514F1AD1C3AD57B00F27D2D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9514F1AC1C3AD57B00F27D2D /* ViewController.m */; };
@@ -26,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		84E5CC821C47D372002A59A3 /* TestCurRateObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCurRateObj.h; sourceTree = "<group>"; };
+		84E5CC831C47D372002A59A3 /* TestCurRateObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCurRateObj.m; sourceTree = "<group>"; };
 		84E904991C3FE74F0025587B /* TestClassForHomework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestClassForHomework.h; sourceTree = "<group>"; };
 		84E9049A1C3FE74F0025587B /* TestClassForHomework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestClassForHomework.m; sourceTree = "<group>"; };
 		9514F1A21C3AD57B00F27D2D /* CheTamUHohlov.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheTamUHohlov.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +60,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84E5CC811C47D309002A59A3 /* Homework Files */ = {
+			isa = PBXGroup;
+			children = (
+				84E5CC821C47D372002A59A3 /* TestCurRateObj.h */,
+				84E5CC831C47D372002A59A3 /* TestCurRateObj.m */,
+				84E904991C3FE74F0025587B /* TestClassForHomework.h */,
+				84E9049A1C3FE74F0025587B /* TestClassForHomework.m */,
+			);
+			name = "Homework Files";
+			sourceTree = "<group>";
+		};
 		9514F1991C3AD57B00F27D2D = {
 			isa = PBXGroup;
 			children = (
@@ -82,26 +92,15 @@
 			children = (
 				9514F1A81C3AD57B00F27D2D /* AppDelegate.h */,
 				9514F1A91C3AD57B00F27D2D /* AppDelegate.m */,
-
 				9514F1AE1C3AD57B00F27D2D /* Main.storyboard */,
 				955172D31C429C930025D0FF /* View Controllers */,
 				955172D41C429CA60025D0FF /* Models */,
 				955172D51C429CBA0025D0FF /* Classes */,
-				9514F1AB1C3AD57B00F27D2D /* ViewController.h */,
-				9514F1AC1C3AD57B00F27D2D /* ViewController.m */,
 				9514F1B11C3AD57B00F27D2D /* Assets.xcassets */,
 				9514F1B31C3AD57B00F27D2D /* LaunchScreen.storyboard */,
 				9514F1B61C3AD57B00F27D2D /* Info.plist */,
+				84E5CC811C47D309002A59A3 /* Homework Files */,
 				9514F1A51C3AD57B00F27D2D /* Supporting Files */,
-				84E904991C3FE74F0025587B /* TestClassForHomework.h */,
-				84E9049A1C3FE74F0025587B /* TestClassForHomework.m */,
-				9514F1BC1C3ADDC500F27D2D /* RequestClient.h */,
-				9514F1BD1C3ADDC500F27D2D /* RequestClient.m */,
-				9514F1BF1C3EACD100F27D2D /* ObjClient.h */,
-				9514F1C01C3EACD100F27D2D /* ObjClient.m */,
-				955682ED1C3EE98D00CC68B4 /* BankRateItem.h */,
-				955682EE1C3EE98D00CC68B4 /* BankRateItem.m */,
-				9514F1C41C3EBBEE00F27D2D /* DiziDB.sqlite */,
 			);
 			path = CheTamUHohlov;
 			sourceTree = "<group>";
@@ -109,17 +108,14 @@
 		9514F1A51C3AD57B00F27D2D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9514F1C41C3EBBEE00F27D2D /* DiziDB.sqlite */,
-				84E904991C3FE74F0025587B /* TestClassForHomework.h */,
-				84E9049A1C3FE74F0025587B /* TestClassForHomework.m */,
 				955682E71C3ED8D300CC68B4 /* Librarys */,
 				9514F1C61C3EBF9400F27D2D /* Constants.h */,
 				9514F1A61C3AD57B00F27D2D /* main.m */,
+				9514F1C41C3EBBEE00F27D2D /* DiziDB.sqlite */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-
 		955172D31C429C930025D0FF /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,7 +145,6 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
-
 		955682E71C3ED8D300CC68B4 /* Librarys */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,7 +184,7 @@
 				TargetAttributes = {
 					9514F1A11C3AD57B00F27D2D = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = Y859DLF8C3;
+						DevelopmentTeam = 4YFHH255JS;
 					};
 				};
 			};
@@ -234,6 +229,7 @@
 				9514F1AA1C3AD57B00F27D2D /* AppDelegate.m in Sources */,
 				955682EF1C3EE98D00CC68B4 /* BankRateItem.m in Sources */,
 				9514F1C11C3EACD100F27D2D /* ObjClient.m in Sources */,
+				84E5CC841C47D372002A59A3 /* TestCurRateObj.m in Sources */,
 				9514F1BE1C3ADDC500F27D2D /* RequestClient.m in Sources */,
 				9514F1A71C3AD57B00F27D2D /* main.m in Sources */,
 				84E9049B1C3FE74F0025587B /* TestClassForHomework.m in Sources */,
@@ -349,12 +345,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CheTamUHohlov/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-lsqlite3";
 				PRODUCT_BUNDLE_IDENTIFIER = Y859DLF8C3.com.romasafin.CheTamUHohlov;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -363,12 +361,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CheTamUHohlov/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-lsqlite3";
 				PRODUCT_BUNDLE_IDENTIFIER = Y859DLF8C3.com.romasafin.CheTamUHohlov;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

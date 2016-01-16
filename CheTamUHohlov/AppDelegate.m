@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ObjClient.h"
-#import "TestClassForHomework.h"
+#import "TestClassForHomework.h" //test
 #import "RequestClient.h"
 #import "Constants.h"
 
@@ -25,7 +25,9 @@
     ObjClient *client = [ObjClient new];
     [client copyDBFileToPath];
     
-    [RequestClient requestDataFromServer:LinkToData];
+    //[RequestClient requestDataFromServer:LinkToData];
+    //[RequestClient testRequestDataFromServer:TestLinkToData]; //test yahoo
+    [RequestClient secondTestRequestDataFromServer:LinkToData]; //test transaction
     
 //    TestClassForHomework* testObject = [TestClassForHomework new];
 //    [testObject testMethodCreateDBInTemp];

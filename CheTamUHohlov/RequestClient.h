@@ -12,4 +12,7 @@
 
 + (void)requestDataFromServer:(NSString *) urlString;
 
++ (void)testRequestDataFromServer:(NSString *) urlString; //тестовый(удалить)
++ (void)secondTestRequestDataFromServer:(NSString *) urlString; //тестовый(удалить)
+
 @end
