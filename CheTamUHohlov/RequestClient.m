@@ -8,6 +8,7 @@
 
 #import "RequestClient.h"
 #import "ObjClient.h"
+#import "Constants.h"
 
 
 @implementation RequestClient
@@ -59,7 +60,7 @@
 
 #pragma mark - Methods working with Yahoo server
 
-+ (void)testRequestDataFromServer:(NSString *) urlString { //тестовый(удалить)
++ (void)requestDataFromYahooServer:(NSString *) urlString { //тестовый(удалить)
         
     if (urlString.length != 0) {
             
@@ -95,6 +96,7 @@
                         [objClient writeRequestIntoDB:insertQueue];
                             
                     }];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:NotificationAboutLoadingData object:nil];
                 
                 } else {
                     NSLog(@"Test Dictionary is empty");
@@ -111,7 +113,7 @@
 
 #pragma mark - Test Transaction Method
 
-+ (void)secondTestRequestDataFromServer:(NSString *) urlString {
++ (void)requestDataFromGovServerAndSaveWithTransaction:(NSString *) urlString {
     
     if (urlString.length != 0) {
         

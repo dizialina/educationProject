@@ -26,8 +26,8 @@
     [client copyDBFileToPath];
     
     //[RequestClient requestDataFromServer:LinkToData];
-    //[RequestClient testRequestDataFromServer:TestLinkToData]; //test yahoo
-    [RequestClient secondTestRequestDataFromServer:LinkToData]; //test transaction
+    [RequestClient requestDataFromYahooServer:TestLinkToData]; //test yahoo
+    //[RequestClient requestDataFromGovServerAndSaveWithTransaction:LinkToData]; //test transaction
     
 //    TestClassForHomework* testObject = [TestClassForHomework new];
 //    [testObject testMethodCreateDBInTemp];
