@@ -11,8 +11,11 @@
 #import "BankRateItem.h"
 #import "TestCurRateObj.h" //тест(удалить)
 #import "Constants.h"
-
+#import "HomeScreen.h"
+#import "CheTamUHohlov-Swift.h"
 @interface ViewController ()
+
+@property (strong, nonatomic) TestCurRateObj *curRateObj;
 
 @end
 
@@ -23,10 +26,15 @@
     
     [self updateDataInView];
     
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateDataInView) name:NotificationAboutLoadingData object:nil];
-    
-    
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+    self.homeButton.titleLabel.text = NSLocalizedString(@"HomeButton", @"Home button in home screen"); 
+}
+    
+
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -34,32 +42,39 @@
 
 - (void)updateDataInView {
     
-    //    NSString *selectQueue = [NSString stringWithFormat:@"SELECT * FROM CurrencyRate WHERE ShortCurName=\'%@\'", @"RUB"];
-    //    NSArray *resultArray = [objClient returnCurrencyRateObjectArray:selectQueue];
-    //    NSLog(@"Count of items in result array after SELECT queue: %lu", (unsigned long)[resultArray count]);
-    //    if (resultArray.count != 0) {
-    //        BankRateItem *bankRateItem = [resultArray firstObject];
-    //        self.currencyNameLabel.text = bankRateItem.shortCurName;
-    //        self.rateLabel.text = [NSString stringWithFormat:@"%.3f", bankRateItem.rate];
-    //        
-    //    }
+    ObjClient *objClient = [ObjClient new];
+    NSString *testSelectQueue = [NSString stringWithFormat:@"SELECT * FROM yahooCurrencyRate WHERE Name=\'%@\'", @"USD/RUB"];
+    NSArray *testResultArray = [objClient testReturnCurrencyRateObjectArray:testSelectQueue];
+    NSLog(@"Count of items in result array after SELECT queue: %lu", (unsigned long)[testResultArray count]);
+    if (testResultArray.count != 0) {
+        self.curRateObj = [testResultArray firstObject];
+        
+    }
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        
-        ObjClient *objClient = [ObjClient new];
-        NSString *testSelectQueue = [NSString stringWithFormat:@"SELECT * FROM yahooCurrencyRate WHERE Name=\'%@\'", @"USD/RUB"];
-        NSArray *testResultArray = [objClient testReturnCurrencyRateObjectArray:testSelectQueue];
-        NSLog(@"Count of items in result array after SELECT queue: %lu", (unsigned long)[testResultArray count]);
-        if (testResultArray.count != 0) {
+        NSString *selectQueue = [NSString stringWithFormat:@"SELECT * FROM CurrencyRate WHERE ShortCurName=\'%@\'", @"RUB"];
+        NSArray *resultArray = [objClient returnCurrencyRateObjectArray:selectQueue];
+        NSLog(@"Count of items in result array after SELECT queue: %lu", (unsigned long)[resultArray count]);
+        if (resultArray.count != 0) {
             dispatch_sync(dispatch_get_main_queue(), ^{
-            TestCurRateObj *bankRateItem = [testResultArray firstObject];
-            self.currencyNameLabel.text = bankRateItem.pairCurName;
-            self.rateLabel.text = [NSString stringWithFormat:@"%.3f", bankRateItem.rate];
+                BankRateItem *bankRateItem = [resultArray firstObject];
+                self.currencyNameLabel.text = bankRateItem.shortCurName;
+                self.rateLabel.text = [NSString stringWithFormat:@"%.3f", bankRateItem.rate];
             });
         }
         
+        
     });
     
+    UIImage *image = [UIImage imageNamed:@"ArrowButton"];
+    
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"toHome"]) {
+        HomeScreen *homeScreen = segue.destinationViewController;
+        homeScreen.curRateObj = self.curRateObj;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

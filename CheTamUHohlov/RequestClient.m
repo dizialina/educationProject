@@ -46,6 +46,7 @@
                         [objClient writeRequestIntoDB:insertQueue];
                         
                     }];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:NotificationAboutLoadingData object:nil];
                 } else {
                     NSLog(@"Array is empty");
                 }
@@ -96,7 +97,7 @@
                         [objClient writeRequestIntoDB:insertQueue];
                             
                     }];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:NotificationAboutLoadingData object:nil];
+                    //[[NSNotificationCenter defaultCenter] postNotificationName:NotificationAboutLoadingData object:nil];
                 
                 } else {
                     NSLog(@"Test Dictionary is empty");

@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "CheTamUHohlov-Swift.h"
 @interface ViewController : UIViewController
 
 
+@property (weak, nonatomic) IBOutlet GoodButton *homeButton;
 @property (weak, nonatomic) IBOutlet UILabel *currencyNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rateLabel;
 

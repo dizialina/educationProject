@@ -25,7 +25,7 @@
     ObjClient *client = [ObjClient new];
     [client copyDBFileToPath];
     
-    //[RequestClient requestDataFromServer:LinkToData];
+    [RequestClient requestDataFromServer:LinkToData];
     [RequestClient requestDataFromYahooServer:TestLinkToData]; //test yahoo
     //[RequestClient requestDataFromGovServerAndSaveWithTransaction:LinkToData]; //test transaction
     

@@ -20,6 +20,10 @@
 		9514F1C51C3EBBEE00F27D2D /* DiziDB.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 9514F1C41C3EBBEE00F27D2D /* DiziDB.sqlite */; };
 		955682EC1C3EDC5D00CC68B4 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 955682EB1C3EDC5D00CC68B4 /* libsqlite3.tbd */; };
 		955682EF1C3EE98D00CC68B4 /* BankRateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 955682EE1C3EE98D00CC68B4 /* BankRateItem.m */; };
+		95622F761C4BD081004241E8 /* HomeScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 95622F751C4BD081004241E8 /* HomeScreen.m */; };
+		95622F791C4BD9FB004241E8 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95622F781C4BD9FB004241E8 /* UIViewExtension.swift */; };
+		95622F801C4BDF57004241E8 /* GoodButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95622F7F1C4BDF57004241E8 /* GoodButton.swift */; };
+		95622F851C4BE679004241E8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95622F871C4BE679004241E8 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +50,15 @@
 		955682EB1C3EDC5D00CC68B4 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		955682ED1C3EE98D00CC68B4 /* BankRateItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankRateItem.h; sourceTree = "<group>"; };
 		955682EE1C3EE98D00CC68B4 /* BankRateItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankRateItem.m; sourceTree = "<group>"; };
+		95622F741C4BD081004241E8 /* HomeScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeScreen.h; sourceTree = "<group>"; };
+		95622F751C4BD081004241E8 /* HomeScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeScreen.m; sourceTree = "<group>"; };
+		95622F771C4BD9FB004241E8 /* CheTamUHohlov-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CheTamUHohlov-Bridging-Header.h"; sourceTree = "<group>"; };
+		95622F781C4BD9FB004241E8 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		95622F7F1C4BDF57004241E8 /* GoodButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoodButton.swift; sourceTree = "<group>"; };
+		95622F811C4BE5B3004241E8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		95622F821C4BE5B3004241E8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		95622F881C4BE680004241E8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		95622F891C4BE8A5004241E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +106,8 @@
 				9514F1A81C3AD57B00F27D2D /* AppDelegate.h */,
 				9514F1A91C3AD57B00F27D2D /* AppDelegate.m */,
 				9514F1AE1C3AD57B00F27D2D /* Main.storyboard */,
+				95622F771C4BD9FB004241E8 /* CheTamUHohlov-Bridging-Header.h */,
+				95622F871C4BE679004241E8 /* Localizable.strings */,
 				955172D31C429C930025D0FF /* View Controllers */,
 				955172D41C429CA60025D0FF /* Models */,
 				955172D51C429CBA0025D0FF /* Classes */,
@@ -119,8 +134,8 @@
 		955172D31C429C930025D0FF /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9514F1AB1C3AD57B00F27D2D /* ViewController.h */,
-				9514F1AC1C3AD57B00F27D2D /* ViewController.m */,
+				95622F7A1C4BDA1F004241E8 /* Swift Controllers */,
+				95622F7B1C4BDA62004241E8 /* Obj-C */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -151,6 +166,26 @@
 				955682EB1C3EDC5D00CC68B4 /* libsqlite3.tbd */,
 			);
 			name = Librarys;
+			sourceTree = "<group>";
+		};
+		95622F7A1C4BDA1F004241E8 /* Swift Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				95622F781C4BD9FB004241E8 /* UIViewExtension.swift */,
+				95622F7F1C4BDF57004241E8 /* GoodButton.swift */,
+			);
+			name = "Swift Controllers";
+			sourceTree = "<group>";
+		};
+		95622F7B1C4BDA62004241E8 /* Obj-C */ = {
+			isa = PBXGroup;
+			children = (
+				9514F1AB1C3AD57B00F27D2D /* ViewController.h */,
+				9514F1AC1C3AD57B00F27D2D /* ViewController.m */,
+				95622F741C4BD081004241E8 /* HomeScreen.h */,
+				95622F751C4BD081004241E8 /* HomeScreen.m */,
+			);
+			name = "Obj-C";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,7 +219,7 @@
 				TargetAttributes = {
 					9514F1A11C3AD57B00F27D2D = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 4YFHH255JS;
+						DevelopmentTeam = Y859DLF8C3;
 					};
 				};
 			};
@@ -195,6 +230,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 9514F1991C3AD57B00F27D2D;
 			productRefGroup = 9514F1A31C3AD57B00F27D2D /* Products */;
@@ -211,6 +247,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95622F851C4BE679004241E8 /* Localizable.strings in Resources */,
 				9514F1B51C3AD57B00F27D2D /* LaunchScreen.storyboard in Resources */,
 				9514F1B21C3AD57B00F27D2D /* Assets.xcassets in Resources */,
 				9514F1B01C3AD57B00F27D2D /* Main.storyboard in Resources */,
@@ -225,7 +262,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95622F791C4BD9FB004241E8 /* UIViewExtension.swift in Sources */,
 				9514F1AD1C3AD57B00F27D2D /* ViewController.m in Sources */,
+				95622F761C4BD081004241E8 /* HomeScreen.m in Sources */,
 				9514F1AA1C3AD57B00F27D2D /* AppDelegate.m in Sources */,
 				955682EF1C3EE98D00CC68B4 /* BankRateItem.m in Sources */,
 				9514F1C11C3EACD100F27D2D /* ObjClient.m in Sources */,
@@ -233,6 +272,7 @@
 				9514F1BE1C3ADDC500F27D2D /* RequestClient.m in Sources */,
 				9514F1A71C3AD57B00F27D2D /* main.m in Sources */,
 				84E9049B1C3FE74F0025587B /* TestClassForHomework.m in Sources */,
+				95622F801C4BDF57004241E8 /* GoodButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +283,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				9514F1AF1C3AD57B00F27D2D /* Base */,
+				95622F811C4BE5B3004241E8 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -251,8 +292,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				9514F1B41C3AD57B00F27D2D /* Base */,
+				95622F821C4BE5B3004241E8 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		95622F871C4BE679004241E8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				95622F881C4BE680004241E8 /* ru */,
+				95622F891C4BE8A5004241E8 /* Base */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -344,6 +395,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CheTamUHohlov/Info.plist;
@@ -353,6 +405,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Y859DLF8C3.com.romasafin.CheTamUHohlov;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "CheTamUHohlov/CheTamUHohlov-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -360,6 +414,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CheTamUHohlov/Info.plist;
@@ -369,6 +424,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Y859DLF8C3.com.romasafin.CheTamUHohlov;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "CheTamUHohlov/CheTamUHohlov-Bridging-Header.h";
 			};
 			name = Release;
 		};
