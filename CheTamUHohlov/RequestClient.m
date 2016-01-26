@@ -13,8 +13,7 @@
 #import <SystemConfiguration/SystemConfiguration.h>
 
 
-@implementation RequestClient {
-}
+@implementation RequestClient
 
 #pragma mark - Methods working with Gov server
 
@@ -25,7 +24,7 @@
 //    reach.reachableBlock = ^(Reachability* reach) {
     
     NetworkStatus remoteHostStatus = [reach currentReachabilityStatus];
-    if(!remoteHostStatus == NotReachable) {
+    if(remoteHostStatus == ReachableViaWiFi) {
         
         if (urlString.length != 0) {
             
@@ -64,14 +63,11 @@
             
             }] resume];
             
-            if ([reach startNotifier]) {
-                //[reach stopNotifier];
-            }
-        
+            
         }
         
-    } else if (remoteHostStatus == NotReachable) {
-        //[reach startNotifier];
+    } else {
+        NSLog(@"UNREACHABLE!");
     }
     
 //    reach.unreachableBlock = ^(Reachability*reach)
@@ -138,10 +134,11 @@
                 
             }] resume];
             
-        
         }
 
-
+    } else {
+        NSLog(@"UNREACHABLE!");
+    }
 }
 
 #pragma mark - Transaction Method working with Gov server
