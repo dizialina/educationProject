@@ -9,8 +9,8 @@
 #import "ObjClient.h"
 #import "Constants.h"
 #import "sqlite3.h"
-#import "BankRateItem.h"
-#import "TestCurRateObj.h" //test yahoo
+#import "RateItemFromGov.h"
+#import "RateItemFromYahoo.h"
 
 @implementation ObjClient {
     sqlite3 *database;
@@ -47,6 +47,8 @@
 }
 
 - (BOOL)writeRequestIntoDB:(NSString *)request {
+    
+    @synchronized(self) {
 
     //NSLog(@"Request to be executed:%@",request);
     BOOL returnBool = NO;
@@ -69,9 +71,11 @@
     sqlite3_close(database);
 
     return returnBool;
+        
+    }
 }
 
-- (NSArray *)returnCurrencyRateObjectArray:(NSString *)request {
+- (NSArray *)returnCurrencyRateObjectArrayFromGovDB:(NSString *)request {
     
     NSMutableArray *currencyRateArray = [NSMutableArray new];
     NSString *stringDBPath = [self copyDBFileToPath];
@@ -82,7 +86,7 @@
             NSAssert1(0, @"Error while reading statement. '%s'", sqlite3_errmsg(database));
         }
         while (sqlite3_step(readStatement) == SQLITE_ROW) {
-            BankRateItem *bankItem = [BankRateItem new];
+            RateItemFromGov *bankItem = [RateItemFromGov new];
             //NSLog(@"%s",sqlite3_column_text(readStatement, 0));
             char * shortName = (char *)sqlite3_column_text(readStatement, 0);
             bankItem.shortCurName = [NSString stringWithUTF8String:shortName];
@@ -101,7 +105,7 @@
 
 #pragma mark - Methods working with Yahoo server
 
-- (NSArray *)testReturnCurrencyRateObjectArray:(NSString *)request { //тестовый(удалить)
+- (NSArray *)returnCurrencyRateObjectArrayFromYahooBD:(NSString *)request { 
     
     NSMutableArray *currencyRateArray = [NSMutableArray new];
     NSString *stringDBPath = [self copyDBFileToPath];
@@ -112,13 +116,13 @@
             NSAssert1(0, @"Error while reading statement. '%s'", sqlite3_errmsg(database));
         }
         while (sqlite3_step(readStatement) == SQLITE_ROW) {
-            TestCurRateObj *bankItem = [TestCurRateObj new];
+            RateItemFromYahoo *bankItem = [RateItemFromYahoo new];
             //NSLog(@"%s",sqlite3_column_text(readStatement, 0));
             char * name = (char *)sqlite3_column_text(readStatement, 0);
             bankItem.pairCurName = [NSString stringWithUTF8String:name];
             bankItem.rate = sqlite3_column_double(readStatement, 1);
-            bankItem.ask = sqlite3_column_double(readStatement, 1);
-            bankItem.bid = sqlite3_column_double(readStatement, 1);
+            bankItem.ask = sqlite3_column_double(readStatement, 2);
+            bankItem.bid = sqlite3_column_double(readStatement, 3);
             [currencyRateArray addObject:bankItem];
         }
         sqlite3_reset(readStatement);
@@ -129,7 +133,7 @@
     return returnArray;
 }
 
-#pragma mark - Test Transaction Method
+#pragma mark - Transaction Method
 
 - (BOOL)openDB {
     BOOL returnBool = NO;
@@ -143,7 +147,7 @@
     sqlite3_close(database);
 }
 
-- (BOOL)testWriteRequestIntoDB:(NSArray *)arrayItem {
+- (BOOL)writeRequestIntoDBWithTransaction:(NSArray *)arrayItem {
 
     //NSLog(@"Request to be executed:%@",request);
     

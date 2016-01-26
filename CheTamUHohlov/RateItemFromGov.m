@@ -6,9 +6,9 @@
 //  Copyright © 2016 Roman.Safin. All rights reserved.
 //
 
-#import "BankRateItem.h"
+#import "RateItemFromGov.h"
 
-@implementation BankRateItem
+@implementation RateItemFromGov
 @synthesize testProperty = _testProperty;
 
 

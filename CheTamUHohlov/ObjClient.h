@@ -7,18 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
-@class BankRateItem;
+@class RateItemFromGov;
 
 @interface ObjClient : NSObject
 
 - (NSString *)copyDBFileToPath;
 
 - (BOOL)writeRequestIntoDB:(NSString *)request;
-- (NSArray *)returnCurrencyRateObjectArray:(NSString *)request;
 
-- (NSArray *)testReturnCurrencyRateObjectArray:(NSString *)request; //тестовый(удалить)
-- (BOOL)testWriteRequestIntoDB:(NSArray *)arrayItem; //тестовый(удалить)
+- (NSArray *)returnCurrencyRateObjectArrayFromGovDB:(NSString *)request;
+- (NSArray *)returnCurrencyRateObjectArrayFromYahooBD:(NSString *)request;
+
 - (BOOL)openDB;
 - (void)closeDB;
+- (BOOL)writeRequestIntoDBWithTransaction:(NSArray *)arrayItem;
 
 @end

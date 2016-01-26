@@ -8,9 +8,11 @@
 
 #import "AppDelegate.h"
 #import "ObjClient.h"
-#import "TestClassForHomework.h" //test
+#import "ManageFileSystem.h"
 #import "RequestClient.h"
 #import "Constants.h"
+#import "iRate.h"
+#import "Flurry.h"
 
 
 @interface AppDelegate ()
@@ -19,20 +21,19 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
     ObjClient *client = [ObjClient new];
     [client copyDBFileToPath];
     
-    [RequestClient requestDataFromServer:LinkToData];
-    [RequestClient requestDataFromYahooServer:TestLinkToData]; //test yahoo
-    //[RequestClient requestDataFromGovServerAndSaveWithTransaction:LinkToData]; //test transaction
+    [RequestClient requestDataFromGovServer:LinkToGovData];
+    [RequestClient requestDataFromYahooServer:LinkToYahooData];
+    //[RequestClient requestDataFromGovServerAndSaveWithTransaction:LinkToData]; // transaction
     
-//    TestClassForHomework* testObject = [TestClassForHomework new];
-//    [testObject testMethodCreateDBInTemp];
-//    [testObject testMethodCleanTempFolder];
-
+    //[iRate sharedInstance].appStoreID = 1;
+    //[iRate sharedInstance].eventsUntilPrompt = 3;
+    
+    [Flurry startSession:@"G4TTDKFZHHP5MW3R4P3H"];
     
     return YES;
 }

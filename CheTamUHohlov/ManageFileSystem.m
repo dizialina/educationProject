@@ -6,14 +6,14 @@
 //  Copyright © 2016 Roman.Safin. All rights reserved.
 //
 
-#import "TestClassForHomework.h"
+#import "ManageFileSystem.h"
 #import "Constants.h"
 
-@implementation TestClassForHomework {
+@implementation ManageFileSystem {
     NSString* pathToTempFolder;
 }
 
-- (void)testMethodCreateDBInTemp {
+- (void)creatingDBInTemp {
     
     pathToTempFolder = NSTemporaryDirectory();
     NSLog(@"Path to temp folder: \n%@", pathToTempFolder);
@@ -33,7 +33,7 @@
 
 }
 
-- (void)testMethodCleanTempFolder {
+- (void)cleanTempFolder {
     
     pathToTempFolder = NSTemporaryDirectory();
     //NSLog(@"%@", pathToTempFolder);
