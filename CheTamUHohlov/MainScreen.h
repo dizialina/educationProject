@@ -14,6 +14,9 @@
 @property (weak, nonatomic) IBOutlet GoodButton *homeButton;
 @property (weak, nonatomic) IBOutlet UILabel *currencyNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rateLabel;
+@property (weak, nonatomic) IBOutlet UIButton *soundButton;
+
+- (IBAction)soundButtonAction:(id)sender;
 
 
 @end

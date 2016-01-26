@@ -47,13 +47,9 @@
                                                  name:NotificationAboutLoadingGovData
                                                object:nil];
     
-//    reachVar = [Reachability reachabilityWithHostname:@"www.google.com"];
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(reachabilityChanged)
-//                                                 name:kReachabilityChangedNotification
-//                                               object:nil];
-//    
-//     [reachVar startNotifier];
+    
+    
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -99,30 +95,25 @@
     }
 }
 
-- (void)reachabilityChanged {
-    
-    NetworkStatus remoteHostStatus = [reachVar currentReachabilityStatus];
-    
-    if(remoteHostStatus == NotReachable) {
-        NSLog(@"No internet connection.");
-    }
-    else if (remoteHostStatus == ReachableViaWiFi) {
-        NSLog(@"wifi");
-        [RequestClient requestDataFromGovServer:LinkToGovData];
-        [RequestClient requestDataFromYahooServer:LinkToYahooData];
-    }
-    else if (remoteHostStatus == ReachableViaWWAN) {
-        NSLog(@"cell");
-        [RequestClient requestDataFromGovServer:LinkToGovData];
-        [RequestClient requestDataFromYahooServer:LinkToYahooData];
-    }
-    
-    
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)soundButtonAction:(id)sender {
+    
+    UIImage *imageSoundOff = [UIImage imageNamed:@"SoundOff"];
+    UIImage *imageSoundOn = [UIImage imageNamed:@"SoundOn"];
+    
+    if ([self.backgroundMusic isPlaying]) {
+        [self.soundButton setImage:imageSoundOff forState:UIControlStateNormal];
+        [self.backgroundMusic pause];
+    } else {
+        [self.soundButton setImage:imageSoundOn forState:UIControlStateNormal];
+        [self.backgroundMusic play];
+    }
+    
 }
 
 @end

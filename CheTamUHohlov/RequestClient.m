@@ -89,7 +89,7 @@
     Reachability* reach = [Reachability reachabilityWithHostname:@"www.google.com"];
     
     NetworkStatus remoteHostStatus = [reach currentReachabilityStatus];
-    if(!remoteHostStatus == NotReachable) {
+    if(remoteHostStatus == ReachableViaWiFi) {
         
         if (urlString.length != 0) {
             
@@ -138,16 +138,8 @@
                 
             }] resume];
             
-            if ([reach startNotifier]) {
-                //[reach stopNotifier];
-            }
         
         }
-    
-    
-    } else if (remoteHostStatus == NotReachable) {
-        //[reach startNotifier];
-    }
 
 
 }

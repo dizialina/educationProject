@@ -50,11 +50,6 @@
                                     <segue destination="Ulb-ci-F6r" kind="presentation" identifier="toHome" modalTransitionStyle="flipHorizontal" id="LJd-b8-zNg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XtC-eM-tGI">
-                                <rect key="frame" x="550" y="20" width="30" height="30"/>
-                                <state key="normal" title="Button" backgroundImage="SoundOn"/>
-                                <state key="selected" image="SoundOff"/>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kurs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJA-uK-w5p">
                                 <rect key="frame" x="267" y="224" width="67" height="54"/>
                                 <constraints>
@@ -65,16 +60,29 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XtC-eM-tGI">
+                                <rect key="frame" x="5" y="20" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="FGC-zi-lky"/>
+                                    <constraint firstAttribute="width" constant="30" id="jIV-8c-JAL"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="SoundOn"/>
+                                <connections>
+                                    <action selector="soundButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xDx-YX-KlC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="XFu-1U-xCF" secondAttribute="trailing" constant="20" id="0gn-hz-D9C"/>
                             <constraint firstItem="DCO-VV-v5v" firstAttribute="centerX" secondItem="FJA-uK-w5p" secondAttribute="centerX" id="2iE-g7-qvF"/>
                             <constraint firstItem="FJA-uK-w5p" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-49" id="A5K-9F-ZLj"/>
+                            <constraint firstItem="XtC-eM-tGI" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="DXo-eo-0dB"/>
                             <constraint firstItem="DCO-VV-v5v" firstAttribute="baseline" secondItem="FJA-uK-w5p" secondAttribute="baseline" id="MZd-vq-K7x"/>
                             <constraint firstItem="DCO-VV-v5v" firstAttribute="width" secondItem="FJA-uK-w5p" secondAttribute="width" id="OOl-R4-unW"/>
                             <constraint firstItem="FJA-uK-w5p" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PQ5-jA-VNV"/>
                             <constraint firstItem="DCO-VV-v5v" firstAttribute="top" secondItem="FJA-uK-w5p" secondAttribute="bottom" constant="26" id="ihz-eZ-aaG"/>
+                            <constraint firstItem="XtC-eM-tGI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="5" id="nTk-qF-gSb"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="XFu-1U-xCF" secondAttribute="bottom" constant="20" id="zHm-kF-gfx"/>
                         </constraints>
                         <variation key="default">
@@ -88,6 +96,7 @@
                         <outlet property="currencyNameLabel" destination="DCO-VV-v5v" id="kZF-qn-PIm"/>
                         <outlet property="homeButton" destination="XFu-1U-xCF" id="Cmq-Tx-CRh"/>
                         <outlet property="rateLabel" destination="FJA-uK-w5p" id="8Yq-hg-EK2"/>
+                        <outlet property="soundButton" destination="XtC-eM-tGI" id="iro-lB-eag"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -256,7 +265,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="SoundOff" width="95" height="96"/>
         <image name="SoundOn" width="95" height="95"/>
     </resources>
 </document>
