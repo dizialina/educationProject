@@ -16,38 +16,32 @@
 #import "CheTamUHohlov-Swift.h"
 #import "Reachability.h"
 #import <SystemConfiguration/SystemConfiguration.h>
-#import <AVFoundation/AVFoundation.h>
-#import <AudioToolbox/AudioToolbox.h>
-
 
 @interface MainScreen ()
 
 @property (strong, nonatomic) NSArray *curRateObj;
-@property (strong, nonatomic) AVAudioPlayer *backgroundMusic;
 
 @end
 
-@implementation MainScreen {
-    Reachability* reachVar;
-}
+@implementation MainScreen
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self updateDataInView];
     
-    NSURL *musicFile = [[NSBundle mainBundle] URLForResource:@"sunset" withExtension:@"mp3"];
-    self.backgroundMusic = [[AVAudioPlayer alloc] initWithContentsOfURL:musicFile error:nil];
-    self.backgroundMusic.numberOfLoops = -1;
-    self.backgroundMusic.volume = 0.3;
-    [self.backgroundMusic play];
+    if (!self.backgroundMusic) {
+        NSURL *musicFile = [[NSBundle mainBundle] URLForResource:@"sunset" withExtension:@"mp3"];
+        self.backgroundMusic = [[AVAudioPlayer alloc] initWithContentsOfURL:musicFile error:nil];
+        self.backgroundMusic.numberOfLoops = -1;
+        self.backgroundMusic.volume = 0.3;
+        [self.backgroundMusic play];
+    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateDataInView)
                                                  name:NotificationAboutLoadingGovData
                                                object:nil];
-    
-    
     
     
 }
@@ -92,6 +86,7 @@
     if ([segue.identifier isEqualToString:@"toHome"]) {
         HomeScreen *homeScreen = segue.destinationViewController;
         homeScreen.curRateObj = self.curRateObj;
+        homeScreen.backgroundMusic = self.backgroundMusic;
     }
 }
 

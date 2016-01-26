@@ -7,6 +7,7 @@
 //
 
 #import "HomeScreen.h"
+#import "MainScreen.h"
 
 @implementation HomeScreen
 
@@ -23,6 +24,28 @@
     self.rubToEuro.text = [NSString stringWithFormat:@"%@", rubToEuroItem.pairCurName];
     self.askEuro.text = [NSString stringWithFormat:@"%.3f", rubToEuroItem.ask];
     self.bidEuro.text = [NSString stringWithFormat:@"%.3f", rubToEuroItem.bid];
+}
+
+- (IBAction)soundButtonAction:(id)sender {
+    
+    UIImage *imageSoundOff = [UIImage imageNamed:@"SoundOff"];
+    UIImage *imageSoundOn = [UIImage imageNamed:@"SoundOn"];
+    
+    if ([self.backgroundMusic isPlaying]) {
+        [self.soundButton setImage:imageSoundOff forState:UIControlStateNormal];
+        [self.backgroundMusic pause];
+    } else {
+        [self.soundButton setImage:imageSoundOn forState:UIControlStateNormal];
+        [self.backgroundMusic play];
+    }
+    
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"toMain"]) {
+        MainScreen *mainScreen = segue.destinationViewController;
+        mainScreen.backgroundMusic = self.backgroundMusic;
+    }
 }
 
 @end

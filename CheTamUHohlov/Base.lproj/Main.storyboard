@@ -61,12 +61,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XtC-eM-tGI">
-                                <rect key="frame" x="5" y="20" width="30" height="30"/>
+                                <rect key="frame" x="11" y="20" width="24" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="FGC-zi-lky"/>
-                                    <constraint firstAttribute="width" constant="30" id="jIV-8c-JAL"/>
+                                    <constraint firstAttribute="height" constant="24" id="FGC-zi-lky"/>
+                                    <constraint firstAttribute="width" constant="24" id="jIV-8c-JAL"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="SoundOn"/>
+                                <state key="normal" image="SoundOn"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="soundButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xDx-YX-KlC"/>
                                 </connections>
@@ -82,7 +87,7 @@
                             <constraint firstItem="DCO-VV-v5v" firstAttribute="width" secondItem="FJA-uK-w5p" secondAttribute="width" id="OOl-R4-unW"/>
                             <constraint firstItem="FJA-uK-w5p" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PQ5-jA-VNV"/>
                             <constraint firstItem="DCO-VV-v5v" firstAttribute="top" secondItem="FJA-uK-w5p" secondAttribute="bottom" constant="26" id="ihz-eZ-aaG"/>
-                            <constraint firstItem="XtC-eM-tGI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="5" id="nTk-qF-gSb"/>
+                            <constraint firstItem="XtC-eM-tGI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="11" id="nTk-qF-gSb"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="XFu-1U-xCF" secondAttribute="bottom" constant="20" id="zHm-kF-gfx"/>
                         </constraints>
                         <variation key="default">
@@ -213,14 +218,57 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5mN-Yq-qCx" customClass="GoodButton" customModule="CheTamUHohlov" customModuleProvider="target">
+                                        <rect key="frame" x="422" y="506" width="148" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="AwN-49-jsK"/>
+                                            <constraint firstAttribute="width" constant="148" id="lAY-bv-6nl"/>
+                                        </constraints>
+                                        <state key="normal" title="Че там у хохлов?">
+                                            <color key="titleColor" red="0.18823529410000001" green="0.69803921570000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderRadius">
+                                                <real key="value" value="7"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.18823529410000001" green="0.69803921570000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="presentation" identifier="toMain" modalTransitionStyle="flipHorizontal" id="tas-h8-Bci"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvd-me-YYu">
+                                        <rect key="frame" x="11" y="8" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="24" id="G2E-Ah-NZc"/>
+                                            <constraint firstAttribute="height" constant="24" id="cOi-Yg-8UQ"/>
+                                        </constraints>
+                                        <state key="normal" image="SoundOn"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="soundButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B8o-R1-xYz"/>
+                                            <action selector="soundButtonAction:" destination="Ulb-ci-F6r" eventType="touchUpInside" id="RQB-D7-eXh"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.81960791349411011" green="0.91372555494308472" blue="0.95294123888015747" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstItem="5R9-HP-3Ux" firstAttribute="top" secondItem="48M-0j-ODk" secondAttribute="bottom" constant="20" id="4Qf-Kh-Zd8"/>
                                     <constraint firstItem="p6S-rI-eA7" firstAttribute="centerX" secondItem="5R9-HP-3Ux" secondAttribute="centerX" id="6Pm-8R-4WY"/>
                                     <constraint firstItem="lYa-pz-eb0" firstAttribute="top" secondItem="5R9-HP-3Ux" secondAttribute="bottom" constant="20" id="8RD-dZ-fhS"/>
+                                    <constraint firstAttribute="trailing" secondItem="5mN-Yq-qCx" secondAttribute="trailing" constant="20" id="934-wK-h1I"/>
                                     <constraint firstItem="5R9-HP-3Ux" firstAttribute="centerX" secondItem="MHU-bm-34y" secondAttribute="centerX" id="AgH-mn-5s8"/>
                                     <constraint firstItem="5R9-HP-3Ux" firstAttribute="top" secondItem="ezI-n3-h8o" secondAttribute="bottom" constant="20" id="CcZ-IG-YwZ"/>
+                                    <constraint firstItem="bvd-me-YYu" firstAttribute="top" secondItem="MHU-bm-34y" secondAttribute="top" constant="8" id="DVH-0K-flX"/>
                                     <constraint firstItem="5Gc-zC-LGf" firstAttribute="top" secondItem="5R9-HP-3Ux" secondAttribute="bottom" constant="20" id="Mjk-1a-B55"/>
                                     <constraint firstItem="ezI-n3-h8o" firstAttribute="leading" secondItem="5R9-HP-3Ux" secondAttribute="trailing" constant="20" id="O1W-Ck-wL8"/>
                                     <constraint firstItem="5R9-HP-3Ux" firstAttribute="leading" secondItem="lYa-pz-eb0" secondAttribute="trailing" constant="20" id="PaT-p1-FHW"/>
@@ -228,7 +276,9 @@
                                     <constraint firstItem="5R9-HP-3Ux" firstAttribute="centerY" secondItem="MHU-bm-34y" secondAttribute="centerY" id="UKK-Nh-c7p"/>
                                     <constraint firstItem="5R9-HP-3Ux" firstAttribute="leading" secondItem="Tly-ei-uT6" secondAttribute="trailing" constant="20" id="WMY-ID-vh2"/>
                                     <constraint firstItem="iQN-7c-rdo" firstAttribute="centerX" secondItem="5R9-HP-3Ux" secondAttribute="centerX" id="WpE-7s-XwG"/>
+                                    <constraint firstAttribute="bottom" secondItem="5mN-Yq-qCx" secondAttribute="bottom" constant="20" id="Y2r-kM-9SG"/>
                                     <constraint firstItem="Tly-ei-uT6" firstAttribute="centerY" secondItem="5R9-HP-3Ux" secondAttribute="centerY" id="ecF-v2-kbY"/>
+                                    <constraint firstItem="bvd-me-YYu" firstAttribute="leading" secondItem="MHU-bm-34y" secondAttribute="leading" constant="11" id="fme-Im-Mhg"/>
                                     <constraint firstItem="5R9-HP-3Ux" firstAttribute="leading" secondItem="48M-0j-ODk" secondAttribute="trailing" constant="20" id="g4K-ZY-CyA"/>
                                     <constraint firstItem="5Gc-zC-LGf" firstAttribute="leading" secondItem="5R9-HP-3Ux" secondAttribute="trailing" constant="20" id="gLp-nQ-791"/>
                                     <constraint firstItem="iQN-7c-rdo" firstAttribute="top" secondItem="5R9-HP-3Ux" secondAttribute="bottom" constant="20" id="pDe-ua-8c1"/>
@@ -257,6 +307,7 @@
                         <outlet property="bidEuro" destination="5Gc-zC-LGf" id="ovx-gH-CbO"/>
                         <outlet property="rubToDollar" destination="Tly-ei-uT6" id="RDU-fo-QcL"/>
                         <outlet property="rubToEuro" destination="lYa-pz-eb0" id="YIy-KO-Asx"/>
+                        <outlet property="soundButton" destination="bvd-me-YYu" id="0iw-av-0kG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="heZ-ZV-HZn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -265,6 +316,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="SoundOn" width="95" height="95"/>
+        <image name="SoundOn" width="32" height="32"/>
     </resources>
 </document>
