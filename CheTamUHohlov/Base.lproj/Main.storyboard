@@ -218,6 +218,23 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvd-me-YYu">
+                                        <rect key="frame" x="11" y="8" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="24" id="G2E-Ah-NZc"/>
+                                            <constraint firstAttribute="height" constant="24" id="cOi-Yg-8UQ"/>
+                                        </constraints>
+                                        <state key="normal" image="SoundOn"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="soundButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B8o-R1-xYz"/>
+                                            <action selector="soundButtonAction:" destination="Ulb-ci-F6r" eventType="touchUpInside" id="RQB-D7-eXh"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5mN-Yq-qCx" customClass="GoodButton" customModule="CheTamUHohlov" customModuleProvider="target">
                                         <rect key="frame" x="422" y="506" width="148" height="44"/>
                                         <constraints>
@@ -240,23 +257,6 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <segue destination="BYZ-38-t0r" kind="presentation" identifier="toMain" modalTransitionStyle="flipHorizontal" id="tas-h8-Bci"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvd-me-YYu">
-                                        <rect key="frame" x="11" y="8" width="24" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="24" id="G2E-Ah-NZc"/>
-                                            <constraint firstAttribute="height" constant="24" id="cOi-Yg-8UQ"/>
-                                        </constraints>
-                                        <state key="normal" image="SoundOn"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderRadius">
-                                                <real key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="soundButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B8o-R1-xYz"/>
-                                            <action selector="soundButtonAction:" destination="Ulb-ci-F6r" eventType="touchUpInside" id="RQB-D7-eXh"/>
                                         </connections>
                                     </button>
                                 </subviews>
