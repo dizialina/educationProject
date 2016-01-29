@@ -1,6 +1,6 @@
 //
 //  HomeScreen.m
-//  CheTamUHohlov
+//  ;
 //
 //  Created by Roman.Safin on 1/17/16.
 //  Copyright © 2016 Roman.Safin. All rights reserved.
@@ -8,6 +8,13 @@
 
 #import "HomeScreen.h"
 #import "MainScreen.h"
+
+@interface HomeScreen ()
+
+@property (strong, nonatomic) UIImage *imageSoundOff;
+@property (strong, nonatomic) UIImage *imageSoundOn;
+
+@end
 
 @implementation HomeScreen
 
@@ -24,18 +31,28 @@
     self.rubToEuro.text = [NSString stringWithFormat:@"%@", rubToEuroItem.pairCurName];
     self.askEuro.text = [NSString stringWithFormat:@"%.3f", rubToEuroItem.ask];
     self.bidEuro.text = [NSString stringWithFormat:@"%.3f", rubToEuroItem.bid];
+    
+    self.imageSoundOff = [UIImage imageNamed:@"SoundOff"];
+    self.imageSoundOn = [UIImage imageNamed:@"SoundOn"];
+    
+    if ([self.backgroundMusic isPlaying]) {
+        [self.soundButton setImage:self.imageSoundOn forState:UIControlStateNormal];
+    } else {
+        [self.soundButton setImage:self.imageSoundOff forState:UIControlStateNormal];
+    }
+
+    [self.navigationController setNavigationBarHidden:NO];
+    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    
 }
 
 - (IBAction)soundButtonAction:(id)sender {
     
-    UIImage *imageSoundOff = [UIImage imageNamed:@"SoundOff"];
-    UIImage *imageSoundOn = [UIImage imageNamed:@"SoundOn"];
-    
     if ([self.backgroundMusic isPlaying]) {
-        [self.soundButton setImage:imageSoundOff forState:UIControlStateNormal];
+        [self.soundButton setImage:self.imageSoundOff forState:UIControlStateNormal];
         [self.backgroundMusic pause];
     } else {
-        [self.soundButton setImage:imageSoundOn forState:UIControlStateNormal];
+        [self.soundButton setImage:self.imageSoundOn forState:UIControlStateNormal];
         [self.backgroundMusic play];
     }
     

@@ -20,6 +20,8 @@
 @interface MainScreen ()
 
 @property (strong, nonatomic) NSArray *curRateObj;
+@property (strong, nonatomic) UIImage *imageSoundOff;
+@property (strong, nonatomic) UIImage *imageSoundOn;
 
 @end
 
@@ -38,6 +40,15 @@
         [self.backgroundMusic play];
     }
     
+    self.imageSoundOff = [UIImage imageNamed:@"SoundOff"];
+    self.imageSoundOn = [UIImage imageNamed:@"SoundOn"];
+    
+    if ([self.backgroundMusic isPlaying]) {
+        [self.soundButton setImage:self.imageSoundOn forState:UIControlStateNormal];
+    } else {
+        [self.soundButton setImage:self.imageSoundOff forState:UIControlStateNormal];
+    }
+
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateDataInView)
                                                  name:NotificationAboutLoadingGovData
@@ -98,14 +109,11 @@
 
 - (IBAction)soundButtonAction:(id)sender {
     
-    UIImage *imageSoundOff = [UIImage imageNamed:@"SoundOff"];
-    UIImage *imageSoundOn = [UIImage imageNamed:@"SoundOn"];
-    
     if ([self.backgroundMusic isPlaying]) {
-        [self.soundButton setImage:imageSoundOff forState:UIControlStateNormal];
+        [self.soundButton setImage:self.imageSoundOff forState:UIControlStateNormal];
         [self.backgroundMusic pause];
     } else {
-        [self.soundButton setImage:imageSoundOn forState:UIControlStateNormal];
+        [self.soundButton setImage:self.imageSoundOn forState:UIControlStateNormal];
         [self.backgroundMusic play];
     }
     
