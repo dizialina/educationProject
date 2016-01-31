@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TestCurRateObj : NSObject
+@interface RateItemFromYahoo : NSObject
 
 @property (nonatomic, strong) NSString *pairCurName;
 @property (nonatomic, assign) double rate;

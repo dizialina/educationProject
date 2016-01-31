@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TestClassForHomework : UIImageView
+@interface ManageFileSystem : UIImageView
 
-- (void)testMethodCreateDBInTemp;
-- (void)testMethodCleanTempFolder;
+- (void)creatingDBInTemp;
+- (void)cleanTempFolder;
 
 @end

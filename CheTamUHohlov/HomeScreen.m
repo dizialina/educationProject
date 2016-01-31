@@ -1,19 +1,68 @@
 //
 //  HomeScreen.m
-//  CheTamUHohlov
+//  ;
 //
 //  Created by Roman.Safin on 1/17/16.
 //  Copyright © 2016 Roman.Safin. All rights reserved.
 //
 
 #import "HomeScreen.h"
+#import "MainScreen.h"
+
+@interface HomeScreen ()
+
+@property (strong, nonatomic) UIImage *imageSoundOff;
+@property (strong, nonatomic) UIImage *imageSoundOn;
+
+@end
 
 @implementation HomeScreen
 
 -(void)viewDidLoad {
     [super viewDidLoad];
     
-    self.rubToDollar.text = [NSString stringWithFormat:@"%f", self.curRateObj.ask];
+    RateItemFromYahoo *rubToDollarItem = [self.curRateObj firstObject];
+    RateItemFromYahoo *rubToEuroItem = [self.curRateObj lastObject];
+    
+    self.rubToDollar.text = [NSString stringWithFormat:@"%@", rubToDollarItem.pairCurName];
+    self.askDollar.text = [NSString stringWithFormat:@"%.3f", rubToDollarItem.ask];
+    self.bidDollar.text = [NSString stringWithFormat:@"%.3f", rubToDollarItem.bid];
+    
+    self.rubToEuro.text = [NSString stringWithFormat:@"%@", rubToEuroItem.pairCurName];
+    self.askEuro.text = [NSString stringWithFormat:@"%.3f", rubToEuroItem.ask];
+    self.bidEuro.text = [NSString stringWithFormat:@"%.3f", rubToEuroItem.bid];
+    
+    self.imageSoundOff = [UIImage imageNamed:@"SoundOff"];
+    self.imageSoundOn = [UIImage imageNamed:@"SoundOn"];
+    
+    if ([self.backgroundMusic isPlaying]) {
+        [self.soundButton setImage:self.imageSoundOn forState:UIControlStateNormal];
+    } else {
+        [self.soundButton setImage:self.imageSoundOff forState:UIControlStateNormal];
+    }
+
+    [self.navigationController setNavigationBarHidden:NO];
+    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    
+}
+
+- (IBAction)soundButtonAction:(id)sender {
+    
+    if ([self.backgroundMusic isPlaying]) {
+        [self.soundButton setImage:self.imageSoundOff forState:UIControlStateNormal];
+        [self.backgroundMusic pause];
+    } else {
+        [self.soundButton setImage:self.imageSoundOn forState:UIControlStateNormal];
+        [self.backgroundMusic play];
+    }
+    
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"toMain"]) {
+        MainScreen *mainScreen = segue.destinationViewController;
+        mainScreen.backgroundMusic = self.backgroundMusic;
+    }
 }
 
 @end

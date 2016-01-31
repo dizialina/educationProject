@@ -7,11 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TestCurRateObj.h"
+#import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
+#import "RateItemFromYahoo.h"
 
 @interface HomeScreen : UIViewController
 
+@property (strong, nonatomic) NSArray *curRateObj;
 @property (weak, nonatomic) IBOutlet UILabel *rubToDollar;
-@property (strong, nonatomic) TestCurRateObj *curRateObj;
+@property (weak, nonatomic) IBOutlet UILabel *rubToEuro;
+@property (weak, nonatomic) IBOutlet UILabel *askDollar;
+@property (weak, nonatomic) IBOutlet UILabel *askEuro;
+@property (weak, nonatomic) IBOutlet UILabel *bidDollar;
+@property (weak, nonatomic) IBOutlet UILabel *bidEuro;
+@property (strong, nonatomic) AVAudioPlayer *backgroundMusic;
+@property (weak, nonatomic) IBOutlet UIButton *soundButton;
+
+- (IBAction)soundButtonAction:(id)sender;
 
 @end

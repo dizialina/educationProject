@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BankRateItem : NSObject
+@interface RateItemFromGov : NSObject
 
 @property (nonatomic, strong) NSString *shortCurName;
 @property (nonatomic, assign) double rate;

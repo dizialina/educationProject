@@ -6,8 +6,8 @@
 //  Copyright © 2016 Roman.Safin. All rights reserved.
 //
 
-#import "TestCurRateObj.h"
+#import "RateItemFromYahoo.h"
 
-@implementation TestCurRateObj
+@implementation RateItemFromYahoo
 
 @end
