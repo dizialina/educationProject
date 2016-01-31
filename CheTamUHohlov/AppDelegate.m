@@ -26,8 +26,7 @@
     ObjClient *client = [ObjClient new];
     [client copyDBFileToPath];
     
-    [RequestClient requestDataFromGovServer:LinkToGovDataOnDate];
-    [RequestClient requestDataFromYahooServer:LinkToYahooData];
+    [RequestClient requestDataFromServer];
     //[RequestClient requestDataFromGovServerAndSaveWithTransaction:LinkToData]; // transaction
     
     //[iRate sharedInstance].appStoreID = 1;

@@ -31,6 +31,7 @@
 		95622F801C4BDF57004241E8 /* GoodButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95622F7F1C4BDF57004241E8 /* GoodButton.swift */; };
 		95622F851C4BE679004241E8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95622F871C4BE679004241E8 /* Localizable.strings */; };
 		958DDC661C5E4530007FB8AF /* Natasha.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 958DDC651C5E4530007FB8AF /* Natasha.ttf */; };
+		958DDC681C5E7020007FB8AF /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 958DDC671C5E7020007FB8AF /* GoogleMobileAds.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		95622F881C4BE680004241E8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		95622F891C4BE8A5004241E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		958DDC651C5E4530007FB8AF /* Natasha.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Natasha.ttf; path = ../../../Downloads/Natasha.ttf; sourceTree = "<group>"; };
+		958DDC671C5E7020007FB8AF /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		CA096BF688AA9C3EEB641E3A /* Pods-CheTamUHohlov.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheTamUHohlov.release.xcconfig"; path = "Pods/Target Support Files/Pods-CheTamUHohlov/Pods-CheTamUHohlov.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,6 +90,7 @@
 				84E133EF1C56E0F000616546 /* Reachability.framework in Frameworks */,
 				84E133ED1C56D10700616546 /* SystemConfiguration.framework in Frameworks */,
 				955682EC1C3EDC5D00CC68B4 /* libsqlite3.tbd in Frameworks */,
+				958DDC681C5E7020007FB8AF /* GoogleMobileAds.framework in Frameworks */,
 				5642F23B586FE18AACC20090 /* Pods_CheTamUHohlov.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -178,6 +181,7 @@
 		9514F1A51C3AD57B00F27D2D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				958DDC671C5E7020007FB8AF /* GoogleMobileAds.framework */,
 				953E31181C5A4CB000BA73A3 /* Jokes Hard Code */,
 				955682E71C3ED8D300CC68B4 /* Librarys */,
 				9514F1C61C3EBF9400F27D2D /* Constants.h */,
@@ -295,7 +299,7 @@
 				TargetAttributes = {
 					9514F1A11C3AD57B00F27D2D = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 4YFHH255JS;
+						DevelopmentTeam = Y859DLF8C3;
 					};
 				};
 			};
@@ -524,9 +528,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/CheTamUHohlov",
 				);
 				INFOPLIST_FILE = CheTamUHohlov/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -549,9 +555,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/CheTamUHohlov",
 				);
 				INFOPLIST_FILE = CheTamUHohlov/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

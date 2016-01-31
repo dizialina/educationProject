@@ -17,6 +17,7 @@
 #import "Reachability.h"
 #import <SystemConfiguration/SystemConfiguration.h>
 #import "FunnyJokesClass.h"
+@import GoogleMobileAds;
 
 @interface MainScreen () {
     NSMutableDictionary *dataDict;
@@ -47,6 +48,11 @@
     }
     
     currentItem = 0;
+    
+    NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
+    self.bannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
+    self.bannerView.rootViewController = self;
+    [self.bannerView loadRequest:[GADRequest request]];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateDataInView)

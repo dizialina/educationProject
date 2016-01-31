@@ -13,5 +13,6 @@
 + (void)requestDataFromGovServer:(NSString *) urlString;
 + (void)requestDataFromYahooServer:(NSString *) urlString;
 + (void)requestDataFromGovServerAndSaveWithTransaction:(NSString *) urlString;
++ (void)requestDataFromServer;
 
 @end

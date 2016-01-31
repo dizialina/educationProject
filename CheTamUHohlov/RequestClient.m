@@ -15,16 +15,23 @@
 
 @implementation RequestClient
 
++ (void)requestDataFromServer {
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        [self requestDataFromGovServer:LinkToGovDataOnDate];
+        [self requestDataFromYahooServer:LinkToYahooData];
+    });
+    
+}
+
 #pragma mark - Methods working with Gov server
 
 + (void)requestDataFromGovServer:(NSString *) urlString {
     
     Reachability* reach = [Reachability reachabilityWithHostname:@"www.google.com"];
     
-//    reach.reachableBlock = ^(Reachability* reach) {
-    
     NetworkStatus remoteHostStatus = [reach currentReachabilityStatus];
-    if(remoteHostStatus == ReachableViaWiFi) {
+    if(remoteHostStatus != NotReachable) {
         
         if (urlString.length != 0) {
             
@@ -70,12 +77,6 @@
         NSLog(@"UNREACHABLE!");
     }
     
-//    reach.unreachableBlock = ^(Reachability*reach)
-//        {
-//            NSLog(@"UNREACHABLE!");
-//        };
-    
-    
 }
 
 #pragma mark - Methods working with Yahoo server
@@ -85,7 +86,7 @@
     Reachability* reach = [Reachability reachabilityWithHostname:@"www.google.com"];
     
     NetworkStatus remoteHostStatus = [reach currentReachabilityStatus];
-    if(remoteHostStatus == ReachableViaWiFi) {
+    if(remoteHostStatus != NotReachable) {
         
         if (urlString.length != 0) {
             
