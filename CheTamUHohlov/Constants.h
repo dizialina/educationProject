@@ -10,6 +10,7 @@
 #define Constants_h
 #define LinkToGovData @"http://nbu1.bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json"
 #define LinkToYahooData @"https://query.yahooapis.com/v1/public/yql?q=select+*+from+yahoo.finance.xchange+where+pair+=+%22USDRUB,EURRUB%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback="
+#define LinkToGovDataOnDate @"http://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?date=20160129&json"
 #define TableNameWithGovData @"CurrencyRate"
 #define TableNameWithYahooData @"yahooCurrencyRate"
 #define DBName @"DiziDB.sqlite"

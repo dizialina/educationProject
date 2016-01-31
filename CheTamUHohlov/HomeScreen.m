@@ -35,28 +35,8 @@
     self.imageSoundOff = [UIImage imageNamed:@"SoundOff"];
     self.imageSoundOn = [UIImage imageNamed:@"SoundOn"];
     
-    if ([self.backgroundMusic isPlaying]) {
-        [self.soundButton setImage:self.imageSoundOn forState:UIControlStateNormal];
-    } else {
-        [self.soundButton setImage:self.imageSoundOff forState:UIControlStateNormal];
-    }
-
-    [self.navigationController setNavigationBarHidden:NO];
-    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-    
 }
 
-- (IBAction)soundButtonAction:(id)sender {
-    
-    if ([self.backgroundMusic isPlaying]) {
-        [self.soundButton setImage:self.imageSoundOff forState:UIControlStateNormal];
-        [self.backgroundMusic pause];
-    } else {
-        [self.soundButton setImage:self.imageSoundOn forState:UIControlStateNormal];
-        [self.backgroundMusic play];
-    }
-    
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"toMain"]) {

@@ -26,12 +26,13 @@
     ObjClient *client = [ObjClient new];
     [client copyDBFileToPath];
     
-    [RequestClient requestDataFromGovServer:LinkToGovData];
+    [RequestClient requestDataFromGovServer:LinkToGovDataOnDate];
     [RequestClient requestDataFromYahooServer:LinkToYahooData];
     //[RequestClient requestDataFromGovServerAndSaveWithTransaction:LinkToData]; // transaction
     
     //[iRate sharedInstance].appStoreID = 1;
-    //[iRate sharedInstance].eventsUntilPrompt = 3;
+    [iRate sharedInstance].eventsUntilPrompt = 3;
+    [iRate sharedInstance].verboseLogging = FALSE;
     
     [Flurry startSession:@"G4TTDKFZHHP5MW3R4P3H"];
     

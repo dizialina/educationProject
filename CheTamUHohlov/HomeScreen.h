@@ -23,6 +23,4 @@
 @property (strong, nonatomic) AVAudioPlayer *backgroundMusic;
 @property (weak, nonatomic) IBOutlet UIButton *soundButton;
 
-- (IBAction)soundButtonAction:(id)sender;
-
 @end

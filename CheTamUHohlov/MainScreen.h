@@ -13,14 +13,14 @@
 
 @interface MainScreen : UIViewController
 
-
-@property (weak, nonatomic) IBOutlet GoodButton *homeButton;
-@property (weak, nonatomic) IBOutlet UILabel *currencyNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *rateLabel;
-@property (weak, nonatomic) IBOutlet UIButton *soundButton;
+@property (weak, nonatomic) IBOutlet UILabel *headLabel;
+@property (weak, nonatomic) IBOutlet UILabel *grnToDollar;
+@property (weak, nonatomic) IBOutlet UILabel *grnToEuro;
+@property (weak, nonatomic) IBOutlet UILabel *saloPrice;
 @property (strong, nonatomic) AVAudioPlayer *backgroundMusic;
 
-- (IBAction)soundButtonAction:(id)sender;
+- (IBAction)healAction:(GoodButton *)sender;
+- (IBAction)homeButton:(GoodButton *)sender;
 
 
 @end

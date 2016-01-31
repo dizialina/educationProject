@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5642F23B586FE18AACC20090 /* Pods_CheTamUHohlov.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651940BBC666542E2E6C5B94 /* Pods_CheTamUHohlov.framework */; };
 		84E013C71C56FD0E000A3771 /* iRate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E013C61C56FD0E000A3771 /* iRate.framework */; };
 		84E013C91C56FD13000A3771 /* Flurry_iOS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E013C81C56FD13000A3771 /* Flurry_iOS_SDK.framework */; };
-		84E013CB1C5704FA000A3771 /* sunset.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84E013CA1C5704FA000A3771 /* sunset.mp3 */; };
 		84E133ED1C56D10700616546 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E133EC1C56D10700616546 /* SystemConfiguration.framework */; };
 		84E133EF1C56E0F000616546 /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E133EE1C56E0F000616546 /* Reachability.framework */; };
 		84E5CC841C47D372002A59A3 /* RateItemFromYahoo.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E5CC831C47D372002A59A3 /* RateItemFromYahoo.m */; };
@@ -30,15 +30,14 @@
 		95622F791C4BD9FB004241E8 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95622F781C4BD9FB004241E8 /* UIViewExtension.swift */; };
 		95622F801C4BDF57004241E8 /* GoodButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95622F7F1C4BDF57004241E8 /* GoodButton.swift */; };
 		95622F851C4BE679004241E8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95622F871C4BE679004241E8 /* Localizable.strings */; };
-		CCDC9C8CC7F3F2790837CEE7 /* Pods_CheTamUHohlov.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E02A3B4CD75206CB5D068787 /* Pods_CheTamUHohlov.framework */; };
+		958DDC661C5E4530007FB8AF /* Natasha.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 958DDC651C5E4530007FB8AF /* Natasha.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		785AD37C2F36FFDB3A48F3D5 /* Pods-CheTamUHohlov.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheTamUHohlov.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CheTamUHohlov/Pods-CheTamUHohlov.debug.xcconfig"; sourceTree = "<group>"; };
-		7B767082BC01599223ACC269 /* Pods-CheTamUHohlov.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheTamUHohlov.release.xcconfig"; path = "Pods/Target Support Files/Pods-CheTamUHohlov/Pods-CheTamUHohlov.release.xcconfig"; sourceTree = "<group>"; };
+		30D1C2F93730FC85F87852D1 /* Pods-CheTamUHohlov.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheTamUHohlov.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CheTamUHohlov/Pods-CheTamUHohlov.debug.xcconfig"; sourceTree = "<group>"; };
+		651940BBC666542E2E6C5B94 /* Pods_CheTamUHohlov.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CheTamUHohlov.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84E013C61C56FD0E000A3771 /* iRate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iRate.framework; path = "Pods/../build/Debug-iphoneos/iRate.framework"; sourceTree = "<group>"; };
 		84E013C81C56FD13000A3771 /* Flurry_iOS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Flurry_iOS_SDK.framework; path = "Pods/../build/Debug-iphoneos/Flurry_iOS_SDK.framework"; sourceTree = "<group>"; };
-		84E013CA1C5704FA000A3771 /* sunset.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sunset.mp3; path = ../../Downloads/sunset.mp3; sourceTree = "<group>"; };
 		84E133EC1C56D10700616546 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		84E133EE1C56E0F000616546 /* Reachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reachability.framework; path = "Pods/../build/Debug-iphoneos/Reachability.framework"; sourceTree = "<group>"; };
 		84E5CC821C47D372002A59A3 /* RateItemFromYahoo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateItemFromYahoo.h; sourceTree = "<group>"; };
@@ -75,7 +74,8 @@
 		95622F821C4BE5B3004241E8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		95622F881C4BE680004241E8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		95622F891C4BE8A5004241E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		E02A3B4CD75206CB5D068787 /* Pods_CheTamUHohlov.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CheTamUHohlov.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		958DDC651C5E4530007FB8AF /* Natasha.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Natasha.ttf; path = ../../../Downloads/Natasha.ttf; sourceTree = "<group>"; };
+		CA096BF688AA9C3EEB641E3A /* Pods-CheTamUHohlov.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheTamUHohlov.release.xcconfig"; path = "Pods/Target Support Files/Pods-CheTamUHohlov/Pods-CheTamUHohlov.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,22 +88,13 @@
 				84E133EF1C56E0F000616546 /* Reachability.framework in Frameworks */,
 				84E133ED1C56D10700616546 /* SystemConfiguration.framework in Frameworks */,
 				955682EC1C3EDC5D00CC68B4 /* libsqlite3.tbd in Frameworks */,
-				CCDC9C8CC7F3F2790837CEE7 /* Pods_CheTamUHohlov.framework in Frameworks */,
+				5642F23B586FE18AACC20090 /* Pods_CheTamUHohlov.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1C5EF449D95AC6F1364ECC58 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				785AD37C2F36FFDB3A48F3D5 /* Pods-CheTamUHohlov.debug.xcconfig */,
-				7B767082BC01599223ACC269 /* Pods-CheTamUHohlov.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		1FB8B9716BB22F8E61E59417 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,7 +102,7 @@
 				84E013C61C56FD0E000A3771 /* iRate.framework */,
 				84E133EE1C56E0F000616546 /* Reachability.framework */,
 				84E133EC1C56D10700616546 /* SystemConfiguration.framework */,
-				E02A3B4CD75206CB5D068787 /* Pods_CheTamUHohlov.framework */,
+				651940BBC666542E2E6C5B94 /* Pods_CheTamUHohlov.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -151,8 +142,8 @@
 				9514F1A41C3AD57B00F27D2D /* CheTamUHohlov */,
 				9514F1A31C3AD57B00F27D2D /* Products */,
 				951867521C53954900A42A06 /* CheTamUHohlov copy-Info.plist */,
-				1C5EF449D95AC6F1364ECC58 /* Pods */,
 				1FB8B9716BB22F8E61E59417 /* Frameworks */,
+				F84345E6D553EB465B461457 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -187,11 +178,12 @@
 		9514F1A51C3AD57B00F27D2D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				953E31181C5A4CB000BA73A3 /* Jokes Hard Code */,
 				955682E71C3ED8D300CC68B4 /* Librarys */,
 				9514F1C61C3EBF9400F27D2D /* Constants.h */,
+				958DDC651C5E4530007FB8AF /* Natasha.ttf */,
 				9514F1A61C3AD57B00F27D2D /* main.m */,
 				9514F1C41C3EBBEE00F27D2D /* DiziDB.sqlite */,
-				84E013CA1C5704FA000A3771 /* sunset.mp3 */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -208,7 +200,6 @@
 		955172D31C429C930025D0FF /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				953E31181C5A4CB000BA73A3 /* Jokes Hard Code */,
 				95622F7A1C4BDA1F004241E8 /* Swift Controllers */,
 				95622F7B1C4BDA62004241E8 /* Obj-C */,
 			);
@@ -261,6 +252,15 @@
 			name = "Obj-C";
 			sourceTree = "<group>";
 		};
+		F84345E6D553EB465B461457 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				30D1C2F93730FC85F87852D1 /* Pods-CheTamUHohlov.debug.xcconfig */,
+				CA096BF688AA9C3EEB641E3A /* Pods-CheTamUHohlov.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -268,12 +268,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9514F1B91C3AD57B00F27D2D /* Build configuration list for PBXNativeTarget "CheTamUHohlov" */;
 			buildPhases = (
-				C432C25A917D7F883E49669C /* Check Pods Manifest.lock */,
+				EBEAF4F0AB998725ED9C7786 /* Check Pods Manifest.lock */,
 				9514F19E1C3AD57B00F27D2D /* Sources */,
 				9514F19F1C3AD57B00F27D2D /* Frameworks */,
 				9514F1A01C3AD57B00F27D2D /* Resources */,
-				95251A36F09DDFD72ED371BE /* Embed Pods Frameworks */,
-				441ECB1F1FD4AC246CFA3FE6 /* Copy Pods Resources */,
+				FB5E2B866008EA8881481491 /* Embed Pods Frameworks */,
+				287646FC326779837F556693 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -327,7 +327,7 @@
 				9514F1B51C3AD57B00F27D2D /* LaunchScreen.storyboard in Resources */,
 				9514F1B21C3AD57B00F27D2D /* Assets.xcassets in Resources */,
 				84EC23C31C579E14008FA17F /* Main.storyboard in Resources */,
-				84E013CB1C5704FA000A3771 /* sunset.mp3 in Resources */,
+				958DDC661C5E4530007FB8AF /* Natasha.ttf in Resources */,
 				9514F1C51C3EBBEE00F27D2D /* DiziDB.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,7 +335,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		441ECB1F1FD4AC246CFA3FE6 /* Copy Pods Resources */ = {
+		287646FC326779837F556693 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -350,22 +350,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CheTamUHohlov/Pods-CheTamUHohlov-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		95251A36F09DDFD72ED371BE /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CheTamUHohlov/Pods-CheTamUHohlov-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C432C25A917D7F883E49669C /* Check Pods Manifest.lock */ = {
+		EBEAF4F0AB998725ED9C7786 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -378,6 +363,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FB5E2B866008EA8881481491 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CheTamUHohlov/Pods-CheTamUHohlov-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -518,7 +518,7 @@
 		};
 		9514F1BA1C3AD57B00F27D2D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 785AD37C2F36FFDB3A48F3D5 /* Pods-CheTamUHohlov.debug.xcconfig */;
+			baseConfigurationReference = 30D1C2F93730FC85F87852D1 /* Pods-CheTamUHohlov.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -537,12 +537,13 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CheTamUHohlov/CheTamUHohlov-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		9514F1BB1C3AD57B00F27D2D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7B767082BC01599223ACC269 /* Pods-CheTamUHohlov.release.xcconfig */;
+			baseConfigurationReference = CA096BF688AA9C3EEB641E3A /* Pods-CheTamUHohlov.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -560,6 +561,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CheTamUHohlov/CheTamUHohlov-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

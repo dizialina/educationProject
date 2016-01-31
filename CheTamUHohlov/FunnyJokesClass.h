@@ -15,4 +15,6 @@ typedef enum countryType {
 
 @interface FunnyJokesClass : NSObject
 
+-(NSArray *)returnArrayWithJokesFor:(CountryTypeEnum)contryType;
+
 @end

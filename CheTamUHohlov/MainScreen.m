@@ -16,16 +16,22 @@
 #import "CheTamUHohlov-Swift.h"
 #import "Reachability.h"
 #import <SystemConfiguration/SystemConfiguration.h>
+#import "FunnyJokesClass.h"
 
-@interface MainScreen ()
+@interface MainScreen () {
+    NSMutableDictionary *dataDict;
+    int currentItem;
+}
 
 @property (strong, nonatomic) NSArray *curRateObj;
-@property (strong, nonatomic) UIImage *imageSoundOff;
-@property (strong, nonatomic) UIImage *imageSoundOn;
+@property (strong, nonatomic) NSArray *receiveData;
+
 
 @end
 
-@implementation MainScreen
+@implementation MainScreen {
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -40,14 +46,7 @@
         [self.backgroundMusic play];
     }
     
-    self.imageSoundOff = [UIImage imageNamed:@"SoundOff"];
-    self.imageSoundOn = [UIImage imageNamed:@"SoundOn"];
-    
-    if ([self.backgroundMusic isPlaying]) {
-        [self.soundButton setImage:self.imageSoundOn forState:UIControlStateNormal];
-    } else {
-        [self.soundButton setImage:self.imageSoundOff forState:UIControlStateNormal];
-    }
+    currentItem = 0;
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateDataInView)
@@ -55,10 +54,6 @@
                                                object:nil];
     
     
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    self.homeButton.titleLabel.text = NSLocalizedString(@"HomeButton", @"Home button in home screen"); 
 }
 
 - (void)dealloc {
@@ -78,18 +73,33 @@
     }
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        NSString *selectQueue = [NSString stringWithFormat:@"SELECT * FROM CurrencyRate WHERE ShortCurName=\'%@\'", @"RUB"];
-        NSArray *resultArray = [objClient returnCurrencyRateObjectArrayFromGovDB:selectQueue];
-        NSLog(@"Count of items in result array after SELECT queue: %lu", (unsigned long)[resultArray count]);
-        if (resultArray.count != 0) {
+        dataDict = [NSMutableDictionary new];
+        NSString *selectQueueUSD = [NSString stringWithFormat:@"SELECT * FROM CurrencyRate WHERE ShortCurName=\'%@\'", @"USD"];
+        NSArray *resultArrayUSD = [objClient returnCurrencyRateObjectArrayFromGovDB:selectQueueUSD];
+        NSLog(@"Count of items in result array after SELECT queue: %lu", (unsigned long)[resultArrayUSD count]);
+        if (resultArrayUSD.count != 0) {
             dispatch_sync(dispatch_get_main_queue(), ^{
-                RateItemFromGov *bankRateItem = [resultArray firstObject];
-                self.currencyNameLabel.text = bankRateItem.shortCurName;
-                self.rateLabel.text = [NSString stringWithFormat:@"%.3f", bankRateItem.rate];
+                RateItemFromGov *bankRateItem = [resultArrayUSD firstObject];
+                self.grnToDollar.text = [NSString stringWithFormat:@"%.2f", bankRateItem.rate];
+                self.saloPrice.text = [NSString stringWithFormat:@"%.2f", bankRateItem.rate * 2.1];
+                [dataDict setObject:[NSNumber numberWithDouble:bankRateItem.rate] forKey:@"USD"];
             });
         }
+        NSString *selectQueueEUR = [NSString stringWithFormat:@"SELECT * FROM CurrencyRate WHERE ShortCurName=\'%@\'", @"EUR"];
+        NSArray *resultArrayEUR = [objClient returnCurrencyRateObjectArrayFromGovDB:selectQueueEUR];
+        NSLog(@"Count of items in result array after SELECT queue: %lu", (unsigned long)[resultArrayEUR count]);
+        if (resultArrayEUR.count != 0) {
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                RateItemFromGov *bankRateItem = [resultArrayEUR firstObject];
+                self.grnToEuro.text = [NSString stringWithFormat:@"%.2f", bankRateItem.rate];
+                [dataDict setObject:[NSNumber numberWithDouble:bankRateItem.rate] forKey:@"EUR"];
+
+            });
+        }
+
         
     });
+    
     
 }
 
@@ -101,22 +111,48 @@
     }
 }
 
+- (IBAction)healAction:(GoodButton *)sender {
+    
+    FunnyJokesClass *jokes = [FunnyJokesClass new];
+    NSArray *ukraineJokes = [jokes returnArrayWithJokesFor:Ukraine];
+    if (currentItem < [ukraineJokes count]) {
+        NSDictionary *joke = [ukraineJokes objectAtIndex:currentItem];
+
+        if ([[joke objectForKey:@"type"] isEqualToString:@"Multiply"]) {
+            double multiply = [[joke objectForKey:@"amount"] doubleValue];
+            self.grnToDollar.text = [NSString stringWithFormat:@"%.2f", [[dataDict objectForKey:@"USD"] doubleValue] * multiply];
+            self.grnToEuro.text = [NSString stringWithFormat:@"%.2f", [[dataDict objectForKey:@"EUR"] doubleValue] * multiply];
+            self.headLabel.text = [joke objectForKey:@"joke"];
+            
+        } else if ([[joke objectForKey:@"type"] isEqualToString:@"Divide"]) {
+            double divide = [[joke objectForKey:@"amount"] doubleValue];
+            self.grnToDollar.text = [NSString stringWithFormat:@"%.2f", [[dataDict objectForKey:@"USD"] doubleValue] / divide];
+            self.grnToEuro.text = [NSString stringWithFormat:@"%.2f", [[dataDict objectForKey:@"EUR"] doubleValue] / divide];
+            self.headLabel.text = [joke objectForKey:@"joke"];
+            
+        } else {
+            self.grnToDollar.text = [NSString stringWithFormat:@"%@", [joke objectForKey:@"amount"]];
+            self.grnToEuro.text = [NSString stringWithFormat:@"%@", [joke objectForKey:@"amount"]];
+            self.headLabel.text = [joke objectForKey:@"joke"];
+
+        }
+        currentItem += 1;
+        
+    } else {
+        currentItem = 0;
+        [self healAction: sender];
+    }
+    
+    
+}
+
+- (IBAction)homeButton:(GoodButton *)sender {
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)soundButtonAction:(id)sender {
-    
-    if ([self.backgroundMusic isPlaying]) {
-        [self.soundButton setImage:self.imageSoundOff forState:UIControlStateNormal];
-        [self.backgroundMusic pause];
-    } else {
-        [self.soundButton setImage:self.imageSoundOn forState:UIControlStateNormal];
-        [self.backgroundMusic play];
-    }
-    
-}
 
 @end
