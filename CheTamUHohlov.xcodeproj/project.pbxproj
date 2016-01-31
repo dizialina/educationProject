@@ -18,6 +18,7 @@
 		9514F1BE1C3ADDC500F27D2D /* RequestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9514F1BD1C3ADDC500F27D2D /* RequestClient.m */; };
 		9514F1C11C3EACD100F27D2D /* ObjClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9514F1C01C3EACD100F27D2D /* ObjClient.m */; };
 		9514F1C51C3EBBEE00F27D2D /* DiziDB.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 9514F1C41C3EBBEE00F27D2D /* DiziDB.sqlite */; };
+		953E31171C5A4CAA00BA73A3 /* FunnyJokesClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 953E31151C5A4CAA00BA73A3 /* FunnyJokesClass.m */; };
 		955682EC1C3EDC5D00CC68B4 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 955682EB1C3EDC5D00CC68B4 /* libsqlite3.tbd */; };
 		955682EF1C3EE98D00CC68B4 /* BankRateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 955682EE1C3EE98D00CC68B4 /* BankRateItem.m */; };
 		95622F761C4BD081004241E8 /* HomeScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 95622F751C4BD081004241E8 /* HomeScreen.m */; };
@@ -51,6 +52,8 @@
 		9514F1C41C3EBBEE00F27D2D /* DiziDB.sqlite */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = DiziDB.sqlite; path = ../DiziDB.sqlite; sourceTree = "<group>"; };
 		9514F1C61C3EBF9400F27D2D /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		951867521C53954900A42A06 /* CheTamUHohlov copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CheTamUHohlov copy-Info.plist"; path = "/Users/romansafin/Documents/CheTamUHohlov/CheTamUHohlov copy-Info.plist"; sourceTree = "<absolute>"; };
+		953E31151C5A4CAA00BA73A3 /* FunnyJokesClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunnyJokesClass.m; sourceTree = "<group>"; };
+		953E31161C5A4CAA00BA73A3 /* FunnyJokesClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunnyJokesClass.h; sourceTree = "<group>"; };
 		955682EB1C3EDC5D00CC68B4 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		955682ED1C3EE98D00CC68B4 /* BankRateItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankRateItem.h; sourceTree = "<group>"; };
 		955682EE1C3EE98D00CC68B4 /* BankRateItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankRateItem.m; sourceTree = "<group>"; };
@@ -157,9 +160,19 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		953E31181C5A4CB000BA73A3 /* Jokes Hard Code */ = {
+			isa = PBXGroup;
+			children = (
+				953E31161C5A4CAA00BA73A3 /* FunnyJokesClass.h */,
+				953E31151C5A4CAA00BA73A3 /* FunnyJokesClass.m */,
+			);
+			name = "Jokes Hard Code";
+			sourceTree = "<group>";
+		};
 		955172D31C429C930025D0FF /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				953E31181C5A4CB000BA73A3 /* Jokes Hard Code */,
 				95622F7A1C4BDA1F004241E8 /* Swift Controllers */,
 				95622F7B1C4BDA62004241E8 /* Obj-C */,
 			);
@@ -341,6 +354,7 @@
 			files = (
 				95622F791C4BD9FB004241E8 /* UIViewExtension.swift in Sources */,
 				9514F1AD1C3AD57B00F27D2D /* ViewController.m in Sources */,
+				953E31171C5A4CAA00BA73A3 /* FunnyJokesClass.m in Sources */,
 				95622F761C4BD081004241E8 /* HomeScreen.m in Sources */,
 				9514F1AA1C3AD57B00F27D2D /* AppDelegate.m in Sources */,
 				955682EF1C3EE98D00CC68B4 /* BankRateItem.m in Sources */,
