@@ -22,6 +22,7 @@
 @interface MainScreen () {
     NSMutableDictionary *dataDict;
     int currentItem;
+    BOOL randomJoke;
 }
 
 @property (strong, nonatomic) NSArray *curRateObj;
@@ -48,12 +49,14 @@
     }
     
     currentItem = 0;
-    
+    randomJoke = NO;
+    //UIButton
     NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
     self.bannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
     self.bannerView.rootViewController = self;
     [self.bannerView loadRequest:[GADRequest request]];
-
+    
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateDataInView)
                                                  name:NotificationAboutLoadingGovData
@@ -66,23 +69,27 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    NSLog(@"%f", self.view.frame.size.height);
+}
+
 - (void)updateDataInView {
     
     ObjClient *objClient = [ObjClient new];
-    //NSString *testSelectQueue = [NSString stringWithFormat:@"SELECT * FROM yahooCurrencyRate WHERE Name=\'%@\'", @"USD/RUB"];
-    NSString *testSelectQueue = [NSString stringWithFormat:@"SELECT * FROM yahooCurrencyRate"];
-    NSArray *testResultArray = [objClient returnCurrencyRateObjectArrayFromYahooBD:testSelectQueue];
-    NSLog(@"Count of items in result array after SELECT queue: %lu", (unsigned long)[testResultArray count]);
-    if (testResultArray.count != 0) {
-        self.curRateObj = testResultArray;
-        
-    }
+//    //NSString *testSelectQueue = [NSString stringWithFormat:@"SELECT * FROM yahooCurrencyRate WHERE Name=\'%@\'", @"USD/RUB"];
+//    NSString *testSelectQueue = [NSString stringWithFormat:@"SELECT * FROM yahooCurrencyRate"];
+//    NSArray *testResultArray = [objClient returnCurrencyRateObjectArrayFromYahooBD:testSelectQueue];
+//    NSLog(@"Count of items in result array after SELECT queue: %lu", (unsigned long)[testResultArray count]);
+//    if (testResultArray.count != 0) {
+//        self.curRateObj = testResultArray;
+//    
+//    }
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         dataDict = [NSMutableDictionary new];
         NSString *selectQueueUSD = [NSString stringWithFormat:@"SELECT * FROM CurrencyRate WHERE ShortCurName=\'%@\'", @"USD"];
         NSArray *resultArrayUSD = [objClient returnCurrencyRateObjectArrayFromGovDB:selectQueueUSD];
-        NSLog(@"Count of items in result array after SELECT queue: %lu", (unsigned long)[resultArrayUSD count]);
+        //NSLog(@"Count of items in result array after SELECT queue: %lu", (unsigned long)[resultArrayUSD count]);
         if (resultArrayUSD.count != 0) {
             dispatch_sync(dispatch_get_main_queue(), ^{
                 RateItemFromGov *bankRateItem = [resultArrayUSD firstObject];
@@ -91,9 +98,10 @@
                 [dataDict setObject:[NSNumber numberWithDouble:bankRateItem.rate] forKey:@"USD"];
             });
         }
+        
         NSString *selectQueueEUR = [NSString stringWithFormat:@"SELECT * FROM CurrencyRate WHERE ShortCurName=\'%@\'", @"EUR"];
         NSArray *resultArrayEUR = [objClient returnCurrencyRateObjectArrayFromGovDB:selectQueueEUR];
-        NSLog(@"Count of items in result array after SELECT queue: %lu", (unsigned long)[resultArrayEUR count]);
+        //NSLog(@"Count of items in result array after SELECT queue: %lu", (unsigned long)[resultArrayEUR count]);
         if (resultArrayEUR.count != 0) {
             dispatch_sync(dispatch_get_main_queue(), ^{
                 RateItemFromGov *bankRateItem = [resultArrayEUR firstObject];
@@ -101,6 +109,14 @@
                 [dataDict setObject:[NSNumber numberWithDouble:bankRateItem.rate] forKey:@"EUR"];
 
             });
+        }
+        
+        NSString *testSelectQueue = [NSString stringWithFormat:@"SELECT * FROM yahooCurrencyRate"];
+        NSArray *testResultArray = [objClient returnCurrencyRateObjectArrayFromYahooBD:testSelectQueue];
+        //NSLog(@"Count of items in result array after SELECT queue: %lu", (unsigned long)[testResultArray count]);
+        if (testResultArray.count != 0) {
+            self.curRateObj = testResultArray;
+            
         }
 
         
@@ -142,10 +158,16 @@
             self.headLabel.text = [joke objectForKey:@"joke"];
 
         }
-        currentItem += 1;
+        
+        if (!randomJoke) {
+            currentItem += 1;
+        } else {
+            currentItem = arc4random_uniform(42);
+        }
         
     } else {
         currentItem = 0;
+        randomJoke = YES;
         [self healAction: sender];
     }
     

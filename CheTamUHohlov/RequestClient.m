@@ -18,7 +18,7 @@
 + (void)requestDataFromServer {
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        [self requestDataFromGovServer:LinkToGovDataOnDate];
+        [self requestDataFromGovServer:LinkToGovData];
         [self requestDataFromYahooServer:LinkToYahooData];
     });
     
@@ -46,9 +46,9 @@
             
                 assert(data);
                 if (!error) {
-                    NSLog(@"Array is full. Gov server works.");
                     NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                     if ([responseArray count] != 0) {
+                        NSLog(@"Array is full. Gov server works.");
                         [responseArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                             NSDictionary *dict = obj;
                             //NSLog(@"%@", dict);
@@ -101,10 +101,10 @@
                 
                 assert(data);
                 if (!error) {
-                    NSLog(@"Dictionary is full. Yahoo server works.");
                     NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                     if ([responseDictionary count] != 0) {
-                
+                        
+                        NSLog(@"Dictionary is full. Yahoo server works.");
                         NSDictionary *queryDict = [responseDictionary objectForKey:@"query"];
                         NSDictionary *resultDict = [queryDict objectForKey:@"results"];
                         NSArray *rateArray = [resultDict objectForKey:@"rate"];

@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *saloPrice;
 @property (strong, nonatomic) AVAudioPlayer *backgroundMusic;
 @property (weak, nonatomic) IBOutlet GADBannerView *bannerView;
+@property (weak, nonatomic) IBOutlet GoodButton *healButton;
+
 
 - (IBAction)healAction:(GoodButton *)sender;
 - (IBAction)homeButton:(GoodButton *)sender;
