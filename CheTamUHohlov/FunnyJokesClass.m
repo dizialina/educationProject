@@ -154,8 +154,6 @@
                          @"amount":@8,
                          @"type":@"Paste"}];
     
-    
-                    //
     return array;
 }
 
@@ -205,9 +203,6 @@
                        @{@"joke":@"Сейчас будет немного шуток про рубль....",
                          @"amount":@2,
                          @"type":@"Multiply"},
-                       @{@"joke":@"",
-                         @"amount":@36.7,
-                         @"type":@"Print"},
 
                      ];
     return array;

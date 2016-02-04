@@ -26,6 +26,7 @@
 //@property (strong, nonatomic) AVAudioPlayer *backgroundMusic;
 @property (weak, nonatomic) IBOutlet GADBannerView *bannerView;
 @property (weak, nonatomic) IBOutlet GoodButton *healButton;
+@property (weak, nonatomic) IBOutlet GoodButton *homeButton;
 
 
 - (IBAction)healAction:(GoodButton *)sender;

@@ -191,6 +191,9 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                         <real key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
+                                        <color key="value" red="0.81960784310000001" green="0.21176470589999999" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <variation key="widthClass=compact">
                                     <mask key="constraints">
@@ -206,7 +209,6 @@
                                 </variation>
                                 <connections>
                                     <action selector="homeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xSj-bh-dC0"/>
-                                    <segue destination="Ulb-ci-F6r" kind="show" identifier="toHome" id="F2v-u4-GR4"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3KF-tq-n8c" customClass="GADBannerView">
@@ -632,7 +634,6 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="tFP-RL-Gjn"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
@@ -643,6 +644,7 @@
                         <outlet property="curToEuroLabel" destination="tCe-lx-UU1" id="XvS-Wc-Jbe"/>
                         <outlet property="headLabel" destination="FtR-6G-Kjz" id="1Jj-eE-snx"/>
                         <outlet property="healButton" destination="shT-jZ-az3" id="2PR-rg-9k3"/>
+                        <outlet property="homeButton" destination="XFu-1U-xCF" id="nA0-9c-nZo"/>
                         <outlet property="productPrice" destination="BoO-pW-JPu" id="ZUg-Qu-GU7"/>
                         <outlet property="specialProductLabel" destination="Kz9-aY-FaH" id="ra0-4U-TFv"/>
                     </connections>

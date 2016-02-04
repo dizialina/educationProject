@@ -38,11 +38,4 @@
 }
 
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"toMain"]) {
-        MainScreen *mainScreen = segue.destinationViewController;
-        //mainScreen.backgroundMusic = self.backgroundMusic;
-    }
-}
-
 @end

@@ -20,13 +20,14 @@
 @import GoogleMobileAds;
 
 @interface MainScreen () {
-    NSMutableDictionary *dataDict;
+    NSMutableDictionary *dataDictUkr;
+    NSMutableDictionary *dataDictRus;
     int currentItem;
     BOOL randomJoke;
     BOOL russianMode;
 }
 
-@property (strong, nonatomic) NSArray *curRateObj;
+@property (strong, nonatomic) NSArray *curRateObjYahoo;
 @property (strong, nonatomic) NSArray *receiveData;
 
 
@@ -88,7 +89,8 @@
 //    }
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        dataDict = [NSMutableDictionary new];
+        
+        dataDictUkr = [NSMutableDictionary new];
         NSString *selectQueueUSD = [NSString stringWithFormat:@"SELECT * FROM CurrencyRate WHERE ShortCurName=\'%@\'", @"USD"];
         NSArray *resultArrayUSD = [objClient returnCurrencyRateObjectArrayFromGovDB:selectQueueUSD];
         //NSLog(@"Count of items in result array after SELECT queue: %lu", (unsigned long)[resultArrayUSD count]);
@@ -97,7 +99,7 @@
                 RateItemFromGov *bankRateItem = [resultArrayUSD firstObject];
                 self.curToDollar.text = [NSString stringWithFormat:@"%.2f", bankRateItem.rate];
                 self.productPrice.text = [NSString stringWithFormat:@"%.2f", bankRateItem.rate * 2.1];
-                [dataDict setObject:[NSNumber numberWithDouble:bankRateItem.rate] forKey:@"USD"];
+                [dataDictUkr setObject:[NSNumber numberWithDouble:bankRateItem.rate] forKey:@"USD"];
             });
         }
         
@@ -108,17 +110,21 @@
             dispatch_sync(dispatch_get_main_queue(), ^{
                 RateItemFromGov *bankRateItem = [resultArrayEUR firstObject];
                 self.curToEuro.text = [NSString stringWithFormat:@"%.2f", bankRateItem.rate];
-                [dataDict setObject:[NSNumber numberWithDouble:bankRateItem.rate] forKey:@"EUR"];
+                [dataDictUkr setObject:[NSNumber numberWithDouble:bankRateItem.rate] forKey:@"EUR"];
 
             });
         }
         
+        dataDictRus = [NSMutableDictionary new];
         NSString *testSelectQueue = [NSString stringWithFormat:@"SELECT * FROM yahooCurrencyRate"];
         NSArray *testResultArray = [objClient returnCurrencyRateObjectArrayFromYahooBD:testSelectQueue];
         //NSLog(@"Count of items in result array after SELECT queue: %lu", (unsigned long)[testResultArray count]);
         if (testResultArray.count != 0) {
-            self.curRateObj = testResultArray;
-            
+            self.curRateObjYahoo = testResultArray;
+            RateItemFromYahoo *rubToDollarItem = [self.curRateObjYahoo firstObject];
+            RateItemFromYahoo *rubToEuroItem = [self.curRateObjYahoo lastObject];
+            [dataDictRus setObject:[NSNumber numberWithDouble:rubToDollarItem.rate] forKey:@"USD"];
+            [dataDictRus setObject:[NSNumber numberWithDouble:rubToEuroItem.rate] forKey:@"EUR"];
         }
 
         
@@ -130,16 +136,26 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"toHome"]) {
         HomeScreen *homeScreen = segue.destinationViewController;
-        homeScreen.curRateObj = self.curRateObj;
+        homeScreen.curRateObj = self.curRateObjYahoo;
     }
 }
 
 - (IBAction)healAction:(GoodButton *)sender {
     
     FunnyJokesClass *jokes = [FunnyJokesClass new];
-    NSArray *ukraineJokes = [jokes returnArrayWithJokesFor:Ukraine];
-    if (currentItem < [ukraineJokes count]) {
-        NSDictionary *joke = [ukraineJokes objectAtIndex:currentItem];
+    NSArray *jokesArray;
+    NSDictionary *dataDict;
+    
+    if (!russianMode) {
+        jokesArray = [jokes returnArrayWithJokesFor:Ukraine];
+        dataDict = [NSDictionary dictionaryWithDictionary:dataDictUkr];
+    } else {
+        jokesArray = [jokes returnArrayWithJokesFor:Russia];
+        dataDict = [NSDictionary dictionaryWithDictionary:dataDictRus];
+    }
+        
+    if (currentItem < [jokesArray count]) {
+        NSDictionary *joke = [jokesArray objectAtIndex:currentItem];
 
         if ([[joke objectForKey:@"type"] isEqualToString:@"Multiply"]) {
             double multiply = [[joke objectForKey:@"amount"] doubleValue];
@@ -161,9 +177,17 @@
         }
         
         if (!randomJoke) {
+            
             currentItem += 1;
+            
         } else {
-            currentItem = arc4random_uniform(42);
+            
+            if (!russianMode) {
+                currentItem = arc4random_uniform(42);
+            } else {
+                currentItem = arc4random_uniform(15);
+            }
+
         }
         
     } else {
@@ -176,6 +200,39 @@
 }
 
 - (IBAction)homeButton:(GoodButton *)sender {
+    
+    if (!russianMode) {
+        
+        russianMode = YES;
+        
+        [self.homeButton setTitle:@"Че там у хохлов?" forState:UIControlStateNormal];
+        self.headLabel.text = @"Че там в раше?";
+        
+        RateItemFromYahoo *rubToDollarItem = [self.curRateObjYahoo firstObject];
+        RateItemFromYahoo *rubToEuroItem = [self.curRateObjYahoo lastObject];
+        
+        self.curToDollarLabel.text = @"рублей за доллар";
+        self.curToDollar.text = [NSString stringWithFormat:@"%.2f", rubToDollarItem.rate];
+        
+        self.curToEuroLabel.text = @"рублей за евро";
+        self.curToEuro.text = [NSString stringWithFormat:@"%.2f", rubToEuroItem.rate];
+        
+        self.specialProductLabel.text = @"за баррель";
+        self.productPrice.text = @"no data"; // цена за нефть
+        
+    } else {
+        
+        russianMode = NO;
+        
+        [self.homeButton setTitle:@"Че там в раше?" forState:UIControlStateNormal];
+        self.headLabel.text = @"Че там у хохлов?";
+        self.curToDollarLabel.text = @"грн за доллар";
+        self.curToEuroLabel.text = @"грн за евро";
+        self.specialProductLabel.text = @"за 1 кг сала";
+        [self updateDataInView];
+        
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
