@@ -17,8 +17,36 @@
 
 + (void)requestDataFromServer {
     
+    NSDate *date = [NSDate date];
+    NSDateFormatter *dateForm = [NSDateFormatter new];
+    [dateForm setDateFormat:@"EEE"];
+    NSString *dayOfWeek = [dateForm stringFromDate:date];
+    
+    NSString *urlGov;
+    
+    if ([dayOfWeek isEqualToString:@"Sat"]) {
+        
+        NSDate *newDate = [date dateByAddingTimeInterval:-86400]; //минус сутки
+        [dateForm setDateFormat:@"yyyyMMdd"];
+        NSString *currentDate = [dateForm stringFromDate:newDate];
+        urlGov = [NSString stringWithFormat:@"http://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?date=%@&json", currentDate];
+        //NSLog(urlGov);
+        
+    } else if ([dayOfWeek isEqualToString:@"Sun"]) {
+        
+        NSDate *newDate = [date dateByAddingTimeInterval:-172800]; //минус двое суток
+        [dateForm setDateFormat:@"yyyyMMdd"];
+        NSString *currentDate = [dateForm stringFromDate:newDate];
+        urlGov = [NSString stringWithFormat:@"http://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?date=%@&json", currentDate];
+        //NSLog(urlGov);
+        
+    } else {
+        urlGov = @"http://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json";
+        //NSLog(urlGov);
+    }
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        [self requestDataFromGovServer:LinkToGovData];
+        [self requestDataFromGovServerAndSaveWithTransaction:urlGov];
         [self requestDataFromYahooServer:LinkToYahooData];
     });
     
@@ -162,7 +190,7 @@
                 NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                 if ([responseArray count] != 0) {
                     
-                    NSLog(@"Array was done");
+                    NSLog(@"Array is full. Gov server works.");
                     NSMutableArray* queryArray = [NSMutableArray new];
                     [responseArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                         NSDictionary *dict = obj;
