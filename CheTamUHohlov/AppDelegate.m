@@ -27,7 +27,6 @@
     [client copyDBFileToPath];
     
     [RequestClient requestDataFromServer];
-    //[RequestClient requestDataFromGovServerAndSaveWithTransaction:LinkToData]; // transaction
     
     //[iRate sharedInstance].appStoreID = 1;
     [iRate sharedInstance].eventsUntilPrompt = 3;

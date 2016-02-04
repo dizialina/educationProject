@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "CheTamUHohlov-Swift.h"
-#import <AVFoundation/AVFoundation.h>
-#import <AudioToolbox/AudioToolbox.h>
 @import GoogleMobileAds;
 
 @interface MainScreen : UIViewController
@@ -23,15 +21,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *curToEuro;
 @property (weak, nonatomic) IBOutlet UILabel *productPrice;
 
-//@property (strong, nonatomic) AVAudioPlayer *backgroundMusic;
 @property (weak, nonatomic) IBOutlet GADBannerView *bannerView;
 @property (weak, nonatomic) IBOutlet GoodButton *healButton;
 @property (weak, nonatomic) IBOutlet GoodButton *homeButton;
 
-
 - (IBAction)healAction:(GoodButton *)sender;
 - (IBAction)homeButton:(GoodButton *)sender;
-
 
 @end
 

@@ -12,7 +12,6 @@
 #import "RateItemFromGov.h"
 #import "RateItemFromYahoo.h"
 #import "Constants.h"
-#import "HomeScreen.h"
 #import "CheTamUHohlov-Swift.h"
 #import "Reachability.h"
 #import <SystemConfiguration/SystemConfiguration.h>
@@ -30,7 +29,6 @@
 @property (strong, nonatomic) NSArray *curRateObjYahoo;
 @property (strong, nonatomic) NSArray *receiveData;
 
-
 @end
 
 @implementation MainScreen {
@@ -41,15 +39,7 @@
     [super viewDidLoad];
     
     [self updateDataInView];
-    
-//    if (!self.backgroundMusic) {
-//        NSURL *musicFile = [[NSBundle mainBundle] URLForResource:@"sunset" withExtension:@"mp3"];
-//        self.backgroundMusic = [[AVAudioPlayer alloc] initWithContentsOfURL:musicFile error:nil];
-//        self.backgroundMusic.numberOfLoops = -1;
-//        self.backgroundMusic.volume = 0.3;
-//        [self.backgroundMusic play];
-//    }
-    
+        
     currentItem = 0;
     randomJoke = NO;
     russianMode = NO;
@@ -65,6 +55,10 @@
                                                  name:NotificationAboutLoadingGovData
                                                object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateDataInView)
+                                                 name:NotificationAboutLoadingYahooData
+                                               object:nil];
     
 }
 
@@ -79,6 +73,7 @@
 - (void)updateDataInView {
     
     ObjClient *objClient = [ObjClient new];
+    
 //    //NSString *testSelectQueue = [NSString stringWithFormat:@"SELECT * FROM yahooCurrencyRate WHERE Name=\'%@\'", @"USD/RUB"];
 //    NSString *testSelectQueue = [NSString stringWithFormat:@"SELECT * FROM yahooCurrencyRate"];
 //    NSArray *testResultArray = [objClient returnCurrencyRateObjectArrayFromYahooBD:testSelectQueue];
@@ -123,6 +118,12 @@
             self.curRateObjYahoo = testResultArray;
             RateItemFromYahoo *rubToDollarItem = [self.curRateObjYahoo firstObject];
             RateItemFromYahoo *rubToEuroItem = [self.curRateObjYahoo lastObject];
+            
+//            NSLog(@"%@", rubToDollarItem.pairCurName);
+//            NSLog(@"%f", rubToDollarItem.rate);
+//            NSLog(@"%f", rubToDollarItem.ask);
+//            NSLog(@"%f", rubToDollarItem.bid);
+            
             [dataDictRus setObject:[NSNumber numberWithDouble:rubToDollarItem.rate] forKey:@"USD"];
             [dataDictRus setObject:[NSNumber numberWithDouble:rubToEuroItem.rate] forKey:@"EUR"];
         }
@@ -133,12 +134,7 @@
     
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"toHome"]) {
-        HomeScreen *homeScreen = segue.destinationViewController;
-        homeScreen.curRateObj = self.curRateObjYahoo;
-    }
-}
+#pragma mark - Button Actions
 
 - (IBAction)healAction:(GoodButton *)sender {
     
@@ -213,10 +209,8 @@
         
         self.curToDollarLabel.text = @"рублей за доллар";
         self.curToDollar.text = [NSString stringWithFormat:@"%.2f", rubToDollarItem.rate];
-        
         self.curToEuroLabel.text = @"рублей за евро";
         self.curToEuro.text = [NSString stringWithFormat:@"%.2f", rubToEuroItem.rate];
-        
         self.specialProductLabel.text = @"за баррель";
         self.productPrice.text = @"no data"; // цена за нефть
         
@@ -229,6 +223,7 @@
         self.curToDollarLabel.text = @"грн за доллар";
         self.curToEuroLabel.text = @"грн за евро";
         self.specialProductLabel.text = @"за 1 кг сала";
+        
         [self updateDataInView];
         
     }
@@ -239,6 +234,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 @end

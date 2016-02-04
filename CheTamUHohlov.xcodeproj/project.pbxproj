@@ -27,7 +27,6 @@
 		953E31171C5A4CAA00BA73A3 /* FunnyJokesClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 953E31151C5A4CAA00BA73A3 /* FunnyJokesClass.m */; };
 		955682EC1C3EDC5D00CC68B4 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 955682EB1C3EDC5D00CC68B4 /* libsqlite3.tbd */; };
 		955682EF1C3EE98D00CC68B4 /* RateItemFromGov.m in Sources */ = {isa = PBXBuildFile; fileRef = 955682EE1C3EE98D00CC68B4 /* RateItemFromGov.m */; };
-		95622F761C4BD081004241E8 /* HomeScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 95622F751C4BD081004241E8 /* HomeScreen.m */; };
 		95622F791C4BD9FB004241E8 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95622F781C4BD9FB004241E8 /* UIViewExtension.swift */; };
 		95622F801C4BDF57004241E8 /* GoodButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95622F7F1C4BDF57004241E8 /* GoodButton.swift */; };
 		95622F851C4BE679004241E8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95622F871C4BE679004241E8 /* Localizable.strings */; };
@@ -68,8 +67,6 @@
 		955682EB1C3EDC5D00CC68B4 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		955682ED1C3EE98D00CC68B4 /* RateItemFromGov.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateItemFromGov.h; sourceTree = "<group>"; };
 		955682EE1C3EE98D00CC68B4 /* RateItemFromGov.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateItemFromGov.m; sourceTree = "<group>"; };
-		95622F741C4BD081004241E8 /* HomeScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeScreen.h; sourceTree = "<group>"; };
-		95622F751C4BD081004241E8 /* HomeScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeScreen.m; sourceTree = "<group>"; };
 		95622F771C4BD9FB004241E8 /* CheTamUHohlov-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CheTamUHohlov-Bridging-Header.h"; sourceTree = "<group>"; };
 		95622F781C4BD9FB004241E8 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		95622F7F1C4BDF57004241E8 /* GoodButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoodButton.swift; sourceTree = "<group>"; };
@@ -250,8 +247,6 @@
 			children = (
 				9514F1AB1C3AD57B00F27D2D /* MainScreen.h */,
 				9514F1AC1C3AD57B00F27D2D /* MainScreen.m */,
-				95622F741C4BD081004241E8 /* HomeScreen.h */,
-				95622F751C4BD081004241E8 /* HomeScreen.m */,
 			);
 			name = "Obj-C";
 			sourceTree = "<group>";
@@ -394,7 +389,6 @@
 				95622F791C4BD9FB004241E8 /* UIViewExtension.swift in Sources */,
 				953E31171C5A4CAA00BA73A3 /* FunnyJokesClass.m in Sources */,
 				9514F1AD1C3AD57B00F27D2D /* MainScreen.m in Sources */,
-				95622F761C4BD081004241E8 /* HomeScreen.m in Sources */,
 				9514F1AA1C3AD57B00F27D2D /* AppDelegate.m in Sources */,
 				955682EF1C3EE98D00CC68B4 /* RateItemFromGov.m in Sources */,
 				9514F1C11C3EACD100F27D2D /* ObjClient.m in Sources */,
