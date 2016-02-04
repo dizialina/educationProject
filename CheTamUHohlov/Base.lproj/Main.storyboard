@@ -637,11 +637,14 @@
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
                         <outlet property="bannerView" destination="3KF-tq-n8c" id="dhN-jZ-kzS"/>
-                        <outlet property="grnToDollar" destination="1lO-QU-n8M" id="Yox-qy-aiW"/>
-                        <outlet property="grnToEuro" destination="EpH-ZN-WPe" id="oex-xR-52K"/>
+                        <outlet property="curToDollar" destination="1lO-QU-n8M" id="q0s-RQ-pZG"/>
+                        <outlet property="curToDollarLabel" destination="ker-C3-bQE" id="ycA-Mq-tvU"/>
+                        <outlet property="curToEuro" destination="EpH-ZN-WPe" id="nuw-XA-5qg"/>
+                        <outlet property="curToEuroLabel" destination="tCe-lx-UU1" id="XvS-Wc-Jbe"/>
                         <outlet property="headLabel" destination="FtR-6G-Kjz" id="1Jj-eE-snx"/>
                         <outlet property="healButton" destination="shT-jZ-az3" id="2PR-rg-9k3"/>
-                        <outlet property="saloPrice" destination="BoO-pW-JPu" id="oea-xT-pHW"/>
+                        <outlet property="productPrice" destination="BoO-pW-JPu" id="ZUg-Qu-GU7"/>
+                        <outlet property="specialProductLabel" destination="Kz9-aY-FaH" id="ra0-4U-TFv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

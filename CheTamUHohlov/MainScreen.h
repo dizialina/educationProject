@@ -15,10 +15,15 @@
 @interface MainScreen : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *headLabel;
-@property (weak, nonatomic) IBOutlet UILabel *grnToDollar;
-@property (weak, nonatomic) IBOutlet UILabel *grnToEuro;
-@property (weak, nonatomic) IBOutlet UILabel *saloPrice;
-@property (strong, nonatomic) AVAudioPlayer *backgroundMusic;
+@property (weak, nonatomic) IBOutlet UILabel *curToDollarLabel;
+@property (weak, nonatomic) IBOutlet UILabel *curToEuroLabel;
+@property (weak, nonatomic) IBOutlet UILabel *specialProductLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *curToDollar;
+@property (weak, nonatomic) IBOutlet UILabel *curToEuro;
+@property (weak, nonatomic) IBOutlet UILabel *productPrice;
+
+//@property (strong, nonatomic) AVAudioPlayer *backgroundMusic;
 @property (weak, nonatomic) IBOutlet GADBannerView *bannerView;
 @property (weak, nonatomic) IBOutlet GoodButton *healButton;
 

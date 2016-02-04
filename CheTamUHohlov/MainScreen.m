@@ -23,6 +23,7 @@
     NSMutableDictionary *dataDict;
     int currentItem;
     BOOL randomJoke;
+    BOOL russianMode;
 }
 
 @property (strong, nonatomic) NSArray *curRateObj;
@@ -40,17 +41,18 @@
     
     [self updateDataInView];
     
-    if (!self.backgroundMusic) {
-        NSURL *musicFile = [[NSBundle mainBundle] URLForResource:@"sunset" withExtension:@"mp3"];
-        self.backgroundMusic = [[AVAudioPlayer alloc] initWithContentsOfURL:musicFile error:nil];
-        self.backgroundMusic.numberOfLoops = -1;
-        self.backgroundMusic.volume = 0.3;
-        [self.backgroundMusic play];
-    }
+//    if (!self.backgroundMusic) {
+//        NSURL *musicFile = [[NSBundle mainBundle] URLForResource:@"sunset" withExtension:@"mp3"];
+//        self.backgroundMusic = [[AVAudioPlayer alloc] initWithContentsOfURL:musicFile error:nil];
+//        self.backgroundMusic.numberOfLoops = -1;
+//        self.backgroundMusic.volume = 0.3;
+//        [self.backgroundMusic play];
+//    }
     
     currentItem = 0;
     randomJoke = NO;
-    //UIButton
+    russianMode = NO;
+   
     NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
     self.bannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
     self.bannerView.rootViewController = self;
@@ -93,8 +95,8 @@
         if (resultArrayUSD.count != 0) {
             dispatch_sync(dispatch_get_main_queue(), ^{
                 RateItemFromGov *bankRateItem = [resultArrayUSD firstObject];
-                self.grnToDollar.text = [NSString stringWithFormat:@"%.2f", bankRateItem.rate];
-                self.saloPrice.text = [NSString stringWithFormat:@"%.2f", bankRateItem.rate * 2.1];
+                self.curToDollar.text = [NSString stringWithFormat:@"%.2f", bankRateItem.rate];
+                self.productPrice.text = [NSString stringWithFormat:@"%.2f", bankRateItem.rate * 2.1];
                 [dataDict setObject:[NSNumber numberWithDouble:bankRateItem.rate] forKey:@"USD"];
             });
         }
@@ -105,7 +107,7 @@
         if (resultArrayEUR.count != 0) {
             dispatch_sync(dispatch_get_main_queue(), ^{
                 RateItemFromGov *bankRateItem = [resultArrayEUR firstObject];
-                self.grnToEuro.text = [NSString stringWithFormat:@"%.2f", bankRateItem.rate];
+                self.curToEuro.text = [NSString stringWithFormat:@"%.2f", bankRateItem.rate];
                 [dataDict setObject:[NSNumber numberWithDouble:bankRateItem.rate] forKey:@"EUR"];
 
             });
@@ -129,7 +131,6 @@
     if ([segue.identifier isEqualToString:@"toHome"]) {
         HomeScreen *homeScreen = segue.destinationViewController;
         homeScreen.curRateObj = self.curRateObj;
-        homeScreen.backgroundMusic = self.backgroundMusic;
     }
 }
 
@@ -142,19 +143,19 @@
 
         if ([[joke objectForKey:@"type"] isEqualToString:@"Multiply"]) {
             double multiply = [[joke objectForKey:@"amount"] doubleValue];
-            self.grnToDollar.text = [NSString stringWithFormat:@"%.2f", [[dataDict objectForKey:@"USD"] doubleValue] * multiply];
-            self.grnToEuro.text = [NSString stringWithFormat:@"%.2f", [[dataDict objectForKey:@"EUR"] doubleValue] * multiply];
+            self.curToDollar.text = [NSString stringWithFormat:@"%.2f", [[dataDict objectForKey:@"USD"] doubleValue] * multiply];
+            self.curToEuro.text = [NSString stringWithFormat:@"%.2f", [[dataDict objectForKey:@"EUR"] doubleValue] * multiply];
             self.headLabel.text = [joke objectForKey:@"joke"];
             
         } else if ([[joke objectForKey:@"type"] isEqualToString:@"Divide"]) {
             double divide = [[joke objectForKey:@"amount"] doubleValue];
-            self.grnToDollar.text = [NSString stringWithFormat:@"%.2f", [[dataDict objectForKey:@"USD"] doubleValue] / divide];
-            self.grnToEuro.text = [NSString stringWithFormat:@"%.2f", [[dataDict objectForKey:@"EUR"] doubleValue] / divide];
+            self.curToDollar.text = [NSString stringWithFormat:@"%.2f", [[dataDict objectForKey:@"USD"] doubleValue] / divide];
+            self.curToEuro.text = [NSString stringWithFormat:@"%.2f", [[dataDict objectForKey:@"EUR"] doubleValue] / divide];
             self.headLabel.text = [joke objectForKey:@"joke"];
             
         } else {
-            self.grnToDollar.text = [NSString stringWithFormat:@"%@", [joke objectForKey:@"amount"]];
-            self.grnToEuro.text = [NSString stringWithFormat:@"%@", [joke objectForKey:@"amount"]];
+            self.curToDollar.text = [NSString stringWithFormat:@"%@", [joke objectForKey:@"amount"]];
+            self.curToEuro.text = [NSString stringWithFormat:@"%@", [joke objectForKey:@"amount"]];
             self.headLabel.text = [joke objectForKey:@"joke"];
 
         }
