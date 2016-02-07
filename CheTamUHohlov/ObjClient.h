@@ -11,15 +11,13 @@
 
 @interface ObjClient : NSObject
 
-- (NSString *)copyDBFileToPath;
-
-- (BOOL)writeRequestIntoDB:(NSString *)request;
-
+- (NSString *)copyDBFileToPathIfNotExistsAndReturnAdress;
 - (NSArray *)returnCurrencyRateObjectArrayFromGovDB:(NSString *)request;
 - (NSArray *)returnCurrencyRateObjectArrayFromYahooBD:(NSString *)request;
+- (BOOL) writeWithTransactionRequestToDatabase:(NSArray*)arrayRequests;
 
 - (BOOL)openDB;
 - (void)closeDB;
-- (BOOL)writeRequestIntoDBWithTransaction:(NSArray *)arrayItem;
+
 
 @end

@@ -11,6 +11,7 @@
 #import "ManageFileSystem.h"
 #import "RequestClient.h"
 #import "Constants.h"
+#import "Keys.h"
 #import "iRate.h"
 #import "Flurry.h"
 
@@ -24,7 +25,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     ObjClient *client = [ObjClient new];
-    [client copyDBFileToPath];
+    [client copyDBFileToPathIfNotExistsAndReturnAdress];
     
     [RequestClient requestDataFromServer];
     
@@ -32,7 +33,7 @@
     [iRate sharedInstance].eventsUntilPrompt = 3;
     [iRate sharedInstance].verboseLogging = FALSE;
     
-    [Flurry startSession:@"G4TTDKFZHHP5MW3R4P3H"];
+    [Flurry startSession:FlurryKey];
     
     return YES;
 }

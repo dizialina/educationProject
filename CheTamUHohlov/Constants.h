@@ -8,12 +8,12 @@
 
 #ifndef Constants_h
 #define Constants_h
-#define LinkToGovData @"http://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json"
-#define LinkToYahooData @"https://query.yahooapis.com/v1/public/yql?q=select+*+from+yahoo.finance.xchange+where+pair+=+%22USDRUB,EURRUB%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback="
+
 #define TableNameWithGovData @"CurrencyRate"
 #define TableNameWithYahooData @"yahooCurrencyRate"
 #define DBName @"DiziDB.sqlite"
 #define NotificationAboutLoadingGovData @"NotificationReceivedDataFromGovServer"
 #define NotificationAboutLoadingYahooData @"NotificationReceivedDataFromYahooServer"
+#define BrentStockKey @"BrentPrice"
 
 #endif /* Constants_h */

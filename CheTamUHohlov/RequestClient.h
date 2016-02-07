@@ -10,9 +10,9 @@
 
 @interface RequestClient : NSObject
 
-+ (void)requestDataFromGovServer:(NSString *) urlString;
 + (void)requestDataFromYahooServer:(NSString *) urlString;
 + (void)requestDataFromGovServerAndSaveWithTransaction:(NSString *) urlString;
 + (void)requestDataFromServer;
++ (void) requestDataFromBrentStocks:(NSString *) urlString;
 
 @end

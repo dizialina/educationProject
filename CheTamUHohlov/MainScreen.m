@@ -12,6 +12,7 @@
 #import "RateItemFromGov.h"
 #import "RateItemFromYahoo.h"
 #import "Constants.h"
+#import "Keys.h"
 #import "CheTamUHohlov-Swift.h"
 #import "Reachability.h"
 #import <SystemConfiguration/SystemConfiguration.h>
@@ -45,9 +46,12 @@
     russianMode = NO;
    
     NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
-    self.bannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
+    self.bannerView.adUnitID = GoogleBannerKey;
     self.bannerView.rootViewController = self;
-    [self.bannerView loadRequest:[GADRequest request]];
+    GADRequest *someRequest = [GADRequest request];
+    someRequest.testDevices = @[ kGADSimulatorID ];
+    [self.bannerView loadRequest:someRequest];
+    
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -93,7 +97,7 @@
             dispatch_sync(dispatch_get_main_queue(), ^{
                 RateItemFromGov *bankRateItem = [resultArrayUSD firstObject];
                 self.curToDollar.text = [NSString stringWithFormat:@"%.2f", bankRateItem.rate];
-                self.productPrice.text = [NSString stringWithFormat:@"%.2f", bankRateItem.rate * 2.1];
+                self.productPrice.text = [NSString stringWithFormat:@"%.2f₴", bankRateItem.rate * 2.1];
                 [dataDictUkr setObject:[NSNumber numberWithDouble:bankRateItem.rate] forKey:@"USD"];
             });
         }
@@ -212,7 +216,11 @@
         self.curToEuroLabel.text = @"рублей за евро";
         self.curToEuro.text = [NSString stringWithFormat:@"%.2f", rubToEuroItem.rate];
         self.specialProductLabel.text = @"за баррель";
-        self.productPrice.text = @"no data"; // цена за нефть
+        if ([[NSUserDefaults standardUserDefaults] doubleForKey:BrentStockKey]) {
+            self.productPrice.text = [NSString stringWithFormat:@"%.2f$", [[NSUserDefaults standardUserDefaults] doubleForKey:BrentStockKey]];
+        } else {
+            self.productPrice.text = @"Нет данных";
+        }
         
     } else {
         

@@ -9,6 +9,7 @@
 #import "RequestClient.h"
 #import "ObjClient.h"
 #import "Constants.h"
+#import "Keys.h"
 #import "Reachability.h"
 #import <SystemConfiguration/SystemConfiguration.h>
 
@@ -41,69 +42,15 @@
         //NSLog(urlGov);
         
     } else {
-        urlGov = @"http://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json";
+        urlGov = LinkToGovData;
         //NSLog(urlGov);
     }
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         [self requestDataFromGovServerAndSaveWithTransaction:urlGov];
         [self requestDataFromYahooServer:LinkToYahooData];
+        [self requestDataFromBrentStocks:LinkToBrentStocks];
     });
-    
-}
-
-#pragma mark - Methods working with Gov server
-
-+ (void)requestDataFromGovServer:(NSString *) urlString {
-    
-    Reachability* reach = [Reachability reachabilityWithHostname:@"www.google.com"];
-    
-    NetworkStatus remoteHostStatus = [reach currentReachabilityStatus];
-    if(remoteHostStatus != NotReachable) {
-        
-        if (urlString.length != 0) {
-            
-            NSURL *url = [NSURL URLWithString:urlString];
-        
-            NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
-            [urlRequest setURL:url];
-            [urlRequest setHTTPMethod:@"GET"];
-        
-            NSURLSession *urlSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-            [[urlSession dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-            
-                assert(data);
-                if (!error) {
-                    NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-                    if ([responseArray count] != 0) {
-                        NSLog(@"Array is full. Gov server works.");
-                        [responseArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                            NSDictionary *dict = obj;
-                            //NSLog(@"%@", dict);
-                            NSString *shortCurName = [dict objectForKey:@"cc"];
-                            double rate = [[dict objectForKey:@"rate"] doubleValue];
-                            NSString *fullName = [dict objectForKey:@"txt"];
-                            NSString *insertQueue = [NSString stringWithFormat:@"INSERT OR REPLACE INTO CurrencyRate VALUES (\'%@\', %f, \'%@\')",shortCurName, rate, fullName];
-                            ObjClient *objClient = [ObjClient new];
-                            [objClient writeRequestIntoDB:insertQueue];
-                        
-                        }];
-                        [[NSNotificationCenter defaultCenter] postNotificationName:NotificationAboutLoadingGovData object:nil];
-                    } else {
-                        NSLog(@"Array is empty. Problem with Gov server.");
-                    }
-                } else {
-                    NSLog(@"%@",error.localizedDescription);
-                }
-            
-            }] resume];
-            
-            
-        }
-        
-    } else {
-        NSLog(@"UNREACHABLE!");
-    }
     
 }
 
@@ -147,8 +94,9 @@
                             double bid = [[dict objectForKey:@"Bid"] doubleValue];
                             //NSLog(@"%@, %f, %f, %f", pairCurName, rate, ask, bid);
                             NSString *insertQueue = [NSString stringWithFormat:@"INSERT OR REPLACE INTO yahooCurrencyRate VALUES (\'%@\', %f, %f, %f)", pairCurName, rate, ask, bid];
+                            NSArray *requestsArray = @[insertQueue];
                             ObjClient *objClient = [ObjClient new];
-                            [objClient writeRequestIntoDB:insertQueue];
+                            [objClient writeWithTransactionRequestToDatabase:requestsArray];
                             
                         }];
                         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationAboutLoadingYahooData object:nil];
@@ -174,53 +122,99 @@
 
 + (void)requestDataFromGovServerAndSaveWithTransaction:(NSString *) urlString {
     
-    if (urlString.length != 0) {
+    Reachability* reach = [Reachability reachabilityWithHostname:@"www.google.com"];
+    
+    NetworkStatus remoteHostStatus = [reach currentReachabilityStatus];
+    if(remoteHostStatus != NotReachable) {
+    
+        if (urlString.length != 0) {
         
-        NSURL *url = [NSURL URLWithString:urlString];
+            NSURL *url = [NSURL URLWithString:urlString];
         
-        NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
-        [urlRequest setURL:url];
-        [urlRequest setHTTPMethod:@"GET"];
+            NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
+            [urlRequest setURL:url];
+            [urlRequest setHTTPMethod:@"GET"];
         
-        NSURLSession *urlSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-        [[urlSession dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            NSURLSession *urlSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+            [[urlSession dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
             
-            assert(data);
-            if (!error) {
-                NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-                if ([responseArray count] != 0) {
+                assert(data);
+                if (!error) {
+                    NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                    if ([responseArray count] != 0) {
                     
-                    NSLog(@"Array is full. Gov server works.");
-                    NSMutableArray* queryArray = [NSMutableArray new];
-                    [responseArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                        NSDictionary *dict = obj;
-                        //NSLog(@"%@", dict);
-                        NSString *shortCurName = [dict objectForKey:@"cc"];
-                        double rate = [[dict objectForKey:@"rate"] doubleValue];
-                        NSString *fullName = [dict objectForKey:@"txt"];
-                        //NSString *fullName = @"";
-                        NSString *insertQueue = [NSString stringWithFormat:@"INSERT OR REPLACE INTO CurrencyRate VALUES (\'%@\', %f, \'%@\')", shortCurName, rate, fullName];
-                        [queryArray addObject:insertQueue];
+                        NSLog(@"Array is full. Gov server works.");
+                        NSMutableArray* queryArray = [NSMutableArray new];
+                        [responseArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                            NSDictionary *dict = obj;
+                            //NSLog(@"%@", dict);
+                            NSString *shortCurName = [dict objectForKey:@"cc"];
+                            double rate = [[dict objectForKey:@"rate"] doubleValue];
+                            NSString *fullName = [dict objectForKey:@"txt"];
+                            //NSString *fullName = @"";
+                            NSString *insertQueue = [NSString stringWithFormat:@"INSERT OR REPLACE INTO CurrencyRate VALUES (\'%@\', %f, \'%@\')", shortCurName, rate, fullName];
+                            [queryArray addObject:insertQueue];
                         
-                    }];
+                        }];
                     
-                    NSArray *fullQueryArray = [NSArray arrayWithArray:queryArray];
-                    ObjClient *objClient = [ObjClient new];
-                    [objClient openDB];
-                    [objClient writeRequestIntoDBWithTransaction:fullQueryArray];
-                    [objClient closeDB];
+                        NSArray *fullQueryArray = [NSArray arrayWithArray:queryArray];
+                        ObjClient *objClient = [ObjClient new];
+                        [objClient writeWithTransactionRequestToDatabase:fullQueryArray];
                     
+                    } else {
+                        NSLog(@"Array is empty");
+                    }
                 } else {
-                    NSLog(@"Array is empty");
+                    NSLog(@"%@",error.localizedDescription);
                 }
-            } else {
-                NSLog(@"%@",error.localizedDescription);
-            }
             
-        }] resume];
+            }] resume];
         
+        }
+        
+    } else {
+        NSLog(@"UNREACHABLE!");
     }
 }
+
++ (void) requestDataFromBrentStocks:(NSString *) urlString {
+    
+    Reachability* reach = [Reachability reachabilityWithHostname:@"www.google.com"];
+    
+    NetworkStatus remoteHostStatus = [reach currentReachabilityStatus];
+    if(remoteHostStatus != NotReachable) {
+        
+        if (urlString.length != 0) {
+            
+            NSURL *url = [NSURL URLWithString:urlString];
+            
+            NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
+            [urlRequest setURL:url];
+            [urlRequest setHTTPMethod:@"GET"];
+            
+            NSURLSession *urlSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+            [[urlSession dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                
+                assert(data);
+                if (!error) {
+                    NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                    if ([responseDictionary count] != 0) {
+                        
+                        NSLog(@"Dictionary is full. BrentStocks server works.");
+                        //NSLog(@"%@", responseDictionary);
+                        NSArray *queryArray = [responseDictionary objectForKey:@"data"];
+                        NSArray *dataArray = [queryArray firstObject];
+                        double rate = [[dataArray objectAtIndex:4] doubleValue];
+                        [[NSUserDefaults standardUserDefaults] setDouble:rate forKey:BrentStockKey];
+                    }
+                }
+            }] resume];
+            
+        }
+    }
+}
+
+
 
 
 

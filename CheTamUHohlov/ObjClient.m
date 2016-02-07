@@ -11,6 +11,7 @@
 #import "sqlite3.h"
 #import "RateItemFromGov.h"
 #import "RateItemFromYahoo.h"
+#import "FMDB/FMDB.h"
 
 @implementation ObjClient {
     sqlite3 *database;
@@ -18,7 +19,7 @@
 
 #pragma mark - Main Methods
 
-- (NSString *)copyDBFileToPath {
+- (NSString *)copyDBFileToPathIfNotExistsAndReturnAdress {
     
     NSArray *pathsToFolders = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *pathDocumentsFolder = [pathsToFolders lastObject];
@@ -46,39 +47,10 @@
     return stringDBPath;
 }
 
-- (BOOL)writeRequestIntoDB:(NSString *)request {
-    
-    @synchronized(self) {
-
-    //NSLog(@"Request to be executed:%@",request);
-    BOOL returnBool = NO;
-    NSString *stringDBPath = [self copyDBFileToPath];
-    if (sqlite3_open([stringDBPath UTF8String], &database) == SQLITE_OK ) {
-        const char *receivedRequest = [request UTF8String];
-        sqlite3_stmt *writeStatement = nil;
-        if(sqlite3_prepare_v2(database, receivedRequest, -1, &writeStatement, NULL) != SQLITE_OK) {
-            NSAssert1(0, @"Error while creating update statement. '%s'", sqlite3_errmsg(database));
-        }
-        if (SQLITE_DONE != sqlite3_step(writeStatement)){
-            NSAssert1(0, @"Error while creating database. '%s'", sqlite3_errmsg(database));
-        }
-        returnBool = YES;
-        sqlite3_reset(writeStatement);
-        sqlite3_finalize(writeStatement);
-    } else {
-        NSAssert1(0, @"Error while opening database '%s'", sqlite3_errmsg(database));
-    }
-    sqlite3_close(database);
-
-    return returnBool;
-        
-    }
-}
-
 - (NSArray *)returnCurrencyRateObjectArrayFromGovDB:(NSString *)request {
     
     NSMutableArray *currencyRateArray = [NSMutableArray new];
-    NSString *stringDBPath = [self copyDBFileToPath];
+    NSString *stringDBPath = [self copyDBFileToPathIfNotExistsAndReturnAdress];
     if (sqlite3_open([stringDBPath UTF8String], &database) == SQLITE_OK) {
         const char *receivedRequest = [request UTF8String];
         sqlite3_stmt *readStatement = nil;
@@ -108,7 +80,7 @@
 - (NSArray *)returnCurrencyRateObjectArrayFromYahooBD:(NSString *)request { 
     
     NSMutableArray *currencyRateArray = [NSMutableArray new];
-    NSString *stringDBPath = [self copyDBFileToPath];
+    NSString *stringDBPath = [self copyDBFileToPathIfNotExistsAndReturnAdress];
     if (sqlite3_open([stringDBPath UTF8String], &database) == SQLITE_OK) {
         const char *receivedRequest = [request UTF8String];
         sqlite3_stmt *readStatement = nil;
@@ -137,7 +109,7 @@
 
 - (BOOL)openDB {
     BOOL returnBool = NO;
-    NSString *stringDBPath = [self copyDBFileToPath];
+    NSString *stringDBPath = [self copyDBFileToPathIfNotExistsAndReturnAdress];
     if (sqlite3_open([stringDBPath UTF8String], &database) == SQLITE_OK) {
         returnBool = YES; }
     return returnBool;
@@ -147,49 +119,24 @@
     sqlite3_close(database);
 }
 
-- (BOOL)writeRequestIntoDBWithTransaction:(NSArray *)arrayItem {
 
-    //NSLog(@"Request to be executed:%@",request);
-    
-    BOOL returnBool = NO;
-    NSString *stringDBPath = [self copyDBFileToPath];
-    
-    if (sqlite3_open([stringDBPath UTF8String], &database) == SQLITE_OK ) {
-    
-        sqlite3_exec(database, "BEGIN TRANSACTION", NULL, NULL, NULL);
-        sqlite3_stmt *insertTermStatement = NULL;
-    
-        for (unsigned i = 0; i < arrayItem.count; i++)
-        {
-            // http://stackoverflow.com/questions/12133355/sqlite-transaction-syntax-for-ios
-            // "Your code can be a bit more efficient if you !!!MOVE THE PREPARE OUTSIDE THE LOOP!!!. If you do this, use sqlite3_reset inside the loop, and sqlite3_finalize after the loop."
-            // Как для эффективности поместить PREPARE снаружи цикла, если он принимает наш string запрос из массива и этот запрос каждый раз разный?
-            
-            const char *buffer = [[arrayItem objectAtIndex:i] UTF8String];
-            if (sqlite3_prepare_v2(database, buffer, -1, &insertTermStatement, NULL) != SQLITE_OK) {
-                NSAssert1(0, @"Error while creating update statement. '%s'", sqlite3_errmsg(database));
-            }
-            if (sqlite3_step(insertTermStatement) != SQLITE_DONE) {
-                NSLog(@"Step. DB not updated. Error: %s",sqlite3_errmsg(database));
-            }
-            if (sqlite3_reset(insertTermStatement) != SQLITE_OK) {
-                NSLog(@"Reset. SQL Error: %s",sqlite3_errmsg(database));
-            }
+- (BOOL) writeWithTransactionRequestToDatabase:(NSArray*)arrayRequests {
+
+    if ([arrayRequests count] != 0) {
+    FMDatabase *db = [FMDatabase databaseWithPath:[self copyDBFileToPathIfNotExistsAndReturnAdress]];
+        if (![db open]) {
+            [db close];
         }
-    
-        if (sqlite3_finalize(insertTermStatement) != SQLITE_OK) {
-            NSLog(@"Finalize. SQL Error: %s", sqlite3_errmsg(database));
+        [db open];
+        [db beginTransaction];
+        for (NSString *request in arrayRequests) {
+            [db executeQuery:request];
         }
-        if (sqlite3_exec(database, "COMMIT TRANSACTION", 0, 0, 0) != SQLITE_OK) {
-            NSLog(@"Commit. SQL Error: %s",sqlite3_errmsg(database));
-        }
-        
-    } else {
-        NSAssert1(0, @"Error while opening database '%s'", sqlite3_errmsg(database));
+        [db commit];
+        [db close];
+        return YES;
     }
-    
-    return returnBool;
-    
+    return NO;
 }
 
 
