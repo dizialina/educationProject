@@ -15,7 +15,6 @@
 		84E5CC841C47D372002A59A3 /* RateItemFromYahoo.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E5CC831C47D372002A59A3 /* RateItemFromYahoo.m */; };
 		84E9049B1C3FE74F0025587B /* ManageFileSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E9049A1C3FE74F0025587B /* ManageFileSystem.m */; };
 		84EC23C31C579E14008FA17F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84EC23C11C579E14008FA17F /* Main.storyboard */; };
-		84FBEDB31C6265D100311193 /* Natasha.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84FBEDB21C6265D100311193 /* Natasha.ttf */; };
 		9514F1A71C3AD57B00F27D2D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9514F1A61C3AD57B00F27D2D /* main.m */; };
 		9514F1AA1C3AD57B00F27D2D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9514F1A91C3AD57B00F27D2D /* AppDelegate.m */; };
 		9514F1AD1C3AD57B00F27D2D /* MainScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 9514F1AC1C3AD57B00F27D2D /* MainScreen.m */; };
@@ -31,6 +30,7 @@
 		95622F801C4BDF57004241E8 /* GoodButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95622F7F1C4BDF57004241E8 /* GoodButton.swift */; };
 		95622F851C4BE679004241E8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95622F871C4BE679004241E8 /* Localizable.strings */; };
 		958DDC681C5E7020007FB8AF /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 958DDC671C5E7020007FB8AF /* GoogleMobileAds.framework */; };
+		95C1236E1C6728F40046B2D0 /* Natasha.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95C1236D1C6728F40046B2D0 /* Natasha.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,7 +45,6 @@
 		84E904991C3FE74F0025587B /* ManageFileSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageFileSystem.h; sourceTree = "<group>"; };
 		84E9049A1C3FE74F0025587B /* ManageFileSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageFileSystem.m; sourceTree = "<group>"; };
 		84EC23C21C579E14008FA17F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		84FBEDB21C6265D100311193 /* Natasha.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Natasha.ttf; path = ../../Downloads/Natasha.ttf; sourceTree = "<group>"; };
 		9514F1A21C3AD57B00F27D2D /* CheTamUHohlov.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheTamUHohlov.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9514F1A61C3AD57B00F27D2D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9514F1A81C3AD57B00F27D2D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -74,6 +73,8 @@
 		95622F881C4BE680004241E8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		95622F891C4BE8A5004241E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		958DDC671C5E7020007FB8AF /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		95C1236D1C6728F40046B2D0 /* Natasha.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Natasha.ttf; sourceTree = "<group>"; };
+		95C1236F1C6759670046B2D0 /* Keys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keys.h; sourceTree = "<group>"; };
 		CA096BF688AA9C3EEB641E3A /* Pods-CheTamUHohlov.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheTamUHohlov.release.xcconfig"; path = "Pods/Target Support Files/Pods-CheTamUHohlov/Pods-CheTamUHohlov.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -182,9 +183,10 @@
 				953E31181C5A4CB000BA73A3 /* Jokes Hard Code */,
 				955682E71C3ED8D300CC68B4 /* Librarys */,
 				9514F1C61C3EBF9400F27D2D /* Constants.h */,
+				95C1236F1C6759670046B2D0 /* Keys.h */,
+				95C1236D1C6728F40046B2D0 /* Natasha.ttf */,
 				9514F1A61C3AD57B00F27D2D /* main.m */,
 				9514F1C41C3EBBEE00F27D2D /* DiziDB.sqlite */,
-				84FBEDB21C6265D100311193 /* Natasha.ttf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -325,7 +327,7 @@
 				95622F851C4BE679004241E8 /* Localizable.strings in Resources */,
 				9514F1B51C3AD57B00F27D2D /* LaunchScreen.storyboard in Resources */,
 				9514F1B21C3AD57B00F27D2D /* Assets.xcassets in Resources */,
-				84FBEDB31C6265D100311193 /* Natasha.ttf in Resources */,
+				95C1236E1C6728F40046B2D0 /* Natasha.ttf in Resources */,
 				84EC23C31C579E14008FA17F /* Main.storyboard in Resources */,
 				9514F1C51C3EBBEE00F27D2D /* DiziDB.sqlite in Resources */,
 			);

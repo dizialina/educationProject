@@ -32,7 +32,7 @@ build/*
 <<<<<<< HEAD
 xcuserdata/
 
-
+Keys.h
 
   
 #    NB: also, whitelist the default ones, some projects need to use these
