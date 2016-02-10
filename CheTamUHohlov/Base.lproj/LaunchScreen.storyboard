@@ -16,12 +16,58 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIcon" translatesAutoresizingMaskIntoConstraints="NO" id="IHt-Ad-ASW">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="5Db-fC-dWP"/>
+                                    <constraint firstAttribute="height" constant="240" id="fCn-O7-6wE"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="5Db-fC-dWP"/>
+                                        <exclude reference="fCn-O7-6wE"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="5Db-fC-dWP"/>
+                                        <include reference="fCn-O7-6wE"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="IHt-Ad-ASW" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="oDD-vT-j7J"/>
+                            <constraint firstItem="IHt-Ad-ASW" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="wFF-EA-nnk"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="IHt-Ad-ASW"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="oDD-vT-j7J"/>
+                                <exclude reference="wFF-EA-nnk"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="IHt-Ad-ASW"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="oDD-vT-j7J"/>
+                                <include reference="wFF-EA-nnk"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.5" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="AppIcon" width="375" height="470"/>
+    </resources>
 </document>
