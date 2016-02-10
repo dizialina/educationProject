@@ -17,7 +17,7 @@
     sqlite3 *database;
 }
 
-#pragma mark - Main Methods
+#pragma mark - Methods working with file data base
 
 - (NSString *)copyDBFileToPathIfNotExistsAndReturnAdress {
     
@@ -42,64 +42,6 @@
     }
     
     return stringDBPath;
-}
-
-- (NSArray *)returnCurrencyRateObjectArrayFromGovDB:(NSString *)request {
-    
-    NSMutableArray *currencyRateArray = [NSMutableArray new];
-    NSString *stringDBPath = [self copyDBFileToPathIfNotExistsAndReturnAdress];
-    if (sqlite3_open([stringDBPath UTF8String], &database) == SQLITE_OK) {
-        const char *receivedRequest = [request UTF8String];
-        sqlite3_stmt *readStatement = nil;
-        if(sqlite3_prepare_v2(database, receivedRequest, -1, &readStatement, NULL) != SQLITE_OK) {
-            NSAssert1(0, @"Error while reading statement. '%s'", sqlite3_errmsg(database));
-        }
-        while (sqlite3_step(readStatement) == SQLITE_ROW) {
-            RateItemFromGov *bankItem = [RateItemFromGov new];
-            //NSLog(@"%s",sqlite3_column_text(readStatement, 0));
-            char * shortName = (char *)sqlite3_column_text(readStatement, 0);
-            bankItem.shortCurName = [NSString stringWithUTF8String:shortName];
-            bankItem.rate = sqlite3_column_double(readStatement, 1);
-            char * fullName = (char *)sqlite3_column_text(readStatement, 2);
-            bankItem.fullName = [NSString stringWithUTF8String:fullName];
-            [currencyRateArray addObject:bankItem];
-        }
-        sqlite3_reset(readStatement);
-    }
-    sqlite3_close(database);
-    
-    NSArray *returnArray = [NSArray arrayWithArray:currencyRateArray];
-    return returnArray;
-}
-
-#pragma mark - Methods working with Yahoo server
-
-- (NSArray *)returnCurrencyRateObjectArrayFromYahooBD:(NSString *)request { 
-    
-    NSMutableArray *currencyRateArray = [NSMutableArray new];
-    NSString *stringDBPath = [self copyDBFileToPathIfNotExistsAndReturnAdress];
-    if (sqlite3_open([stringDBPath UTF8String], &database) == SQLITE_OK) {
-        const char *receivedRequest = [request UTF8String];
-        sqlite3_stmt *readStatement = nil;
-        if(sqlite3_prepare_v2(database, receivedRequest, -1, &readStatement, NULL) != SQLITE_OK) {
-            NSAssert1(0, @"Error while reading statement. '%s'", sqlite3_errmsg(database));
-        }
-        while (sqlite3_step(readStatement) == SQLITE_ROW) {
-            RateItemFromYahoo *bankItem = [RateItemFromYahoo new];
-            //NSLog(@"%s",sqlite3_column_text(readStatement, 0));
-            char * name = (char *)sqlite3_column_text(readStatement, 0);
-            bankItem.pairCurName = [NSString stringWithUTF8String:name];
-            bankItem.rate = sqlite3_column_double(readStatement, 1);
-            bankItem.ask = sqlite3_column_double(readStatement, 2);
-            bankItem.bid = sqlite3_column_double(readStatement, 3);
-            [currencyRateArray addObject:bankItem];
-        }
-        sqlite3_reset(readStatement);
-    }
-    sqlite3_close(database);
-    
-    NSArray *returnArray = [NSArray arrayWithArray:currencyRateArray];
-    return returnArray;
 }
 
 #pragma mark - Transaction method for writing data to database

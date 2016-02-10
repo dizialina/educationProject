@@ -12,8 +12,7 @@
 @interface ObjClient : NSObject
 
 - (NSString *)copyDBFileToPathIfNotExistsAndReturnAdress;
-- (NSArray *)returnCurrencyRateObjectArrayFromGovDB:(NSString *)request;
-- (NSArray *)returnCurrencyRateObjectArrayFromYahooBD:(NSString *)request;
+
 - (BOOL) writeWithTransactionRequestToDatabase:(NSArray*)arrayRequests;
 
 - (NSArray *)returnCurrencyRateObjectArrayFromGovDBWithFMDB:(NSString *)request;

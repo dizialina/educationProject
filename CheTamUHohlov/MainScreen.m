@@ -78,15 +78,6 @@
     
     ObjClient *objClient = [ObjClient new];
     
-//    //NSString *testSelectQueue = [NSString stringWithFormat:@"SELECT * FROM yahooCurrencyRate WHERE Name=\'%@\'", @"USD/RUB"];
-//    NSString *testSelectQueue = [NSString stringWithFormat:@"SELECT * FROM yahooCurrencyRate"];
-//    NSArray *testResultArray = [objClient returnCurrencyRateObjectArrayFromYahooBD:testSelectQueue];
-//    NSLog(@"Count of items in result array after SELECT queue: %lu", (unsigned long)[testResultArray count]);
-//    if (testResultArray.count != 0) {
-//        self.curRateObj = testResultArray;
-//    
-//    }
-
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         
         dataDictUkr = [NSMutableDictionary new];
@@ -122,12 +113,6 @@
             self.curRateObjYahoo = resultArrayYahoo;
             RateItemFromYahoo *rubToDollarItem = [self.curRateObjYahoo firstObject];
             RateItemFromYahoo *rubToEuroItem = [self.curRateObjYahoo lastObject];
-            
-//            NSLog(@"%@", rubToDollarItem.pairCurName);
-//            NSLog(@"%f", rubToDollarItem.rate);
-//            NSLog(@"%f", rubToDollarItem.ask);
-//            NSLog(@"%f", rubToDollarItem.bid);
-            
             [dataDictRus setObject:[NSNumber numberWithDouble:rubToDollarItem.rate] forKey:@"USD"];
             [dataDictRus setObject:[NSNumber numberWithDouble:rubToEuroItem.rate] forKey:@"EUR"];
         }

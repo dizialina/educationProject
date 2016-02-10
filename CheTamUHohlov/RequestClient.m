@@ -96,9 +96,9 @@
                             //NSLog(@"%@, %f, %f, %f", pairCurName, rate, ask, bid);
                             NSString *insertQueue = [NSString stringWithFormat:@"INSERT OR REPLACE INTO yahooCurrencyRate VALUES (\'%@\', %f, %f, %f)", pairCurName, rate, ask, bid];
                             [queryArray addObject:insertQueue];
-                            //NSLog(@"%@", insertQueue);
                             
                         }];
+                        
                         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationAboutLoadingYahooData object:nil];
                         
                         NSArray *fullQueryArray = [NSArray arrayWithArray:queryArray];
@@ -122,7 +122,7 @@
     }
 }
 
-#pragma mark - Transaction Method working with Gov server
+#pragma mark - Methods working with Gov server
 
 + (void)requestDataFromGovServerAndSaveWithTransaction:(NSString *) urlString {
     
@@ -158,9 +158,9 @@
                             NSString *fullName = @"";
                             NSString *insertQueue = [NSString stringWithFormat:@"INSERT OR REPLACE INTO CurrencyRate VALUES (\'%@\', %f, \'%@\')", shortCurName, rate, fullName];
                             [queryArray addObject:insertQueue];
-                            //NSLog(@"%@", insertQueue);
                         
                         }];
+                        
                         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationAboutLoadingGovData object:nil];
                     
                         NSArray *fullQueryArray = [NSArray arrayWithArray:queryArray];
@@ -182,6 +182,8 @@
         NSLog(@"UNREACHABLE!");
     }
 }
+
+#pragma mark - Methods working with Brent Stock server
 
 + (void) requestDataFromBrentStocks:(NSString *) urlString {
     
@@ -217,12 +219,10 @@
             }] resume];
             
         }
+        
+    } else {
+        NSLog(@"UNREACHABLE!");
     }
 }
-
-
-
-
-
 
 @end
