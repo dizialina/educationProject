@@ -41,9 +41,6 @@
         //NSLog(@"File exist in Documents folder");
     }
     
-    //проверка количества файлов в папке Documents (в старом варианте равна 0)
-    //NSArray* listFilesInTemp = [manager contentsOfDirectoryAtPath:pathDocumentsFolder error:nil];
-    //NSLog(@"%@", listFilesInTemp);    
     return stringDBPath;
 }
 
@@ -105,7 +102,7 @@
     return returnArray;
 }
 
-#pragma mark - Transaction Method
+#pragma mark - Transaction method for writing data to database
 
 - (BOOL)openDB {
     BOOL returnBool = NO;
@@ -121,7 +118,7 @@
 
 
 - (BOOL) writeWithTransactionRequestToDatabase:(NSArray*)arrayRequests {
-
+    
     if ([arrayRequests count] != 0) {
     FMDatabase *db = [FMDatabase databaseWithPath:[self copyDBFileToPathIfNotExistsAndReturnAdress]];
         if (![db open]) {
@@ -130,7 +127,9 @@
         [db open];
         [db beginTransaction];
         for (NSString *request in arrayRequests) {
-            [db executeQuery:request];
+            //[db executeQuery:request];
+            [db executeUpdate:request];
+            //NSLog(@"%@", request);
         }
         [db commit];
         [db close];
@@ -139,38 +138,65 @@
     return NO;
 }
 
+#pragma mark - Select methods with FMDB
 
+- (NSArray *)returnCurrencyRateObjectArrayFromGovDBWithFMDB:(NSString *)request {
+    
+    NSMutableArray *currencyRateArray = [NSMutableArray new];
+    
+    FMDatabase *db = [FMDatabase databaseWithPath:[self copyDBFileToPathIfNotExistsAndReturnAdress]];
+    
+    if (![db open]) {
+        [db close];
+    }
+    
+    [db open];
+
+    FMResultSet *s = [db executeQuery:request];
+    
+    while ([s next]) {
+        RateItemFromGov *bankItem = [RateItemFromGov new];
+        bankItem.shortCurName = [s stringForColumnIndex:0];
+        bankItem.rate = [s doubleForColumnIndex:1];
+        [currencyRateArray addObject:bankItem];
+    }
+    
+    [db close];
+    
+    NSArray *returnArray = [NSArray arrayWithArray:currencyRateArray];
+    return returnArray;
+}
+
+- (NSArray *)returnCurrencyRateObjectArrayFromYahooBDWithFMDB:(NSString *)request {
+    
+    NSMutableArray *currencyRateArray = [NSMutableArray new];
+    
+    FMDatabase *db = [FMDatabase databaseWithPath:[self copyDBFileToPathIfNotExistsAndReturnAdress]];
+    
+    if (![db open]) {
+        [db close];
+    }
+    
+    [db open];
+    
+    FMResultSet *s = [db executeQuery:request];
+    
+    while ([s next]) {
+        RateItemFromYahoo *bankItem = [RateItemFromYahoo new];
+        bankItem.pairCurName = [s stringForColumnIndex:0];
+        bankItem.rate = [s doubleForColumnIndex:1];
+        bankItem.ask = [s doubleForColumnIndex:2];
+        bankItem.bid = [s doubleForColumnIndex:3];
+        [currencyRateArray addObject:bankItem];
+    }
+    
+    [db close];
+    
+    NSArray *returnArray = [NSArray arrayWithArray:currencyRateArray];
+    return returnArray;
+    
+}
 
 @end
 
-// пример который х пойми как работает
 
-//char *insertTermError;
-//sqlite3_exec(dbMaster, "BEGIN TRANSACTION", NULL, NULL, &insertTermError);
-//
-//char buffer[] = "INSERT OR IGNORE INTO Records (Name, Address, EmailAddress, OrderID, PaymentID) VALUES (?1, ?2, ?3, ?4, ?5)";
-//sqlite3_stmt *insertTermStatement;
-//sqlite3_prepare_v2(dbMaster, buffer, strlen(buffer), &insertTermStatement, NULL);
-//
-//for (unsigned i = 0; i < recordCount; i++)
-//{
-//    NSString *name = getName(i);
-//    NSString *address = getAddress(i);
-//    NSString *emailAddress = getEmailAddress(i);
-//    
-//    sqlite3_bind_text(insertTermStatement, 1, name.c_str(), name.size(), SQLITE_STATIC);
-//    sqlite3_bind_text(insertTermStatement, 2, address.c_str(), address.size());
-//    sqlite3_bind_text(insertTermStatement, 3, emailAddress.c_str(), emailAddress.size(), SQLITE_STATIC);
-//    sqlite3_bind_int(insertTermStatement, 4, getOrderID(i));
-//    sqlite3_bind_int(insertTermStatement, 5, getPaymentID(i));
-//    
-//    if (sqlite3_step(insertTermStatement) != SQLITE_DONE)
-//    {
-//        NSLog(@"Commit failed");
-//    }
-//    
-//    sqlite3_reset(insertTermStatement);
-//}
-//
-//sqlite3_exec(dbMaster, "COMMIT TRANSACTION", NULL, NULL, &insertTermError);
-//sqlite3_finalize(insertTermStatement);

@@ -71,7 +71,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    NSLog(@"%f", self.view.frame.size.height);
+    //NSLog(@"%f", self.view.frame.size.height);
 }
 
 - (void)updateDataInView {
@@ -91,8 +91,8 @@
         
         dataDictUkr = [NSMutableDictionary new];
         NSString *selectQueueUSD = [NSString stringWithFormat:@"SELECT * FROM CurrencyRate WHERE ShortCurName=\'%@\'", @"USD"];
-        NSArray *resultArrayUSD = [objClient returnCurrencyRateObjectArrayFromGovDB:selectQueueUSD];
-        //NSLog(@"Count of items in result array after SELECT queue: %lu", (unsigned long)[resultArrayUSD count]);
+        NSArray *resultArrayUSD = [objClient returnCurrencyRateObjectArrayFromGovDBWithFMDB:selectQueueUSD];
+        NSLog(@"Gov: Count of items in result array after SELECT USD queue: %lu", (unsigned long)[resultArrayUSD count]);
         if (resultArrayUSD.count != 0) {
             dispatch_sync(dispatch_get_main_queue(), ^{
                 RateItemFromGov *bankRateItem = [resultArrayUSD firstObject];
@@ -103,8 +103,8 @@
         }
         
         NSString *selectQueueEUR = [NSString stringWithFormat:@"SELECT * FROM CurrencyRate WHERE ShortCurName=\'%@\'", @"EUR"];
-        NSArray *resultArrayEUR = [objClient returnCurrencyRateObjectArrayFromGovDB:selectQueueEUR];
-        //NSLog(@"Count of items in result array after SELECT queue: %lu", (unsigned long)[resultArrayEUR count]);
+        NSArray *resultArrayEUR = [objClient returnCurrencyRateObjectArrayFromGovDBWithFMDB:selectQueueEUR];
+        NSLog(@"Gov: Count of items in result array after SELECT EUR queue: %lu", (unsigned long)[resultArrayEUR count]);
         if (resultArrayEUR.count != 0) {
             dispatch_sync(dispatch_get_main_queue(), ^{
                 RateItemFromGov *bankRateItem = [resultArrayEUR firstObject];
@@ -115,11 +115,11 @@
         }
         
         dataDictRus = [NSMutableDictionary new];
-        NSString *testSelectQueue = [NSString stringWithFormat:@"SELECT * FROM yahooCurrencyRate"];
-        NSArray *testResultArray = [objClient returnCurrencyRateObjectArrayFromYahooBD:testSelectQueue];
-        //NSLog(@"Count of items in result array after SELECT queue: %lu", (unsigned long)[testResultArray count]);
-        if (testResultArray.count != 0) {
-            self.curRateObjYahoo = testResultArray;
+        NSString *selectQueueYahoo = [NSString stringWithFormat:@"SELECT * FROM yahooCurrencyRate"];
+        NSArray *resultArrayYahoo = [objClient returnCurrencyRateObjectArrayFromYahooBDWithFMDB:selectQueueYahoo];
+        NSLog(@"Yahoo: Count of items in result array after SELECT queue: %lu", (unsigned long)[resultArrayYahoo count]);
+        if (resultArrayYahoo.count != 0) {
+            self.curRateObjYahoo = resultArrayYahoo;
             RateItemFromYahoo *rubToDollarItem = [self.curRateObjYahoo firstObject];
             RateItemFromYahoo *rubToEuroItem = [self.curRateObjYahoo lastObject];
             

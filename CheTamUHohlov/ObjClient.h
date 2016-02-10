@@ -16,6 +16,9 @@
 - (NSArray *)returnCurrencyRateObjectArrayFromYahooBD:(NSString *)request;
 - (BOOL) writeWithTransactionRequestToDatabase:(NSArray*)arrayRequests;
 
+- (NSArray *)returnCurrencyRateObjectArrayFromGovDBWithFMDB:(NSString *)request;
+- (NSArray *)returnCurrencyRateObjectArrayFromYahooBDWithFMDB:(NSString *)request;
+
 - (BOOL)openDB;
 - (void)closeDB;
 

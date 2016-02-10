@@ -80,6 +80,7 @@
                     if ([responseDictionary count] != 0) {
                         
                         NSLog(@"Dictionary is full. Yahoo server works.");
+                        NSMutableArray* queryArray = [NSMutableArray new];
                         NSDictionary *queryDict = [responseDictionary objectForKey:@"query"];
                         NSDictionary *resultDict = [queryDict objectForKey:@"results"];
                         NSArray *rateArray = [resultDict objectForKey:@"rate"];
@@ -94,12 +95,15 @@
                             double bid = [[dict objectForKey:@"Bid"] doubleValue];
                             //NSLog(@"%@, %f, %f, %f", pairCurName, rate, ask, bid);
                             NSString *insertQueue = [NSString stringWithFormat:@"INSERT OR REPLACE INTO yahooCurrencyRate VALUES (\'%@\', %f, %f, %f)", pairCurName, rate, ask, bid];
-                            NSArray *requestsArray = @[insertQueue];
-                            ObjClient *objClient = [ObjClient new];
-                            [objClient writeWithTransactionRequestToDatabase:requestsArray];
+                            [queryArray addObject:insertQueue];
+                            //NSLog(@"%@", insertQueue);
                             
                         }];
                         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationAboutLoadingYahooData object:nil];
+                        
+                        NSArray *fullQueryArray = [NSArray arrayWithArray:queryArray];
+                        ObjClient *objClient = [ObjClient new];
+                        [objClient writeWithTransactionRequestToDatabase:fullQueryArray];
                 
                     } else {
                         NSLog(@"Dictionary is empty. Problem with Yahoo server.");
@@ -150,19 +154,21 @@
                             //NSLog(@"%@", dict);
                             NSString *shortCurName = [dict objectForKey:@"cc"];
                             double rate = [[dict objectForKey:@"rate"] doubleValue];
-                            NSString *fullName = [dict objectForKey:@"txt"];
-                            //NSString *fullName = @"";
+                            //NSString *fullName = [dict objectForKey:@"txt"];
+                            NSString *fullName = @"";
                             NSString *insertQueue = [NSString stringWithFormat:@"INSERT OR REPLACE INTO CurrencyRate VALUES (\'%@\', %f, \'%@\')", shortCurName, rate, fullName];
                             [queryArray addObject:insertQueue];
+                            //NSLog(@"%@", insertQueue);
                         
                         }];
+                        [[NSNotificationCenter defaultCenter] postNotificationName:NotificationAboutLoadingGovData object:nil];
                     
                         NSArray *fullQueryArray = [NSArray arrayWithArray:queryArray];
                         ObjClient *objClient = [ObjClient new];
                         [objClient writeWithTransactionRequestToDatabase:fullQueryArray];
                     
                     } else {
-                        NSLog(@"Array is empty");
+                        NSLog(@"Array is empty. Problem with Gov server.");
                     }
                 } else {
                     NSLog(@"%@",error.localizedDescription);
