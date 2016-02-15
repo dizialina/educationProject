@@ -17,6 +17,11 @@
     sqlite3 *database;
 }
 
+- (int)testMethod:(int)testInt {
+    testInt +=1;
+    return testInt;
+}
+
 #pragma mark - Methods working with file data base
 
 - (NSString *)copyDBFileToPathIfNotExistsAndReturnAdress {
@@ -66,12 +71,13 @@
         if (![db open]) {
             [db close];
         }
+        NSLog(@"Count of request array:%lu", (unsigned long)arrayRequests.count);
         [db open];
         [db beginTransaction];
         for (NSString *request in arrayRequests) {
             //[db executeQuery:request];
             [db executeUpdate:request];
-            //NSLog(@"%@", request);
+           
         }
         [db commit];
         [db close];

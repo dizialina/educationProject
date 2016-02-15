@@ -4,11 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>CheTamUHohlov copy.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
 		<key>CheTamUHohlov.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -23,6 +18,11 @@
 			<true/>
 		</dict>
 		<key>951867391C53954900A42A06</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>954D46B41C6F7EF100A5B7E9</key>
 		<dict>
 			<key>primary</key>
 			<true/>

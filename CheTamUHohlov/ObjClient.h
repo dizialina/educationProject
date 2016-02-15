@@ -13,7 +13,7 @@
 
 - (NSString *)copyDBFileToPathIfNotExistsAndReturnAdress;
 
-- (BOOL) writeWithTransactionRequestToDatabase:(NSArray*)arrayRequests;
+- (BOOL)writeWithTransactionRequestToDatabase:(NSArray*)arrayRequests;
 
 - (NSArray *)returnCurrencyRateObjectArrayFromGovDBWithFMDB:(NSString *)request;
 - (NSArray *)returnCurrencyRateObjectArrayFromYahooBDWithFMDB:(NSString *)request;
@@ -21,5 +21,6 @@
 - (BOOL)openDB;
 - (void)closeDB;
 
+- (int)testMethod:(int)testInt;
 
 @end

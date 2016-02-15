@@ -24,6 +24,7 @@
 		9514F1C11C3EACD100F27D2D /* ObjClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9514F1C01C3EACD100F27D2D /* ObjClient.m */; };
 		9514F1C51C3EBBEE00F27D2D /* DiziDB.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 9514F1C41C3EBBEE00F27D2D /* DiziDB.sqlite */; };
 		953E31171C5A4CAA00BA73A3 /* FunnyJokesClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 953E31151C5A4CAA00BA73A3 /* FunnyJokesClass.m */; };
+		954D46B81C6F7EF100A5B7E9 /* XoxolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 954D46B71C6F7EF100A5B7E9 /* XoxolTests.m */; };
 		955682EC1C3EDC5D00CC68B4 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 955682EB1C3EDC5D00CC68B4 /* libsqlite3.tbd */; };
 		955682EF1C3EE98D00CC68B4 /* RateItemFromGov.m in Sources */ = {isa = PBXBuildFile; fileRef = 955682EE1C3EE98D00CC68B4 /* RateItemFromGov.m */; };
 		95622F791C4BD9FB004241E8 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95622F781C4BD9FB004241E8 /* UIViewExtension.swift */; };
@@ -32,6 +33,16 @@
 		958DDC681C5E7020007FB8AF /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 958DDC671C5E7020007FB8AF /* GoogleMobileAds.framework */; };
 		95C1236E1C6728F40046B2D0 /* Natasha.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95C1236D1C6728F40046B2D0 /* Natasha.ttf */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		954D46BA1C6F7EF100A5B7E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9514F19A1C3AD57B00F27D2D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9514F1A11C3AD57B00F27D2D;
+			remoteInfo = CheTamUHohlov;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		30D1C2F93730FC85F87852D1 /* Pods-CheTamUHohlov.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheTamUHohlov.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CheTamUHohlov/Pods-CheTamUHohlov.debug.xcconfig"; sourceTree = "<group>"; };
@@ -63,6 +74,9 @@
 		951867521C53954900A42A06 /* CheTamUHohlov copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CheTamUHohlov copy-Info.plist"; path = "/Users/romansafin/Documents/CheTamUHohlov/CheTamUHohlov copy-Info.plist"; sourceTree = "<absolute>"; };
 		953E31151C5A4CAA00BA73A3 /* FunnyJokesClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunnyJokesClass.m; sourceTree = "<group>"; };
 		953E31161C5A4CAA00BA73A3 /* FunnyJokesClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunnyJokesClass.h; sourceTree = "<group>"; };
+		954D46B51C6F7EF100A5B7E9 /* XoxolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XoxolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		954D46B71C6F7EF100A5B7E9 /* XoxolTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XoxolTests.m; sourceTree = "<group>"; };
+		954D46B91C6F7EF100A5B7E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		955682EB1C3EDC5D00CC68B4 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		955682ED1C3EE98D00CC68B4 /* RateItemFromGov.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateItemFromGov.h; sourceTree = "<group>"; };
 		955682EE1C3EE98D00CC68B4 /* RateItemFromGov.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateItemFromGov.m; sourceTree = "<group>"; };
@@ -90,6 +104,13 @@
 				955682EC1C3EDC5D00CC68B4 /* libsqlite3.tbd in Frameworks */,
 				958DDC681C5E7020007FB8AF /* GoogleMobileAds.framework in Frameworks */,
 				5642F23B586FE18AACC20090 /* Pods_CheTamUHohlov.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		954D46B21C6F7EF100A5B7E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				9514F1A41C3AD57B00F27D2D /* CheTamUHohlov */,
+				954D46B61C6F7EF100A5B7E9 /* XoxolTests */,
 				9514F1A31C3AD57B00F27D2D /* Products */,
 				951867521C53954900A42A06 /* CheTamUHohlov copy-Info.plist */,
 				1FB8B9716BB22F8E61E59417 /* Frameworks */,
@@ -152,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				9514F1A21C3AD57B00F27D2D /* CheTamUHohlov.app */,
+				954D46B51C6F7EF100A5B7E9 /* XoxolTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -198,6 +221,15 @@
 				953E31151C5A4CAA00BA73A3 /* FunnyJokesClass.m */,
 			);
 			name = "Jokes Hard Code";
+			sourceTree = "<group>";
+		};
+		954D46B61C6F7EF100A5B7E9 /* XoxolTests */ = {
+			isa = PBXGroup;
+			children = (
+				954D46B71C6F7EF100A5B7E9 /* XoxolTests.m */,
+				954D46B91C6F7EF100A5B7E9 /* Info.plist */,
+			);
+			path = XoxolTests;
 			sourceTree = "<group>";
 		};
 		955172D31C429C930025D0FF /* View Controllers */ = {
@@ -285,6 +317,24 @@
 			productReference = 9514F1A21C3AD57B00F27D2D /* CheTamUHohlov.app */;
 			productType = "com.apple.product-type.application";
 		};
+		954D46B41C6F7EF100A5B7E9 /* XoxolTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 954D46BC1C6F7EF100A5B7E9 /* Build configuration list for PBXNativeTarget "XoxolTests" */;
+			buildPhases = (
+				954D46B11C6F7EF100A5B7E9 /* Sources */,
+				954D46B21C6F7EF100A5B7E9 /* Frameworks */,
+				954D46B31C6F7EF100A5B7E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				954D46BB1C6F7EF100A5B7E9 /* PBXTargetDependency */,
+			);
+			name = XoxolTests;
+			productName = XoxolTests;
+			productReference = 954D46B51C6F7EF100A5B7E9 /* XoxolTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -297,6 +347,10 @@
 					9514F1A11C3AD57B00F27D2D = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = Y859DLF8C3;
+					};
+					954D46B41C6F7EF100A5B7E9 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = 9514F1A11C3AD57B00F27D2D;
 					};
 				};
 			};
@@ -315,6 +369,7 @@
 			projectRoot = "";
 			targets = (
 				9514F1A11C3AD57B00F27D2D /* CheTamUHohlov */,
+				954D46B41C6F7EF100A5B7E9 /* XoxolTests */,
 			);
 		};
 /* End PBXProject section */
@@ -330,6 +385,13 @@
 				95C1236E1C6728F40046B2D0 /* Natasha.ttf in Resources */,
 				84EC23C31C579E14008FA17F /* Main.storyboard in Resources */,
 				9514F1C51C3EBBEE00F27D2D /* DiziDB.sqlite in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		954D46B31C6F7EF100A5B7E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,7 +464,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		954D46B11C6F7EF100A5B7E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				954D46B81C6F7EF100A5B7E9 /* XoxolTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		954D46BB1C6F7EF100A5B7E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9514F1A11C3AD57B00F27D2D /* CheTamUHohlov */;
+			targetProxy = 954D46BA1C6F7EF100A5B7E9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		84EC23C11C579E14008FA17F /* Main.storyboard */ = {
@@ -569,6 +647,30 @@
 			};
 			name = Release;
 		};
+		954D46BD1C6F7EF100A5B7E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = XoxolTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.romasafin.XoxolTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CheTamUHohlov.app/CheTamUHohlov";
+			};
+			name = Debug;
+		};
+		954D46BE1C6F7EF100A5B7E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = XoxolTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.romasafin.XoxolTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CheTamUHohlov.app/CheTamUHohlov";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -589,6 +691,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		954D46BC1C6F7EF100A5B7E9 /* Build configuration list for PBXNativeTarget "XoxolTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				954D46BD1C6F7EF100A5B7E9 /* Debug */,
+				954D46BE1C6F7EF100A5B7E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
