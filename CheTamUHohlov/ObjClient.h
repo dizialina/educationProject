@@ -9,6 +9,13 @@
 #import <Foundation/Foundation.h>
 @class RateItemFromGov;
 
+typedef enum serverName {
+    Gov,
+    Yahoo,
+    BrentStock
+} ServerNameEnum ;
+
+
 @interface ObjClient : NSObject
 
 - (NSString *)copyDBFileToPathIfNotExistsAndReturnAdress;
@@ -20,6 +27,8 @@
 
 - (BOOL)openDB;
 - (void)closeDB;
+
+- (void)repackDataFromRequestClient:(id)resultData fromServer:(ServerNameEnum)serverName;
 
 - (int)testMethod:(int)testInt;
 

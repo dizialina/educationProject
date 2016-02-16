@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ObjClient.h"
 
 @interface RequestClient : NSObject
 
-+ (void)requestDataFromYahooServer:(NSString *) urlString;
-+ (void)requestDataFromGovServerAndSaveWithTransaction:(NSString *) urlString;
 + (void)requestDataFromServer;
-+ (void)requestDataFromBrentStocks:(NSString *) urlString;
++ (void)requestDataFromServerWithUrl:(NSString *)urlString fromServer:(ServerNameEnum)serverName;
 
 @end

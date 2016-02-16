@@ -22,7 +22,7 @@
     return testInt;
 }
 
-#pragma mark - Methods working with file data base
+#pragma mark - Methods working with file database
 
 - (NSString *)copyDBFileToPathIfNotExistsAndReturnAdress {
     
@@ -142,6 +142,115 @@
     
     NSArray *returnArray = [NSArray arrayWithArray:currencyRateArray];
     return returnArray;
+    
+}
+
+#pragma mark - Method working with data from servers
+
+- (void)repackDataFromRequestClient:(id)resultData fromServer:(ServerNameEnum)serverName {
+    
+    NSArray *responseArray = [NSArray new];
+    NSDictionary *responseDictionary = [NSDictionary new];
+    NSMutableArray* queryArray = [NSMutableArray new];
+    ObjClient *objClient = [ObjClient new];
+    
+    switch (serverName) {
+            
+        case Gov: {
+            
+            if ([resultData isKindOfClass:[NSArray class]]) {
+                responseArray = resultData;
+            }
+            if ([responseArray count] != 0) {
+                NSLog(@"Array is full. Gov server works.");
+                
+                [responseArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    NSDictionary *dict = obj;
+                    //NSLog(@"%@", dict);
+                    NSString *shortCurName = [dict objectForKey:@"cc"];
+                    double rate = [[dict objectForKey:@"rate"] doubleValue];
+                    //NSString *fullName = [dict objectForKey:@"txt"];
+                    NSString *fullName = @"";
+                    NSString *insertQueue = [NSString stringWithFormat:@"INSERT OR REPLACE INTO CurrencyRate VALUES (\'%@\', %f, \'%@\')", shortCurName, rate, fullName];
+                    [queryArray addObject:insertQueue];
+                    
+                }];
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:NotificationAboutLoadingGovData object:nil];
+                
+                NSArray *fullQueryArray = [NSArray arrayWithArray:queryArray];
+                [objClient writeWithTransactionRequestToDatabase:fullQueryArray];
+                
+            } else {
+                NSLog(@"Array is empty. Problem with Gov server.");
+            }
+            
+            break;
+        }
+            
+        case Yahoo: {
+            
+            if ([resultData isKindOfClass:[NSDictionary class]]) {
+                responseDictionary = resultData;
+            }
+            if ([responseDictionary count] != 0) {
+                NSLog(@"Dictionary is full. Yahoo server works.");
+                
+                NSDictionary *queryDict = [responseDictionary objectForKey:@"query"];
+                NSDictionary *resultDict = [queryDict objectForKey:@"results"];
+                NSArray *rateArray = [resultDict objectForKey:@"rate"];
+                
+                [rateArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    
+                    NSDictionary *dict = obj;
+                    //NSLog(@"%@", dict);
+                    NSString *pairCurName = [dict objectForKey:@"Name"];
+                    double rate = [[dict objectForKey:@"Rate"] doubleValue];
+                    double ask = [[dict objectForKey:@"Ask"] doubleValue];
+                    double bid = [[dict objectForKey:@"Bid"] doubleValue];
+                    //NSLog(@"%@, %f, %f, %f", pairCurName, rate, ask, bid);
+                    NSString *insertQueue = [NSString stringWithFormat:@"INSERT OR REPLACE INTO yahooCurrencyRate VALUES (\'%@\', %f, %f, %f)", pairCurName, rate, ask, bid];
+                    [queryArray addObject:insertQueue];
+                    
+                }];
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:NotificationAboutLoadingYahooData object:nil];
+                
+                NSArray *fullQueryArray = [NSArray arrayWithArray:queryArray];
+                [objClient writeWithTransactionRequestToDatabase:fullQueryArray];
+                
+            } else {
+                NSLog(@"Dictionary is empty. Problem with Yahoo server.");
+            }
+            
+            break;
+        }
+            
+        case BrentStock: {
+            
+            if ([resultData isKindOfClass:[NSDictionary class]]) {
+                responseDictionary = resultData;
+            }
+            if ([responseDictionary count] != 0) {
+                NSLog(@"Dictionary is full. BrentStocks server works.");
+            
+                NSArray *brentArray = [responseDictionary objectForKey:@"data"];
+                NSArray *dataArray = [brentArray firstObject];
+                double rate = [[dataArray objectAtIndex:4] doubleValue];
+                [[NSUserDefaults standardUserDefaults] setDouble:rate forKey:BrentStockKey];
+                
+            } else {
+                NSLog(@"Dictionary is empty. Problem with BrentStocks server.");
+            }
+
+            break;
+        }
+            
+        default:
+            NSLog(@"Unknown server!");
+            break;
+            
+    }
     
 }
 

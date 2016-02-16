@@ -38,12 +38,23 @@
 }
 
 -(void)testTheMethodInViewController {
-  ObjClient *screen = [ObjClient new];
     
-  int random = arc4random_uniform(30);
-  int result = [screen testMethod:random];
-  int rightResult = random + 1;
-  XCTAssertEqual(result, rightResult,@"Right result: (%i) equal to method number (%i)",rightResult,random);
+    ObjClient *screen = [ObjClient new];
+    int random = arc4random_uniform(30);
+    int result = [screen testMethod:random];
+    int rightResult = random + 1;
+    XCTAssertEqual(result, rightResult,@"Right result: (%i) equal to method number (%i)",rightResult,random);
+    
+}
+
+- (void)testTheMethodReturnObjectArray {
+    
+    ObjClient *objClient = [ObjClient new];
+    NSString *request = @"SELECT * FROM yahooCurrencyRate1";
+    NSArray *result = [objClient returnCurrencyRateObjectArrayFromYahooBDWithFMDB:request];
+    //NSLog(@"test array %@", result);
+    XCTAssertNotNil(result);
+    
 }
 
 @end
