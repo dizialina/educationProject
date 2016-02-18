@@ -17,11 +17,6 @@
     sqlite3 *database;
 }
 
-- (int)testMethod:(int)testInt {
-    testInt +=1;
-    return testInt;
-}
-
 #pragma mark - Methods working with file database
 
 - (NSString *)copyDBFileToPathIfNotExistsAndReturnAdress {
@@ -240,7 +235,7 @@
                 [[NSUserDefaults standardUserDefaults] setDouble:rate forKey:BrentStockKey];
                 
             } else {
-                NSLog(@"Dictionary is empty. Problem with BrentStocks server.");
+                NSLog(@"Dictionary is empty. Problem with Yahoo server.");
             }
 
             break;

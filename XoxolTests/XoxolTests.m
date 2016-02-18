@@ -37,24 +37,26 @@
     }];
 }
 
--(void)testTheMethodInViewController {
+
+- (void)testTheMethodReturnPathToDatabase {
     
-    ObjClient *screen = [ObjClient new];
-    int random = arc4random_uniform(30);
-    int result = [screen testMethod:random];
-    int rightResult = random + 1;
-    XCTAssertEqual(result, rightResult,@"Right result: (%i) equal to method number (%i)",rightResult,random);
+    ObjClient *objClient = [ObjClient new];
+    NSString *path = [objClient copyDBFileToPathIfNotExistsAndReturnAdress];
+    BOOL isDBExist = [[NSFileManager defaultManager] fileExistsAtPath:path];
+    XCTAssertTrue(isDBExist);
     
 }
 
-- (void)testTheMethodReturnObjectArray {
+
+- (void)testTheMethodWriteToDatabase {
     
     ObjClient *objClient = [ObjClient new];
-    NSString *request = @"SELECT * FROM yahooCurrencyRate1";
-    NSArray *result = [objClient returnCurrencyRateObjectArrayFromYahooBDWithFMDB:request];
-    //NSLog(@"test array %@", result);
-    XCTAssertNotNil(result);
+    NSArray *arrayWithRequest = [NSArray arrayWithObject:@"INSERT OR REPLACE INTO yahooCurrencyRate VALUES (\'USD/RUB\', 75.4456, 75.4586, 75.4456)"];
+    //NSArray *arrayWithWrongRequest = [NSArray arrayWithObject:@"aaaaaaaa"];
+    BOOL writeSucces = [objClient writeWithTransactionRequestToDatabase:arrayWithRequest];
+    XCTAssertTrue(writeSucces);
     
 }
+
 
 @end

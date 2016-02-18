@@ -30,6 +30,4 @@ typedef enum serverName {
 
 - (void)repackDataFromRequestClient:(id)resultData fromServer:(ServerNameEnum)serverName;
 
-- (int)testMethod:(int)testInt;
-
 @end
