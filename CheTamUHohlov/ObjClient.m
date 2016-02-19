@@ -81,6 +81,19 @@
     return NO;
 }
 
+- (BOOL) writeRequestToDatabase:(NSString*)request {
+    
+    BOOL success;
+    FMDatabase *db = [FMDatabase databaseWithPath:[self copyDBFileToPathIfNotExistsAndReturnAdress]];
+    if (![db open]) {
+        [db close];
+    }
+    [db open];
+    success = [db executeUpdate:request];
+    [db close];
+    return success;
+}
+
 #pragma mark - Select methods with FMDB
 
 - (NSArray *)returnCurrencyRateObjectArrayFromGovDBWithFMDB:(NSString *)request {

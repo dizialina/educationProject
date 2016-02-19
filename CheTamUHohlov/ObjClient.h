@@ -21,6 +21,7 @@ typedef enum serverName {
 - (NSString *)copyDBFileToPathIfNotExistsAndReturnAdress;
 
 - (BOOL)writeWithTransactionRequestToDatabase:(NSArray*)arrayRequests;
+- (BOOL)writeRequestToDatabase:(NSString*)request;
 
 - (NSArray *)returnCurrencyRateObjectArrayFromGovDBWithFMDB:(NSString *)request;
 - (NSArray *)returnCurrencyRateObjectArrayFromYahooBDWithFMDB:(NSString *)request;

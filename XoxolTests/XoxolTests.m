@@ -51,10 +51,10 @@
 - (void)testTheMethodWriteToDatabase {
     
     ObjClient *objClient = [ObjClient new];
-    NSArray *arrayWithRequest = [NSArray arrayWithObject:@"INSERT OR REPLACE INTO yahooCurrencyRate VALUES (\'USD/RUB\', 75.4456, 75.4586, 75.4456)"];
-    //NSArray *arrayWithWrongRequest = [NSArray arrayWithObject:@"aaaaaaaa"];
-    BOOL writeSucces = [objClient writeWithTransactionRequestToDatabase:arrayWithRequest];
-    XCTAssertTrue(writeSucces);
+    //NSString *request = @"INSERT OR REPLACE INTO yahooCurrencyRate VALUES (\'USD/RUB\', 75.4456, 75.4586, 75.4456)";
+    NSString *wrongRequest = @"";
+    BOOL writeSucces = [objClient writeRequestToDatabase:wrongRequest];
+    XCTAssertFalse(writeSucces);
     
 }
 
