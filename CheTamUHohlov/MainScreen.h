@@ -13,6 +13,9 @@
 @interface MainScreen : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *headLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *headImageTag;
+
+
 @property (weak, nonatomic) IBOutlet UILabel *curToDollarLabel;
 @property (weak, nonatomic) IBOutlet UILabel *curToEuroLabel;
 @property (weak, nonatomic) IBOutlet UILabel *specialProductLabel;

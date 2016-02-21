@@ -127,6 +127,7 @@
 
 - (IBAction)healAction:(GoodButton *)sender {
     
+    self.headImageTag.hidden = YES;
     FunnyJokesClass *jokes = [FunnyJokesClass new];
     NSArray *jokesArray;
     NSDictionary *dataDict;
@@ -188,12 +189,18 @@
 
 - (IBAction)homeButton:(GoodButton *)sender {
     
+    if (self.headImageTag.hidden) {
+        self.headImageTag.hidden = NO;
+    }
+    
     if (!russianMode) {
         
         russianMode = YES;
         
+        [self.headImageTag setImage:[UIImage imageNamed:@"CheTamVRashe"]];
+        
         [self.homeButton setTitle:@"Че там у хохлов?" forState:UIControlStateNormal];
-        self.headLabel.text = @"Че там в раше?";
+        self.headLabel.text = @"";
         
         RateItemFromYahoo *rubToDollarItem = [self.curRateObjYahoo firstObject];
         RateItemFromYahoo *rubToEuroItem = [self.curRateObjYahoo lastObject];
@@ -213,8 +220,12 @@
         
         russianMode = NO;
         
+        
+        
+        [self.headImageTag setImage:[UIImage imageNamed:@"CheTamUHohlov"]];
+        
         [self.homeButton setTitle:@"Че там в раше?" forState:UIControlStateNormal];
-        self.headLabel.text = @"Че там у хохлов?";
+        self.headLabel.text = @"";
         self.curToDollarLabel.text = @"грн за доллар";
         self.curToEuroLabel.text = @"грн за евро";
         self.specialProductLabel.text = @"за 1 кг сала";
