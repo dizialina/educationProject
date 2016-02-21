@@ -17,11 +17,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIcon" translatesAutoresizingMaskIntoConstraints="NO" id="IHt-Ad-ASW">
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CheTamUHohlov" translatesAutoresizingMaskIntoConstraints="NO" id="IHt-Ad-ASW">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="5Db-fC-dWP"/>
-                                    <constraint firstAttribute="height" constant="240" id="fCn-O7-6wE"/>
+                                    <constraint firstAttribute="width" constant="240" id="5Db-fC-dWP">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="400"/>
+                                    </constraint>
+                                    <constraint firstAttribute="height" constant="240" id="fCn-O7-6wE">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="60"/>
+                                    </constraint>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -36,10 +40,38 @@
                                     </mask>
                                 </variation>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CheTamUHohlov" translatesAutoresizingMaskIntoConstraints="NO" id="QfJ-E7-UdD">
+                                <rect key="frame" x="0.0" y="265" width="600" height="69"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="2NH-mx-bVf">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="60"/>
+                                    </constraint>
+                                    <constraint firstAttribute="width" constant="240" id="BJH-Xe-jWX">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="400"/>
+                                    </constraint>
+                                    <constraint firstAttribute="height" constant="69" id="XH5-Nt-rh9"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="2NH-mx-bVf"/>
+                                        <exclude reference="BJH-Xe-jWX"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="2NH-mx-bVf"/>
+                                        <include reference="BJH-Xe-jWX"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="QfJ-E7-UdD" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="L1S-8e-gIi"/>
+                            <constraint firstItem="QfJ-E7-UdD" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="O31-fe-vWT"/>
+                            <constraint firstAttribute="trailing" secondItem="QfJ-E7-UdD" secondAttribute="trailing" id="ktZ-CU-b9m"/>
                             <constraint firstItem="IHt-Ad-ASW" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="oDD-vT-j7J"/>
+                            <constraint firstItem="QfJ-E7-UdD" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="rXi-Ej-EhS"/>
                             <constraint firstItem="IHt-Ad-ASW" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="wFF-EA-nnk"/>
                         </constraints>
                         <variation key="default">
@@ -64,10 +96,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52.5" y="375"/>
+            <point key="canvasLocation" x="52" y="375"/>
         </scene>
     </scenes>
     <resources>
-        <image name="AppIcon" width="375" height="470"/>
+        <image name="CheTamUHohlov" width="293" height="28"/>
     </resources>
 </document>
