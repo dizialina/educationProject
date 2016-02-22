@@ -167,13 +167,7 @@
             currentItem += 1;
             
         } else {
-            
-            if (!russianMode) {
-                currentItem = arc4random_uniform(42);
-            } else {
-                currentItem = arc4random_uniform(15);
-            }
-
+            currentItem = arc4random_uniform(jokesArray.count);
         }
         
     } else {

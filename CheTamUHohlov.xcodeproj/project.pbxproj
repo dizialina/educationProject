@@ -612,7 +612,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-lsqlite3";
-				PRODUCT_BUNDLE_IDENTIFIER = Y859DLF8C3.com.romasafin.CheTamUHohlov;
+				PRODUCT_BUNDLE_IDENTIFIER = com.romasafin.CheTamUHohlov;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CheTamUHohlov/CheTamUHohlov-Bridging-Header.h";
@@ -639,7 +639,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-lsqlite3";
-				PRODUCT_BUNDLE_IDENTIFIER = Y859DLF8C3.com.romasafin.CheTamUHohlov;
+				PRODUCT_BUNDLE_IDENTIFIER = com.romasafin.CheTamUHohlov;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CheTamUHohlov/CheTamUHohlov-Bridging-Header.h";
@@ -699,6 +699,7 @@
 				954D46BE1C6F7EF100A5B7E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
