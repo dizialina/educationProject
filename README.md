@@ -30,5 +30,6 @@ Inside of app you could just look for fresh currency rates of RUB and UAH to USD
 Also you have a heal button to randomize rates and get random joke about it.  
 Do not download app from app store, if you have problems with the sense of humor. 
 Mostly all jokes are from twitter. Author cannot take responsibility for the content  
+Idea of this app was inspired by hashtag #chetamuhohlov
 
 
