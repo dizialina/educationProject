@@ -167,7 +167,7 @@
             currentItem += 1;
             
         } else {
-            currentItem = arc4random_uniform(jokesArray.count);
+            currentItem = arc4random_uniform((unsigned int)jokesArray.count);
         }
         
     } else {

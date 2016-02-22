@@ -609,7 +609,7 @@
 					"$(PROJECT_DIR)/CheTamUHohlov",
 				);
 				INFOPLIST_FILE = CheTamUHohlov/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-lsqlite3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.romasafin.CheTamUHohlov;
@@ -636,7 +636,7 @@
 					"$(PROJECT_DIR)/CheTamUHohlov",
 				);
 				INFOPLIST_FILE = CheTamUHohlov/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-lsqlite3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.romasafin.CheTamUHohlov;
