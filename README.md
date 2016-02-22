@@ -26,10 +26,10 @@ This is app done in education purposes.
 * also a bit about localizing apps, NSDate formatting, NSUserDefaults, Reachability, dispatch_async  
 
 ##The app is just a collection of jokes and currency exchange rates of UAH and RUB
-Inside of app you could just look for fresh currency rates of RUB and UAH to USD and EUR.
+Inside of app you could just look for fresh currency rates of RUB and UAH to USD and EUR.  
 Also you have a heal button to randomize rates and get random joke about it.  
 Do not download app from app store, if you have problems with the sense of humor. 
-Mostly all jokes are from twitter. Author cannot take responsibility for the content  
+Mostly all jokes are from twitter. Author cannot take responsibility for the content.    
 Idea of this app was inspired by twitter hashtag #четамухохлов
 
 
