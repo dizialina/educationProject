@@ -265,9 +265,9 @@
         RateItemFromYahoo *rubToDollarItem = [self.curRateObjYahoo firstObject];
         RateItemFromYahoo *rubToEuroItem = [self.curRateObjYahoo lastObject];
         
-        self.curToDollarLabel.text = @"рублей за доллар";
+        self.curToDollarLabel.text = @"руб за доллар";
         self.curToDollar.text = [NSString stringWithFormat:@"%.2f", rubToDollarItem.rate];
-        self.curToEuroLabel.text = @"рублей за евро";
+        self.curToEuroLabel.text = @"руб за евро";
         self.curToEuro.text = [NSString stringWithFormat:@"%.2f", rubToEuroItem.rate];
         self.specialProductLabel.text = @"за баррель";
         if ([[NSUserDefaults standardUserDefaults] doubleForKey:BrentStockKey]) {

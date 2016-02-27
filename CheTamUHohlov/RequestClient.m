@@ -25,7 +25,7 @@
     
     NSString *urlGov;
     
-    if ([dayOfWeek isEqualToString:@"Sat"]) {
+    if ([dayOfWeek isEqualToString:@"Sat"] || [dayOfWeek isEqualToString:@"сб"]) {
         
         NSDate *newDate = [date dateByAddingTimeInterval:-86400]; //минус сутки
         [dateForm setDateFormat:@"yyyyMMdd"];
@@ -33,7 +33,7 @@
         urlGov = [NSString stringWithFormat:@"%@%@&json", LinkToGovDataInWeekends, currentDate];
         //NSLog(urlGov);
         
-    } else if ([dayOfWeek isEqualToString:@"Sun"]) {
+    } else if ([dayOfWeek isEqualToString:@"Sun"] || [dayOfWeek isEqualToString:@"вс"] || [dayOfWeek isEqualToString:@"нд"]) {
         
         NSDate *newDate = [date dateByAddingTimeInterval:-172800]; //минус двое суток
         [dateForm setDateFormat:@"yyyyMMdd"];
