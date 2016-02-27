@@ -30,7 +30,7 @@
         NSDate *newDate = [date dateByAddingTimeInterval:-86400]; //минус сутки
         [dateForm setDateFormat:@"yyyyMMdd"];
         NSString *currentDate = [dateForm stringFromDate:newDate];
-        urlGov = [NSString stringWithFormat:@"http://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?date=%@&json", currentDate];
+        urlGov = [NSString stringWithFormat:@"%@%@&json", LinkToGovDataInWeekends, currentDate];
         //NSLog(urlGov);
         
     } else if ([dayOfWeek isEqualToString:@"Sun"]) {
@@ -38,7 +38,7 @@
         NSDate *newDate = [date dateByAddingTimeInterval:-172800]; //минус двое суток
         [dateForm setDateFormat:@"yyyyMMdd"];
         NSString *currentDate = [dateForm stringFromDate:newDate];
-        urlGov = [NSString stringWithFormat:@"http://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?date=%@&json", currentDate];
+        urlGov = [NSString stringWithFormat:@"%@%@&json", LinkToGovDataInWeekends, currentDate];
         //NSLog(urlGov);
         
     } else {
