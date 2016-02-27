@@ -46,15 +46,15 @@
                                  (self.frame.size.width - 30), ((self.frame.size.height - (hS * 29) - 50 - (8 * 3)) / 2));
     
     self.productPrice = CGRectMake((wS * 5), (hS * 23), (wS * 14), ((hS * 6) / 3 * 2));
-    self.productLabel = CGRectMake((wS * 5), ((hS * 29) - ((hS * 6) / 3)), (wS * 14), ((hS * 6) / 3));
+    self.productLabel = CGRectMake((wS * 5), ((hS * 29) - ((hS * 6) / 3) - 10), (wS * 14), ((hS * 6) / 3));
     
     self.headerLabel = CGRectMake(wS, (hS * 2), (self.frame.size.width - (wS * 2)), (hS * 4));
     
     self.usdPrice = CGRectMake((wS * 5), (hS * 7), self.productPrice.size.width, self.productPrice.size.height);
-    self.usdLabel = CGRectMake((wS * 5), ((hS * 7) + self.productPrice.size.height), self.productLabel.size.width, self.productLabel.size.height);
+    self.usdLabel = CGRectMake((wS * 5), ((hS * 7) + self.productPrice.size.height - 10), self.productLabel.size.width, self.productLabel.size.height);
     
     self.eurPrice = CGRectMake((wS * 5), (hS * 13), self.productPrice.size.width, self.productPrice.size.height);
-    self.eurLabel = CGRectMake((wS * 5), ((hS * 13) + self.productPrice.size.height), self.productLabel.size.width, self.productLabel.size.height);
+    self.eurLabel = CGRectMake((wS * 5), ((hS * 13) + self.productPrice.size.height - 10), self.productLabel.size.width, self.productLabel.size.height);
     
 }
 

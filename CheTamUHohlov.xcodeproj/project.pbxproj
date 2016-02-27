@@ -356,7 +356,7 @@
 				TargetAttributes = {
 					9514F1A11C3AD57B00F27D2D = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = Y859DLF8C3;
+						DevelopmentTeam = 4YFHH255JS;
 					};
 					954D46B41C6F7EF100A5B7E9 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -624,7 +624,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-lsqlite3";
-				PRODUCT_BUNDLE_IDENTIFIER = com.romasafin.CheTamUHohlov;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dizialina.CheTamUHohlov;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CheTamUHohlov/CheTamUHohlov-Bridging-Header.h";
@@ -651,7 +651,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-lsqlite3";
-				PRODUCT_BUNDLE_IDENTIFIER = com.romasafin.CheTamUHohlov;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dizialina.CheTamUHohlov;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CheTamUHohlov/CheTamUHohlov-Bridging-Header.h";
