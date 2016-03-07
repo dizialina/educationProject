@@ -86,7 +86,7 @@
     self.headLabel.textColor = [UIColor whiteColor];
     self.headLabel.textAlignment = NSTextAlignmentCenter;
     self.headLabel.font = [UIFont fontWithName:@"Natasha" size:36];
-    self.headLabel.text = @"#четамухохлов";
+    self.headLabel.text = @"#четамвукраине";
     self.headLabel.adjustsFontSizeToFitWidth = YES;
     self.headLabel.minimumScaleFactor = 0.2;
     self.headLabel.numberOfLines = 0;
@@ -259,7 +259,7 @@
         
         russianMode = YES;
         
-        [self.homeButton setTitle:@"Че там у хохлов?" forState:UIControlStateNormal];
+        [self.homeButton setTitle:@"Че там в украине?" forState:UIControlStateNormal];
         self.headLabel.text = @"#четамвраше";
         
         RateItemFromYahoo *rubToDollarItem = [self.curRateObjYahoo firstObject];
@@ -282,7 +282,7 @@
         russianMode = NO;
         
         [self.homeButton setTitle:@"Че там в раше?" forState:UIControlStateNormal];
-        self.headLabel.text = @"#четамухохлов";
+        self.headLabel.text = @"#четамвукраине";
         self.curToDollarLabel.text = @"грн за доллар";
         self.curToEuroLabel.text = @"грн за евро";
         self.specialProductLabel.text = @"за 1 кг сала";
