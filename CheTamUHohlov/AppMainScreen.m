@@ -46,12 +46,12 @@
     randomJoke = NO;
     russianMode = NO;
     
-    NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
-    self.bannerView.adUnitID = GoogleBannerKey;
-    self.bannerView.rootViewController = self;
-    GADRequest *someRequest = [GADRequest request];
-    someRequest.testDevices = @[ kGADSimulatorID ];
-    [self.bannerView loadRequest:someRequest];
+//    NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
+//    self.bannerView.adUnitID = GoogleBannerKey;
+//    self.bannerView.rootViewController = self;
+//    GADRequest *someRequest = [GADRequest request];
+//    someRequest.testDevices = @[ kGADSimulatorID ];
+//    [self.bannerView loadRequest:someRequest];
     
     
     
