@@ -1,6 +1,8 @@
 # Black humor app CheTamUHohlov  
 ###  with UAH and RUB currency  
-This is app done in education purposes.
+This is app done in education purposes. 
+
+[Link to app in AppStore](https://itunes.apple.com/ua/app/ce-tam-kurs/id770051888?mt=8)
 
 ## In this app it tried to achive number of goals:  
 *  Make simple app for App Store to understand the process of creating apps for production  
@@ -17,7 +19,7 @@ This is app done in education purposes.
 4  How to build bugs free app using assert-s and if checks for situations where developer can prevent app crash in production  
 5  Basics of SQLite update/insert/select queries  
 6  Use file manager to store files in app box documents folder  
-7  Using Storyboard and UIViewController in it, and how to handle different states of UI elements 
+7  Using Storyboard and UIViewController in it, and how to handle different states of UI elements  
 8  Build simple screen using size classes and autolayout for multiple screen sizes    
 9  Write IBInspectable extension for UIButton and UIView  
 10  How to update view when data is loading async via NSNotificationCenter  
@@ -31,5 +33,6 @@ Also you have a heal button to randomize rates and get random joke about it.
 Do not download app from app store, if you have problems with the sense of humor. 
 Mostly all jokes are from twitter. Author cannot take responsibility for the content.    
 Idea of this app was inspired by twitter hashtag #четамухохлов
+
 
 
