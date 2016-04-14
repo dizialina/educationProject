@@ -1,5 +1,5 @@
 ## Black humor app "Че там курс" ("Che tam kurs")   
-This is application with UAH and RUB currency, also includes prices on special products such as lard ("salo") and oil. It's also full of jokes about Ukranian and Russian political and economic situations, expecially about problems with falling rate of national currency. This app was done in education purposes.
+This is application with UAH and RUB currency, also includes prices on special products such as lard ("salo") and oil. It's also full of jokes about Ukranian and Russian political and economic situations, expecially about problems with falling rate of national currency. This app was done in education purposes. The release version of application is in branch "tolerantVersion".
 
 ## In this app it tried to achive number of goals:  
 *  Make simple app for App Store to understand the process of creating apps for production  
