@@ -1,8 +1,5 @@
-# Black humor app CheTamUHohlov  
-###  with UAH and RUB currency  
-This is app done in education purposes. 
-
-[Link to app in AppStore](https://itunes.apple.com/ua/app/ce-tam-kurs/id770051888?mt=8)
+## Black humor app "Че там курс" ("Che tam kurs")   
+This is application with UAH and RUB currency, also includes prices on special products such as lard ("salo") and oil. It's also full of jokes about Ukranian and Russian political and economic situations, expecially about problems with falling rate of national currency. This app was done in education purposes.
 
 ## In this app it tried to achive number of goals:  
 *  Make simple app for App Store to understand the process of creating apps for production  
@@ -19,20 +16,19 @@ This is app done in education purposes.
 4  How to build bugs free app using assert-s and if checks for situations where developer can prevent app crash in production  
 5  Basics of SQLite update/insert/select queries  
 6  Use file manager to store files in app box documents folder  
-7  Using Storyboard and UIViewController in it, and how to handle different states of UI elements  
-8  Build simple screen using size classes and autolayout for multiple screen sizes    
+7  Using Storyboard and UIViewController in it, and how to handle different states of UI elements 
+8  Build simple screen using size classes and autolayout for multiple screen sizes, and CGContext for drawing background image.  
 9  Write IBInspectable extension for UIButton and UIView  
 10  How to update view when data is loading async via NSNotificationCenter  
 11  How to write Unit tests for method testing coverage  
 12  Data models, Classes, UIKIt  
 * also a bit about localizing apps, NSDate formatting, NSUserDefaults, Reachability, dispatch_async  
 
-##The app is just a collection of jokes and currency exchange rates of UAH and RUB
+## The app is just a collection of jokes and currency exchange rates of UAH and RUB
 Inside of app you could just look for fresh currency rates of RUB and UAH to USD and EUR.  
 Also you have a heal button to randomize rates and get random joke about it.  
 Do not download app from app store, if you have problems with the sense of humor. 
-Mostly all jokes are from twitter. Author cannot take responsibility for the content.    
-Idea of this app was inspired by twitter hashtag #четамухохлов
+Mostly all jokes are from twitter. Author cannot take responsibility for the content.  
 
-
-
+## Screenshots:
+![Ukraine](http://i.imgur.com/wtHcsf3.png) ![Russia](http://i.imgur.com/0xrvpCS.png) ![Heal](http://i.imgur.com/52bFFqJ.png)
